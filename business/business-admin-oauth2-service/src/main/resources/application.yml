@@ -1,0 +1,47 @@
+base:
+  config:
+    tidb:
+      hostname: tidb.demo.com
+      port: 4000
+    mysql:
+      hostname: mysql.demo.com
+      port: 3306
+    nacos:
+      hostname: nacos.demo.com
+      port: 80
+    sentile:
+      hostname: localhost
+      port: 8080
+    redis:
+      hostname: redis.demo.com
+      port: 6379
+
+spring:
+  application:
+    name: business-admin-oauth2
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+dubbo:
+  scan:
+    base-packages: com.demo.hotel.business.controller
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.mysql.hostname}
+    port: ${base.config.nacos.port}
+server:
+  port: 9001
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
