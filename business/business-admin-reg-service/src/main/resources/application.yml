@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: business-admin-reg
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.demo.com:80
+
+dubbo:
+  scan:
+    base-packages: com.demo.hotel.business.controller
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://nacos.demo.com
+    port: 80
+
+server:
+  # ${random.int[9000,9999]} 随机端口
+  port: 9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
