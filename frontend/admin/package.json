@@ -1,9 +1,9 @@
 {
-  "name": "myshop-plus",
-  "version": "4.2.1",
-  "description": "A vue admin template with Element UI & axios & iconfont & permission control & lint",
-  "author": "Pan <panfree23@gmail.com>",
-  "license": "MIT",
+  "name": "hotel-admin",
+  "version": "0.0.1",
+  "description": "酒店ERP管理系统的前端",
+  "author": "syj <stepenshen@foxmail.com>",
+  "license": "GPL 3.0",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
