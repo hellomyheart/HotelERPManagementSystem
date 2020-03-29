@@ -81,7 +81,7 @@ public class AdminServiceTest {
 
     @Test
     public void testDelete() {
-        int result = adminService.delete("er");
+        int result = adminService.delete("1");
         Assert.assertEquals(result, 1);
     }
 

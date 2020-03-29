@@ -11,8 +11,9 @@ export function login(data) {
 export function getInfo(token) {
   return request({
     url: '/user/info',
-    method: 'get'
-   // params: { access_token: token }
+    method: 'get',
+    //TODO 后期需删除
+    params: { access_token: token }
   })
 }
 

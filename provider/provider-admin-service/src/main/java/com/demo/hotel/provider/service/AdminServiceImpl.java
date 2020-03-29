@@ -39,9 +39,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin get(String email) {
+    public Admin get(String username) {
         Example example = new Example(Admin.class);
-        example.createCriteria().andEqualTo("email", email);
+        example.createCriteria().andEqualTo("username", username);
         return adminMapper.selectOneByExample(example);
     }
 
@@ -51,9 +51,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int delete(String email) {
+    public int delete(String username) {
         Example example = new Example(Admin.class);
-        example.createCriteria().andEqualTo("email", email);
+        example.createCriteria().andEqualTo("username", username);
         return adminMapper.deleteByExample(example);
     }
 
@@ -67,7 +67,7 @@ public class AdminServiceImpl implements AdminService {
         //获取原始信息
         Admin oldAdmin = get(admin.getId());
         //更新用户名 更新时间 手机号 性别
-        oldAdmin.setUsername(admin.getUsername());
+        oldAdmin.setEmail(admin.getEmail());
         oldAdmin.setUpdateTime(new Date());
         oldAdmin.setPhone(admin.getPhone());
         oldAdmin.setGender(admin.getGender());
@@ -76,15 +76,15 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int modifyPassword(String email, String password) {
-        Admin oldAdmin = get(email);
+    public int modifyPassword(String username, String password) {
+        Admin oldAdmin = get(username);
         oldAdmin.setPassword(passwordEncoder.encode(password));
         return adminMapper.updateByPrimaryKey(oldAdmin);
     }
 
     @Override
-    public int modifyIcon(String email, String path) {
-        Admin oldAdmin = get(email);
+    public int modifyIcon(String username, String path) {
+        Admin oldAdmin = get(username);
         oldAdmin.setIcon(path);
         return adminMapper.updateByPrimaryKey(oldAdmin);
     }

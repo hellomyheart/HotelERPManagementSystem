@@ -26,10 +26,10 @@ public interface AdminService {
     /**
      * 获取用户信息
      *
-     * @param email 用户邮箱
+     * @param username 用户名
      * @return {@link Admin}
      */
-    Admin get(String email);
+    Admin get(String username);
 
     /**
      * 获取用户信息
@@ -42,10 +42,10 @@ public interface AdminService {
     /**
      * 删除用户
      *
-     * @param email 用户邮箱
+     * @param username 用户名
      * @return {@code int} 大于0表示删除成功
      */
-    int delete(String email);
+    int delete(String username);
 
     /**
      * 删除用户
@@ -67,18 +67,18 @@ public interface AdminService {
     /**
      * 修改密码
      *
-     * @param email {@code String} 用户邮箱
+     * @param username {@code String} 用户名
      * @param password {@code String} 明文密码
      * @return {@code int} 大于 0 则表示更新成功
      */
-    int modifyPassword(String email, String password);
+    int modifyPassword(String username, String password);
 
     /**
      * 修改头像
      *
-     * @param email {@code String} 用户邮箱
+     * @param username {@code String} 用户邮箱
      * @param path     {@code String} 头像地址
      * @return {@code int} 大于 0 则表示更新成功
      */
-    int modifyIcon(String email, String path);
+    int modifyIcon(String username, String path);
 }
