@@ -18,7 +18,7 @@ base:
 
 spring:
   application:
-    name: business-admin-oauth2
+    name: business-oauth2
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -28,18 +28,56 @@ spring:
     nacos:
       discovery:
         server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+    sentinel:
+      transport:
+        dashboard: ${base.config.sentile.hostname}:${base.config.sentile.port}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://${base.config.mysql.hostname}:${base.config.mysql.port}/hotel_oauth2?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  redis:
+    host: ${base.config.redis.hostname}
+    port: ${base.config.redis.port}
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1ms
+        max-active: 8
+
 dubbo:
   scan:
-    base-packages: com.demo.hotel.business.controller
+    base-packages: com.demo.hotel.business.controller, com.demo.hotel.business.service
   protocol:
     name: dubbo
     port: -1
     serialization: kryo
   registry:
-    address: nacos://${base.config.mysql.hostname}
+    address: nacos://${base.config.nacos.hostname}
     port: ${base.config.nacos.port}
+
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  sentinel:
+    enabled: true
+
 server:
   port: 9001
+
 management:
   endpoints:
     web:

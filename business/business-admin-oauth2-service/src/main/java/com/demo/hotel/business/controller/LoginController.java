@@ -1,12 +1,16 @@
 package com.demo.hotel.business.controller;
 
+import com.demo.hotel.business.BusinessException;
+import com.demo.hotel.business.BusinessStatus;
 import com.demo.hotel.business.dto.LoginInfo;
 import com.demo.hotel.business.dto.LoginParam;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
+import com.demo.hotel.provider.api.AdminService;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,8 +33,9 @@ import java.util.Objects;
 
 /**
  * 登录管理
+ * @author syj
  */
-//解决跨域问题
+//TODO 解决跨域问题,后期可删除
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
@@ -55,16 +60,29 @@ public class LoginController {
     @Resource
     public TokenStore tokenStore;
 
+    @Reference(version = "1.0.0")
+    private AdminService adminService;
+
+    /**
+     * 登录
+     *
+     * @param loginParam 登录参数
+     * @return {@link ResponseResult}
+     */
     @PostMapping(value = "/user/login")
-    public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam) {
+    public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam, HttpServletRequest request) throws Exception {
+        // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
 
         //验证账号密码
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
 
         if (userDetails == null || !passwordEncoder.matches(loginParam.getPassword(), userDetails.getPassword())) {
-            return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.FAIL, "账号或密码错误", null);
+            throw new BusinessException(BusinessStatus.ADMIN_PASSWORD);
         }
+
+        // 通过 HTTP 客户端请求登录接口
+
         Map<String, String> params = Maps.newHashMap();
         params.put("username", loginParam.getUsername());
         params.put("password", loginParam.getPassword());
@@ -111,6 +129,7 @@ public class LoginController {
     @PostMapping(value = "/user/logout")
     public ResponseResult<Void> logout(HttpServletRequest request) {
         String token = request.getParameter("access_token");
+        //删除token
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
         tokenStore.removeAccessToken(oAuth2AccessToken);
 

@@ -1,5 +1,6 @@
 package com.demo.hotel.business.configure;
 
+import com.demo.hotel.business.controller.LoginController;
 import com.demo.hotel.business.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -71,13 +72,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /**
+         * 将授权访问配置改为注解方式
+         * @see LoginController#info()
+         */
         http.exceptionHandling()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                // 增加了授权访问配置
-                .antMatchers("/user/info").hasAuthority("USER")
-                .antMatchers("/user/logout").hasAuthority("USER");
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
     }
 }

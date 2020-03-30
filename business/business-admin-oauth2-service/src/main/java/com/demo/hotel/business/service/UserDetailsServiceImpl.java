@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -23,29 +23,34 @@ import java.util.List;
  * @author syj
  * @see com.demo.hotel.business.service
  */
-@Service
+@Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    //@Reference(version = "1.0.0")
-    //private AdminService adminService;
-
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "$2a$10$YNUV/BtCel2orbhgrxyPJeljdKVty6yTAL.Cj4v3XhwHWXBkgyPYW";
+    @Reference(version = "1.0.0")
+    private AdminService adminService;
 
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        // 用户名匹配
-        if (s.equals(USERNAME)) {
-            List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
-            grantedAuthorities.add(grantedAuthority);
-            return new User(USERNAME, PASSWORD, grantedAuthorities);
+        //查询用户
+        Admin admin = adminService.get(s);
+
+        // 默认所有用户拥有 USER 权限
+        List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("USER");
+        grantedAuthorities.add(grantedAuthority);
+
+        // 用户存在
+        if (admin != null) {
+            return new User(admin.getUsername(), admin.getPassword(), grantedAuthorities);
         }
-        // 用户名不匹配
+
+        // 用户不存在
         else {
             return null;
         }
+
+
     }
 }
