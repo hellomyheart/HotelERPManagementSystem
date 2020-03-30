@@ -3,11 +3,10 @@ package com.demo.hotel.provider.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-/**
- * @author syj
- */
 @Data
 @Table(name = "`admin`")
 public class Admin implements Serializable {
@@ -32,6 +31,12 @@ public class Admin implements Serializable {
     private String username;
 
     /**
+     * 昵称
+     */
+    @Column(name = "nickname")
+    private String nickname;
+
+    /**
      * 邮箱
      */
     @Column(name = "email")
@@ -52,12 +57,14 @@ public class Admin implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 更新时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "update_time")
     private Date updateTime;
 
@@ -67,6 +74,9 @@ public class Admin implements Serializable {
     @Column(name = "icon")
     private String icon;
 
+    /**
+     * 性别
+     */
     @Column(name = "gender")
     private Integer gender;
 

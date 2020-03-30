@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-admin-oauth2-service</artifactId>
+    <artifactId>business-admin-profile-service</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -27,10 +27,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
 
         <!-- Spring Cloud -->
         <dependency>
@@ -44,27 +40,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- Datasource -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-            <exclusions>
-                <!-- 排除 tomcat-jdbc 以使用 HikariCP -->
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
         <!-- Projects -->
         <dependency>
             <groupId>com.demo.hotel</groupId>
@@ -76,16 +51,6 @@
             <artifactId>provider-admin-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.demo.hotel</groupId>-->
-<!--            <artifactId>cloud-message-api</artifactId>-->
-<!--            <version>${project.parent.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.demo.hotel</groupId>-->
-<!--            <artifactId>cloud-message-feign</artifactId>-->
-<!--            <version>${project.parent.version}</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -94,7 +59,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.demo.hotel.business.BusinessAdminOAuth2Application</mainClass>
+                    <mainClass>com.demo.hotel.business.BusinessAdminProfileApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -67,6 +67,7 @@ dubbo:
     address: nacos://${base.config.nacos.hostname}
     port: ${base.config.nacos.port}
 
+#开启OKHttp，默认是httpclient
 feign:
   okhttp:
     enabled: true

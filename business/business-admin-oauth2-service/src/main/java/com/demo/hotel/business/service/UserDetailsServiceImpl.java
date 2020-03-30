@@ -50,7 +50,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         else {
             return null;
         }
-
-
     }
 }

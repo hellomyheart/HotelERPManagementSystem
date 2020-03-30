@@ -58,5 +58,7 @@
         <module>business-admin-reg-service</module>
         <module>business-admin-oauth2-feign</module>
         <module>business-admin-oauth2-service</module>
+        <module>business-admin-profile-feign</module>
+        <module>business-admin-profile-service</module>
     </modules>
 </project>

@@ -4,10 +4,12 @@ import com.demo.hotel.business.BusinessException;
 import com.demo.hotel.business.BusinessStatus;
 import com.demo.hotel.business.dto.LoginInfo;
 import com.demo.hotel.business.dto.LoginParam;
+import com.demo.hotel.business.feign.ProfileFeign;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
 import com.demo.hotel.provider.api.AdminService;
+import com.demo.hotel.provider.domain.Admin;
 import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.apache.dubbo.config.annotation.Reference;
@@ -60,6 +62,9 @@ public class LoginController {
     @Resource
     public TokenStore tokenStore;
 
+    @Resource
+    private ProfileFeign profileFeign;
+
     @Reference(version = "1.0.0")
     private AdminService adminService;
 
@@ -110,12 +115,20 @@ public class LoginController {
      * @Date: 2020/3/29
      */
     @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> info() {
+    public ResponseResult<LoginInfo> info() throws Exception{
         //获取认证信息上下文的信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // 获取个人信息,使用feign
+        String jsonString = profileFeign.info(authentication.getName());
+        Admin admin=MapperUtils.json2pojoByTree(jsonString,"data",Admin.class);
+
+
+        // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setName(authentication.getName());
-        authentication.getName();
+        loginInfo.setName(admin.getUsername());
+        loginInfo.setAvatar(admin.getIcon());
+        loginInfo.setName(admin.getNickname());
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
     }
 

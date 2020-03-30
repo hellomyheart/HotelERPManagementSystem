@@ -53,6 +53,7 @@ public class AdminServiceTest {
     public void testInsert() {
         Admin admin = new Admin();
         admin.setUsername("test");
+        admin.setNickname("test");
         admin.setEmployeeId(112L);
         admin.setEmail("test@test.com");
         admin.setPassword(passwordEncoder.encode("123456"));
@@ -68,7 +69,7 @@ public class AdminServiceTest {
 
     @Test
     public void testUpdate() {
-        Admin admin = adminService.get(1L);
+        Admin admin = adminService.get(13L);
 
         admin.setUsername("test2");
         admin.setPhone("15252525252");
@@ -81,7 +82,7 @@ public class AdminServiceTest {
 
     @Test
     public void testDelete() {
-        int result = adminService.delete("1");
+        int result = adminService.delete("admin");
         Assert.assertEquals(result, 1);
     }
 
