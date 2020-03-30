@@ -4,7 +4,6 @@ import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.AdminService;
 import com.demo.hotel.provider.domain.Admin;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author syj
  */
 
-//@CrossOrigin注解解决跨域问题
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(value = "admin/reg")
 public class AdminRegController {

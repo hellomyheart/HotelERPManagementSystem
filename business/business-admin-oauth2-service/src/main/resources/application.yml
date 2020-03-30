@@ -18,7 +18,7 @@ base:
 
 spring:
   application:
-    name: business-oauth2
+    name: business-admin-oauth2
   main:
     allow-bean-definition-overriding: true
   jackson:

@@ -21,7 +21,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,8 +36,6 @@ import java.util.Objects;
  * 登录管理
  * @author syj
  */
-//TODO 解决跨域问题,后期可删除
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class LoginController {
 
