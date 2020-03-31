@@ -14,6 +14,7 @@ import com.google.common.collect.Maps;
 import okhttp3.Response;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +35,7 @@ import java.util.Objects;
 
 /**
  * 登录管理
+ *
  * @author syj
  */
 @RestController
@@ -111,16 +113,21 @@ public class LoginController {
      * @Author: syj
      * @Date: 2020/3/29
      */
+    //以下注解设置访问权限
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> info() throws Exception{
+    public ResponseResult<LoginInfo> info() throws Exception {
         //获取认证信息上下文的信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         // 获取个人信息,使用feign
         String jsonString = profileFeign.info(authentication.getName());
-        Admin admin=MapperUtils.json2pojoByTree(jsonString,"data",Admin.class);
-
-
+        Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
+//TODO
+        //熔断
+        if (admin == null){
+            return MapperUtils.json2pojo(jsonString,ResponseResult.class);
+        }
         // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setName(admin.getUsername());
@@ -136,6 +143,7 @@ public class LoginController {
      * @Author: syj
      * @Date: 2020/3/29
      */
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping(value = "/user/logout")
     public ResponseResult<Void> logout(HttpServletRequest request) {
         String token = request.getParameter("access_token");

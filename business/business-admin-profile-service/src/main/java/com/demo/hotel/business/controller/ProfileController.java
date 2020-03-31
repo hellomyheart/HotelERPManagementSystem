@@ -1,5 +1,7 @@
 package com.demo.hotel.business.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.demo.hotel.business.controller.fallback.ProfileControllerFallback;
 import com.demo.hotel.business.dto.AdminDTO;
 import com.demo.hotel.business.dto.params.IconParam;
 import com.demo.hotel.business.dto.params.PasswordParam;
@@ -43,6 +45,7 @@ public class ProfileController {
      * @return {@link ResponseResult}
      */
     @GetMapping(value = "info/{username}")
+    @SentinelResource(value = "info", fallback = "infoFallback", fallbackClass = ProfileControllerFallback.class)
     public ResponseResult<AdminDTO> info(@PathVariable String username) {
         Admin admin = adminService.get(username);
         AdminDTO dto = new AdminDTO();

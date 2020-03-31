@@ -39,7 +39,6 @@ public class AdminDTO implements Serializable {
      */
     private String email;
 
-
     /**
      * 手机号
      */

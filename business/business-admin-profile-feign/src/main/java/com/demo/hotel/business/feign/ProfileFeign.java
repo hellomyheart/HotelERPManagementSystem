@@ -3,6 +3,7 @@ package com.demo.hotel.business.feign;
 import com.demo.hotel.business.dto.params.IconParam;
 import com.demo.hotel.business.dto.params.PasswordParam;
 import com.demo.hotel.business.dto.params.ProfileParam;
+import com.demo.hotel.business.feign.fallback.ProfileFeignFallback;
 import com.demo.hotel.configuration.FeignRequestConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 //path对应controller中的ResquestMapping
 //feign类似于http客户端
 //configuration = FeignRequestConfiguration.class是为了配置拦截器在请求头中加token
-@FeignClient(value = "business-admin-profile", path = "profile", configuration = FeignRequestConfiguration.class)
+@FeignClient(value = "business-admin-profile", path = "profile", configuration = FeignRequestConfiguration.class, fallback = ProfileFeignFallback.class)
 public interface ProfileFeign {
 
     /**

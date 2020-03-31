@@ -1,6 +1,8 @@
 package com.demo.hotel.provider.service;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.demo.hotel.provider.domain.Admin;
+import com.demo.hotel.provider.service.fallback.AdminServiceFallback;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -38,7 +40,22 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.selectOneByExample(example);
     }
 
+
+
+    /**
+     * 熔断器的使用
+     *
+     * <p>
+     * 1.  {@link SentinelResource#value()} 对应的是 Sentinel 控制台中的资源，可用作控制台设置【流控】和【降级】操作 <br>
+     * 2.  {@link SentinelResource#fallback()} 对应的是 {@link AdminServiceFallback#getByUsernameFallback(String, Throwable)}，并且必须为 `static` <br>
+     * 3. 如果不设置 {@link SentinelResource#fallbackClass()}，则需要在当前类中创建一个 `Fallback` 函数，函数签名与原函数一致或加一个 {@link Throwable} 类型的参数
+     * </p>
+     *
+     * @param username {@code String} 用户名
+     * @return {@link Admin}
+     */
     @Override
+    @SentinelResource(value = "getByUsername", fallback = "getByUsernameFallback", fallbackClass = AdminServiceFallback.class)
     public Admin get(String username) {
         Example example = new Example(Admin.class);
         example.createCriteria().andEqualTo("username", username);
