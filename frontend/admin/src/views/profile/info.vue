@@ -8,32 +8,33 @@
       :model="form"
       label-width="120px"
     >
-      <el-input type="hidden" v-model="form.id" />
+      <el-input type="hidden" v-model="form.id"/>
       <el-form-item label="头像">
         <img :src="form.icon" width="60" height="60">
       </el-form-item>
       <el-form-item label="账号">
-        <el-input v-model="form.username" :disabled="true" />
+        <el-input v-model="form.username" :disabled="true"/>
       </el-form-item>
       <el-form-item label="邮箱">
-        <el-input v-model="form.email" />
+        <el-input v-model="form.email"/>
+      </el-form-item>
+      <el-form-item label="手机号">
+        <el-input v-model="form.phone"/>
       </el-form-item>
       <el-form-item label="昵称">
-        <el-input v-model="form.nickName" />
-      </el-form-item>
-      <el-form-item label="备注">
-        <el-input v-model="form.note" />
+        <el-input v-model="form.nickname"/>
       </el-form-item>
       <el-form-item label="创建时间">
-        <el-input v-model="form.createTime" :disabled="true" />
+        <el-input v-model="form.createTime" :disabled="true"/>
       </el-form-item>
-      <el-form-item label="最后登录">
-        <el-input v-model="form.loginTime" :disabled="true" />
+      <el-form-item label="更新时间">
+        <el-input v-model="form.updateTime" :disabled="true"/>
       </el-form-item>
-      <el-form-item label="是否启用">
-        <el-radio-group v-model="form.status">
-          <el-radio :label="0">禁用</el-radio>
-          <el-radio :label="1">启用</el-radio>
+      <el-form-item label="性别">
+        <el-radio-group v-model="form.gender">
+          <el-radio :label="0">保密</el-radio>
+          <el-radio :label="1">男</el-radio>
+          <el-radio :label="2">女</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item>
@@ -43,7 +44,8 @@
   </div>
 </template>
 <script>
-    import { info, update} from '@/api/profile'
+    import {info, update} from '@/api/profile'
+
     export default {
         name: 'ProfileInfo',
         data() {
@@ -51,14 +53,15 @@
                 formLoading: true,
                 form: {
                     id: '',
-                    icon: '',
+                    employeeId: '',
                     username: '',
+                    nickname: '',
                     email: '',
-                    nickName: '',
-                    note: '',
+                    phone: '',
                     createTime: '',
-                    loginTime: '',
-                    status: ''
+                    updateTime: '',
+                    icon: '',
+                    gender: ''
                 }
             }
         },
@@ -74,14 +77,14 @@
             },
             onSubmit() {
                 this.formLoading = true
-                update(this.form).then(response =>{
+                update(this.form).then(response => {
                     this.formLoading = false
                     this.$message({
                         message: response.message,
                         type: "success"
                     });
-                }).catch(()=>{
-                    this.formLoading=false
+                }).catch(() => {
+                    this.formLoading = false
                 })
             }
         }

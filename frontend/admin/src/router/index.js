@@ -80,7 +80,7 @@ export const constantRoutes = [
         path: 'icon',
         name: 'ProfileIcon',
         component: () => import('@/views/profile/icon'),
-        meta: { title: '修改头像' }
+        meta: { title: '修改头像' ,icon: 'user'}
       }
     ]
   },

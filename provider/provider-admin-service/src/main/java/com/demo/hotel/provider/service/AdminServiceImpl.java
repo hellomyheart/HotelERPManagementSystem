@@ -70,6 +70,7 @@ public class AdminServiceImpl implements AdminService {
         oldAdmin.setEmail(admin.getEmail());
         oldAdmin.setUpdateTime(new Date());
         oldAdmin.setPhone(admin.getPhone());
+        oldAdmin.setNickname(admin.getNickname());
         oldAdmin.setGender(admin.getGender());
 
         return adminMapper.updateByPrimaryKey(oldAdmin);
