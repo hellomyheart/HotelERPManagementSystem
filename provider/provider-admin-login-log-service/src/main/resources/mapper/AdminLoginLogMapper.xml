@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.AdminLoginLogMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.AdminLoginLog">
+    <!--@mbg.generated generated on Tue Mar 31 21:34:47 CST 2020.-->
+    <!--@Table admin_login_log-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="user_agent" jdbcType="VARCHAR" property="userAgent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Mar 31 21:34:47 CST 2020.-->
+    id, admin_id, create_time, ip, address, user_agent
+  </sql>
+</mapper>

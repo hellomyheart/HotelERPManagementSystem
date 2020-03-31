@@ -84,7 +84,7 @@
 
         <module>provider-admin-api</module>
         <module>provider-admin-service</module>
-        <!--        <module>provider-admin-login-log-api</module>-->
-        <!--        <module>provider-admin-login-log-service</module>-->
+        <module>provider-admin-login-log-api</module>
+        <module>provider-admin-login-log-service</module>
     </modules>
 </project>
