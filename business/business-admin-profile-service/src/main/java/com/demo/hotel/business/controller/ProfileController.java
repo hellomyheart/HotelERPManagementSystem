@@ -1,6 +1,8 @@
 package com.demo.hotel.business.controller;
 
 import com.demo.hotel.business.dto.AdminDTO;
+import com.demo.hotel.business.dto.params.IconParam;
+import com.demo.hotel.business.dto.params.PasswordParam;
 import com.demo.hotel.business.dto.params.ProfileParam;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.AdminService;
@@ -34,8 +36,6 @@ public class ProfileController {
     private BCryptPasswordEncoder passwordEncoder;
 
 
-
-
     /**
      * 获取个人信息
      *
@@ -43,11 +43,11 @@ public class ProfileController {
      * @return {@link ResponseResult}
      */
     @GetMapping(value = "info/{username}")
-    public ResponseResult<AdminDTO> info(@PathVariable String username){
-        Admin admin=adminService.get(username);
+    public ResponseResult<AdminDTO> info(@PathVariable String username) {
+        Admin admin = adminService.get(username);
         AdminDTO dto = new AdminDTO();
-        BeanUtils.copyProperties(admin,dto);
-        return new ResponseResult<AdminDTO>(ResponseResult.CodeStatus.OK,"获取个人信息",dto);
+        BeanUtils.copyProperties(admin, dto);
+        return new ResponseResult<AdminDTO>(ResponseResult.CodeStatus.OK, "获取个人信息", dto);
     }
 
     /**
@@ -72,6 +72,54 @@ public class ProfileController {
         else {
             return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "更新个人信息失败");
         }
+
+
     }
 
+    /**
+     * 修改密码
+     *
+     * @param passwordParam {@link PasswordParam}
+     * @return {@link ResponseResult}
+     */
+    @PostMapping(value = "modify/password")
+    public ResponseResult<Void> modifyPassword(@RequestBody PasswordParam passwordParam) {
+        Admin admin = adminService.get(passwordParam.getUsername());
+
+        // 旧密码正确
+        if (passwordEncoder.matches(passwordParam.getOldPassword(), admin.getPassword())) {
+            int result = adminService.modifyPassword(admin.getUsername(), passwordParam.getNewPassword());
+            if (result > 0) {
+                return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "修改密码成功");
+            }
+        }
+
+        // 旧密码错误
+        else {
+            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "旧密码不匹配，请重试");
+        }
+
+        return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "修改密码失败");
+    }
+
+    /**
+     * 修改头像
+     *
+     * @param iconParam {@link IconParam}
+     * @return {@link ResponseResult}
+     */
+    @PostMapping(value = "modify/icon")
+    public ResponseResult<Void> modifyIcon(@RequestBody IconParam iconParam) {
+        int result = adminService.modifyIcon(iconParam.getUsername(), iconParam.getPath());
+
+        // 成功
+        if (result > 0) {
+            return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "更新头像成功");
+        }
+
+        // 失败
+        else {
+            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "更新头像失败");
+        }
+    }
 }
