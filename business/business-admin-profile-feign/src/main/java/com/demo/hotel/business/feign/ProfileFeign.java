@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: syj
  * @create: 2020-03-30 14:12
  **/
+
 //value指向服务名，application
 //path对应controller中的ResquestMapping
 //feign类似于http客户端

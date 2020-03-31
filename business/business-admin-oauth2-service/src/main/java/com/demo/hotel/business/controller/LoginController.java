@@ -125,7 +125,7 @@ public class LoginController {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setName(admin.getUsername());
         loginInfo.setAvatar(admin.getIcon());
-        loginInfo.setName(admin.getNickname());
+        loginInfo.setNickname(admin.getNickname());
         return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
     }
 

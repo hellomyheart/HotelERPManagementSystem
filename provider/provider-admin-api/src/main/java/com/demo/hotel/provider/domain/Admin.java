@@ -80,5 +80,5 @@ public class Admin implements Serializable {
     @Column(name = "gender")
     private Integer gender;
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4864000232760089608L;
 }

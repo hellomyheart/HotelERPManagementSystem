@@ -30,6 +30,11 @@ public class ProfileParam implements Serializable {
     private String username;
 
     /**
+     * 用户名
+     */
+    private String nickname;
+
+    /**
      * 邮箱
      */
     private String email;
