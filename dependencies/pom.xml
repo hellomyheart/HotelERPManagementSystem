@@ -23,7 +23,7 @@
         <bitwalker.version>1.21</bitwalker.version>
 
         <!-- Ali Cloud -->
-        <aliyun-sdk-oss.version>3.6.0</aliyun-sdk-oss.version>
+        <aliyun-sdk-oss.version>3.8.0</aliyun-sdk-oss.version>
     </properties>
 
 

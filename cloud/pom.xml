@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.demo.hotel</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>cloud</artifactId>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <!-- Spring Cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- Spring Cloud Alibaba -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!-- Commons -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+
+        <!-- Projects -->
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>commons-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>configuration-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>cloud-upload-feign</module>
+        <module>cloud-upload-service</module>
+<!--        <module>cloud-message-dto</module>-->
+<!--        <module>cloud-message-api</module>-->
+<!--        <module>cloud-message-feign</module>-->
+<!--        <module>cloud-message-service</module>-->
+    </modules>
+</project>

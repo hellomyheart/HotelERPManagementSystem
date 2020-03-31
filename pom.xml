@@ -23,7 +23,7 @@
         <module>business</module>
         <module>gateway-admin</module>
         <!--        <module>gateway-user</module>-->
-        <!--        <module>cloud</module>-->
+        <module>cloud</module>
         <!--        <module>message</module>-->
     </modules>
 
