@@ -9,7 +9,7 @@ package com.demo.hotel.business;
  * @author syj
  */
 public class BusinessException extends RuntimeException {
-    private static final long serialVersionUID = 3034121940056795549L;
+    private static final long serialVersionUID = 8622144653150069378L;
     private Integer code;
     public Integer getCode() {
         return code;
