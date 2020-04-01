@@ -1,4 +1,5 @@
 package com.demo.hotel.cloud.tests;
+import java.util.Date;
 
 import com.demo.hotel.cloud.dto.AdminLoginLogDTO;
 import com.demo.hotel.commons.utils.MapperUtils;
@@ -7,14 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
-
-/**
- * @program: HotelERPManagementSystem
- * @description: 消息测试类
- * @author: syj
- * @create: 2020-03-31 22:46
- **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MessageCloudTests {
@@ -29,4 +22,5 @@ public class MessageCloudTests {
         dto.setUserAgent("0.0.0.0");
         System.out.println(MapperUtils.obj2json(dto));
     }
+
 }

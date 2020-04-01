@@ -5,12 +5,16 @@ import com.demo.hotel.business.BusinessStatus;
 import com.demo.hotel.business.dto.LoginInfo;
 import com.demo.hotel.business.dto.LoginParam;
 import com.demo.hotel.business.feign.ProfileFeign;
+import com.demo.hotel.cloud.api.MessageService;
+import com.demo.hotel.cloud.dto.AdminLoginLogDTO;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
+import com.demo.hotel.commons.utils.UserAgentUtils;
 import com.demo.hotel.provider.api.AdminService;
 import com.demo.hotel.provider.domain.Admin;
 import com.google.common.collect.Maps;
+import eu.bitwalker.useragentutils.Browser;
 import okhttp3.Response;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
 
@@ -67,6 +72,9 @@ public class LoginController {
     @Reference(version = "1.0.0")
     private AdminService adminService;
 
+    @Reference(version = "1.0.0")
+    private MessageService messageService;
+
     /**
      * 登录
      *
@@ -100,6 +108,8 @@ public class LoginController {
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
             String token = String.valueOf(jsonMap.get("access_token"));
             result.put("token", token);
+            // 发送登录日志
+            sendAdminLoginLog(userDetails.getUsername(), request);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,8 +135,8 @@ public class LoginController {
         Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
 //TODO
         //熔断
-        if (admin == null){
-            return MapperUtils.json2pojo(jsonString,ResponseResult.class);
+        if (admin == null) {
+            return MapperUtils.json2pojo(jsonString, ResponseResult.class);
         }
         // 封装并返回结果
         LoginInfo loginInfo = new LoginInfo();
@@ -152,5 +162,30 @@ public class LoginController {
         tokenStore.removeAccessToken(oAuth2AccessToken);
 
         return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "用户注销", null);
+    }
+
+    /**
+     * 发送登录日志
+     *
+     * @param request {@link HttpServletRequest}
+     */
+    private void sendAdminLoginLog(String username, HttpServletRequest request) {
+        Admin admin = adminService.get(username);
+
+        if (admin != null) {
+            // 获取请求的用户代理信息
+            Browser browser = UserAgentUtils.getBrowser(request);
+            String ip = UserAgentUtils.getIpAddr(request);
+            String address = UserAgentUtils.getIpInfo(ip).getCity();
+
+            AdminLoginLogDTO dto = new AdminLoginLogDTO();
+            dto.setAdminId(admin.getId());
+            dto.setCreateTime(new Date());
+            dto.setIp(ip);
+            dto.setAddress(address);
+            dto.setUserAgent(browser.getName());
+
+            messageService.sendAdminLoginLog(dto);
+        }
     }
 }

@@ -10,11 +10,16 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @program: HotelERPManagementSystem
- * @description: 消息生产者
- * @author: syj
- * @create: 2020-03-31 22:33
- **/
+ * 消息生产者
+ * <p>
+ * Description:
+ * </p>
+ *
+ * @author Lusifer
+ * @version v1.0.0
+ * @date 2019-10-20 17:33:21
+ * @see com.demo.hotel.cloud.producer
+ */
 @Component
 @Service(version = "1.0.0")
 public class MessageProducer implements MessageService {

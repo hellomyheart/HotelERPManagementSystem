@@ -76,16 +76,16 @@
             <artifactId>provider-admin-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.demo.hotel</groupId>-->
-<!--            <artifactId>cloud-message-api</artifactId>-->
-<!--            <version>${project.parent.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.demo.hotel</groupId>-->
-<!--            <artifactId>cloud-message-feign</artifactId>-->
-<!--            <version>${project.parent.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>cloud-message-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>cloud-message-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

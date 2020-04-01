@@ -1,0 +1,40 @@
+base:
+  config:
+    rocketmq:
+      hostname: rocketmq.demo.com
+      port: 9876
+    nacos:
+      hostname: nacos.demo.com
+      port: 80
+
+spring:
+  application:
+    name: message-admin-login-log
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
+        bindings:
+          admin-login-log-topic: {consumer.orderly: true}
+      bindings:
+        admin-login-log-topic: {destination: admin-login-log-topic, content-type: text/plain, group: admin-login-log-group, consumer.maxAttempts: 1}
+
+dubbo:
+  scan:
+    base-packages: com.demo.hotel.message.consumer
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
+
+server:
+  port: 20001

@@ -24,7 +24,7 @@
         <module>gateway-admin</module>
         <!--        <module>gateway-user</module>-->
         <module>cloud</module>
-        <!--        <module>message</module>-->
+        <module>message</module>
     </modules>
 
     <properties>

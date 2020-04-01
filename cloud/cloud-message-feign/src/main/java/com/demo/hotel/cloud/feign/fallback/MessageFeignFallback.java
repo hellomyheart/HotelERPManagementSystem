@@ -4,11 +4,8 @@ import com.demo.hotel.cloud.feign.MessageFeign;
 import org.springframework.stereotype.Component;
 
 /**
- * @program: HotelERPManagementSystem
- * @description: MessageFeignFallback熔断类
- * @author: syj
- * @create: 2020-03-31 22:19
- **/
+ * @author syj
+ */
 @Component
 public class MessageFeignFallback implements MessageFeign {
 

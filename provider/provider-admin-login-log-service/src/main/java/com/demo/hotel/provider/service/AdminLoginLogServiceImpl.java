@@ -1,11 +1,12 @@
 package com.demo.hotel.provider.service;
 
 import com.demo.hotel.provider.domain.AdminLoginLog;
-import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.demo.hotel.provider.mapper.AdminLoginLogMapper;
 import com.demo.hotel.provider.api.AdminLoginLogService;
-@Service
+import org.apache.dubbo.config.annotation.Service;
+
+@Service(version = "1.0.0")
 public class AdminLoginLogServiceImpl implements AdminLoginLogService{
 
     @Resource
