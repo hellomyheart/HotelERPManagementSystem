@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
+/**
+ * @author syj
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableBinding({MessageSource.class})

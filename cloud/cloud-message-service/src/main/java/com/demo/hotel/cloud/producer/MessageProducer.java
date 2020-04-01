@@ -15,10 +15,6 @@ import javax.annotation.Resource;
  * Description:
  * </p>
  *
- * @author Lusifer
- * @version v1.0.0
- * @date 2019-10-20 17:33:21
- * @see com.demo.hotel.cloud.producer
  */
 @Component
 @Service(version = "1.0.0")
