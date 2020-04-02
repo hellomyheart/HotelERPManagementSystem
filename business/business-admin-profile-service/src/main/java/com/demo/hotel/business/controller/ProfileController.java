@@ -6,6 +6,7 @@ import com.demo.hotel.business.dto.AdminDTO;
 import com.demo.hotel.business.dto.params.IconParam;
 import com.demo.hotel.business.dto.params.PasswordParam;
 import com.demo.hotel.business.dto.params.ProfileParam;
+import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.AdminService;
 import com.demo.hotel.provider.domain.Admin;
@@ -50,7 +51,7 @@ public class ProfileController {
         Admin admin = adminService.get(username);
         AdminDTO dto = new AdminDTO();
         BeanUtils.copyProperties(admin, dto);
-        return new ResponseResult<AdminDTO>(ResponseResult.CodeStatus.OK, "获取个人信息", dto);
+        return new ResponseResult<AdminDTO>(CodeStatus.OK, "获取个人信息", dto);
     }
 
     /**
@@ -68,12 +69,12 @@ public class ProfileController {
 
         // 成功
         if (result > 0) {
-            return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "更新个人信息成功");
+            return new ResponseResult<Void>(CodeStatus.OK, "更新个人信息成功");
         }
 
         // 失败
         else {
-            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "更新个人信息失败");
+            return new ResponseResult<Void>(CodeStatus.FAIL, "更新个人信息失败");
         }
 
 
@@ -93,16 +94,16 @@ public class ProfileController {
         if (passwordEncoder.matches(passwordParam.getOldPassword(), admin.getPassword())) {
             int result = adminService.modifyPassword(admin.getUsername(), passwordParam.getNewPassword());
             if (result > 0) {
-                return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "修改密码成功");
+                return new ResponseResult<Void>(CodeStatus.OK, "修改密码成功");
             }
         }
 
         // 旧密码错误
         else {
-            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "旧密码不匹配，请重试");
+            return new ResponseResult<Void>(CodeStatus.FAIL, "旧密码不匹配，请重试");
         }
 
-        return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "修改密码失败");
+        return new ResponseResult<Void>(CodeStatus.FAIL, "修改密码失败");
     }
 
     /**
@@ -117,12 +118,12 @@ public class ProfileController {
 
         // 成功
         if (result > 0) {
-            return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "更新头像成功");
+            return new ResponseResult<Void>(CodeStatus.OK, "更新头像成功");
         }
 
         // 失败
         else {
-            return new ResponseResult<Void>(ResponseResult.CodeStatus.FAIL, "更新头像失败");
+            return new ResponseResult<Void>(CodeStatus.FAIL, "更新头像失败");
         }
     }
 }

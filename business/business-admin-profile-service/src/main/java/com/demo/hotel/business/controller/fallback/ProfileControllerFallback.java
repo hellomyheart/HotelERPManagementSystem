@@ -1,7 +1,7 @@
 package com.demo.hotel.business.controller.fallback;
 
 import com.demo.hotel.business.dto.AdminDTO;
-import com.demo.hotel.business.feign.fallback.ProfileFeignFallback;
+import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class ProfileControllerFallback {
     public static ResponseResult<AdminDTO> infoFallback(String username, Throwable ex) {
         logger.warn("Invoke infoFallback: " + ex.getClass().getTypeName());
         ex.printStackTrace();
-        return new ResponseResult<AdminDTO>(ResponseResult.CodeStatus.BREAKING, ProfileFeignFallback.BREAKING_MESSAGE);
+        return new CommonsFallback<AdminDTO>().returnResponseResult(CodeStatus.BREAKING, FallbackMessage.BREAKING_MESSAGE, null);
     }
 
 }

@@ -32,3 +32,5 @@ frontend/README.md
 cloud/cloud-upload-service/src/test/java/com/demo/hotel/cloud/tests/UploadCloudTests.java
 
 cloud/cloud-upload-service/src/main/java/com/demo/hotel/cloud/controller/UploadController.java
+
+vpproject/

@@ -7,6 +7,7 @@ import com.demo.hotel.business.dto.LoginParam;
 import com.demo.hotel.business.feign.ProfileFeign;
 import com.demo.hotel.cloud.api.MessageService;
 import com.demo.hotel.cloud.dto.AdminLoginLogDTO;
+import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
@@ -113,7 +114,7 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseResult<Map<String, Object>>(ResponseResult.CodeStatus.OK, "登录成功！", result);
+        return new ResponseResult<Map<String, Object>>(CodeStatus.OK, "登录成功！", result);
     }
 
     /**
@@ -143,7 +144,7 @@ public class LoginController {
         loginInfo.setName(admin.getUsername());
         loginInfo.setAvatar(admin.getIcon());
         loginInfo.setNickname(admin.getNickname());
-        return new ResponseResult<LoginInfo>(ResponseResult.CodeStatus.OK, "获取用户信息", loginInfo);
+        return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
     }
 
     /**
@@ -161,7 +162,7 @@ public class LoginController {
         OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
         tokenStore.removeAccessToken(oAuth2AccessToken);
 
-        return new ResponseResult<Void>(ResponseResult.CodeStatus.OK, "用户注销", null);
+        return new ResponseResult<Void>(CodeStatus.OK, "用户注销", null);
     }
 
     /**

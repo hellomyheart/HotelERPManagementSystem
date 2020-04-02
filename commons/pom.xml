@@ -24,5 +24,7 @@
         <module>commons-dto</module>
         <module>commons-utils</module>
         <module>commons-provider</module>
+        <module>commons-feign</module>
+        <module>commons-sentinel</module>
     </modules>
 </project>

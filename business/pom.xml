@@ -48,6 +48,16 @@
         </dependency>
         <dependency>
             <groupId>com.demo.hotel</groupId>
+            <artifactId>commons-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>commons-sentinel</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
             <artifactId>configuration-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

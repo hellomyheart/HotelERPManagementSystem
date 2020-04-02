@@ -1,5 +1,6 @@
 package com.demo.hotel.business.controller;
 
+import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.AdminService;
 import com.demo.hotel.provider.domain.Admin;
@@ -29,22 +30,22 @@ public class AdminRegController {
     @PostMapping(value = "")
     public ResponseResult<Admin> reg(@RequestBody Admin admin){
         String message = validateReg(admin);
-        //邮箱唯一
+        //用户名唯一
         if (message==null){
             int result = adminService.insert(admin);
             //注册成功
             if (result>0){
                 Admin newAdmin = adminService.get(admin.getEmail());
-                return new ResponseResult<Admin>(ResponseResult.CodeStatus.OK,"用户注册成功",newAdmin);
+                return new ResponseResult<Admin>(CodeStatus.OK,"用户注册成功",newAdmin);
             }
             //注册失败
             else{
-                return new ResponseResult<Admin>(ResponseResult.CodeStatus.FAIL,"用户注册失败，请检查网络后重试");
+                return new ResponseResult<Admin>(CodeStatus.FAIL,"用户注册失败，请检查网络后重试");
             }
         }
-        //邮箱已存在
+        //用户名已存在
         else {
-            return new ResponseResult<Admin>(ResponseResult.CodeStatus.FAIL,message);
+            return new ResponseResult<Admin>(CodeStatus.FAIL,message);
         }
     }
 
@@ -54,9 +55,9 @@ public class AdminRegController {
      * @return 验证结果
      */
     private String validateReg(Admin admin){
-        Admin admin1=adminService.get(admin.getEmail());
+        Admin admin1=adminService.get(admin.getUsername());
         if (admin1 != null){
-            return "此邮箱已存在，请登录";
+            return "此用户名已存在，请登录";
         }
         return null;
     }

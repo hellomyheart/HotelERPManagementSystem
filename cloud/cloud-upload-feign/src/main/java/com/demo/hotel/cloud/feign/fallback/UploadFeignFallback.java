@@ -1,8 +1,9 @@
 package com.demo.hotel.cloud.feign.fallback;
 
+import com.demo.hotel.business.feign.fallback.CommonsFeignFallback;
+import com.demo.hotel.business.feign.fallback.FeignFallbackMessage;
 import com.demo.hotel.cloud.feign.UploadFeign;
-import com.demo.hotel.commons.dto.ResponseResult;
-import com.demo.hotel.commons.utils.MapperUtils;
+import com.demo.hotel.commons.dto.CodeStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,15 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
  **/
 @Component
 public class UploadFeignFallback implements UploadFeign {
-    private static final String BREAKING_MESSAGE = "请求失败了，请检查您的网络";
 
     @Override
     public String upload(MultipartFile multipartFile) {
-        try {
-            return MapperUtils.obj2json(new ResponseResult<Void>(ResponseResult.CodeStatus.BREAKING, BREAKING_MESSAGE));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new CommonsFeignFallback<Void>().Message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }
