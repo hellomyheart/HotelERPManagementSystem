@@ -10,7 +10,7 @@ import com.demo.hotel.commons.dto.ResponseResult;
  * @create: 2020-04-02 16:05
  **/
 public class CommonsFallback<T> {
-    public ResponseResult returnResponseResult(int status, FallbackMessage fallbackMessage, T data) {
+    public ResponseResult<T> returnResponseResult(int status, FallbackMessage fallbackMessage, T data) {
         return new ResponseResult<T>(status, fallbackMessage.getMessage(), data);
     }
 }

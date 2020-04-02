@@ -86,5 +86,7 @@
         <module>provider-admin-service</module>
         <module>provider-admin-login-log-api</module>
         <module>provider-admin-login-log-service</module>
+        <module>provider-oauth2rbac-api</module>
+        <module>provider-oauth2rbac-service</module>
     </modules>
 </project>

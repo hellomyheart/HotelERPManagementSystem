@@ -1,5 +1,6 @@
 package com.demo.hotel.provider.service.fallback;
 
+
 import com.demo.hotel.provider.domain.Admin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
