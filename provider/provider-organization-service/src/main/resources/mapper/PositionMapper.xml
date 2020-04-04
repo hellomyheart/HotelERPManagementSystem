@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.PositionMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Position">
+    <!--@mbg.generated generated on Fri Apr 03 14:24:30 CST 2020.-->
+    <!--@Table position-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="baseSalary" jdbcType="DOUBLE" property="basesalary" />
+    <result column="time" jdbcType="DOUBLE" property="time" />
+    <result column="deployment_id" jdbcType="BIGINT" property="deploymentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Apr 03 14:24:30 CST 2020.-->
+    id, `name`, baseSalary, `time`, deployment_id
+  </sql>
+</mapper>

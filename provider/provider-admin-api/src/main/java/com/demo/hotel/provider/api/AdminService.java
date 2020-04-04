@@ -50,10 +50,9 @@ public interface AdminService {
     /**
      * 删除用户
      *
-     * @param admin {@link Admin}
      * @return {@code int} 大于0表示删除成功
      */
-    int delete(Admin admin);
+    int delete(Long id);
 
 
     /**

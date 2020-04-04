@@ -121,13 +121,4 @@ public class ResponseResult<T> implements Serializable {
         return true;
     }
 
-    /**
-     * 通用状态码
-     * <p>
-     * Description:
-     * </p>
-     *
-     * @see com.demo.hotel.commons.dto
-     */
-
 }

@@ -8,7 +8,6 @@
         <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>provider-oauth2rbac-api</artifactId>
+    <artifactId>provider-organization-api</artifactId>
     <packaging>jar</packaging>
-
 </project>

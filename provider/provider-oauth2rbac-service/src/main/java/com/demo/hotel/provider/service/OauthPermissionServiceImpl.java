@@ -2,12 +2,10 @@ package com.demo.hotel.provider.service;
 
 import javax.annotation.Resource;
 
-import com.demo.hotel.provider.domain.Admin;
 import com.demo.hotel.provider.domain.OauthPermission;
 import com.demo.hotel.provider.mapper.OauthPermissionMapper;
 import com.demo.hotel.provider.api.OauthPermissionService;
 import org.apache.dubbo.config.annotation.Service;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 

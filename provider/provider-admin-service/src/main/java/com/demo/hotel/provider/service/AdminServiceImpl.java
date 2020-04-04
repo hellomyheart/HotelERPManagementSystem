@@ -75,8 +75,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int delete(Admin admin) {
-        return adminMapper.delete(admin);
+    public int delete(Long id) {
+        return adminMapper.deleteByPrimaryKey(id);
     }
 
     @Override

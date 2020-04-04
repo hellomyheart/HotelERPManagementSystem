@@ -5,10 +5,11 @@
 
     <parent>
         <groupId>com.demo.hotel</groupId>
-        <artifactId>provider</artifactId>
+        <artifactId>business</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>provider-oauth2rbac-api</artifactId>
+
+    <artifactId>business-organization-feign</artifactId>
     <packaging>jar</packaging>
 
 </project>

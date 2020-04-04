@@ -47,6 +47,13 @@ spring:
             - Path=/api/upload/**
           filters:
             - StripPrefix=1
+        - id: BUSINESS-ORGANIZATION
+          uri: lb://business-organization
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+
 
 server:
   port: 8888

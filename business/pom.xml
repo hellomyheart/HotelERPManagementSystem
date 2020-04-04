@@ -70,5 +70,7 @@
         <module>business-admin-oauth2-service</module>
         <module>business-admin-profile-feign</module>
         <module>business-admin-profile-service</module>
+        <module>business-organization-feign</module>
+        <module>business-organization-service</module>
     </modules>
 </project>

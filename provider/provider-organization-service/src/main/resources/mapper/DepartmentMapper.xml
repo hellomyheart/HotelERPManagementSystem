@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Department">
+    <!--@mbg.generated generated on Fri Apr 03 17:08:58 CST 2020.-->
+    <!--@Table department-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Apr 03 17:08:58 CST 2020.-->
+    id, `name`, note
+  </sql>
+</mapper>
