@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.TrainingContentPMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.TrainingContentP">
+    <!--@mbg.generated generated on Mon Apr 06 21:18:48 CST 2020.-->
+    <!--@Table training_content_p-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="position_id" jdbcType="BIGINT" property="positionId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="sum_time" jdbcType="INTEGER" property="sumTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="position_name" jdbcType="VARCHAR" property="positionName" />
+  </resultMap>
+</mapper>

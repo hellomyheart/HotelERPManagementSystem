@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.TrainingMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Training">
+    <!--@mbg.generated generated on Mon Apr 06 21:17:02 CST 2020.-->
+    <!--@Table training-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="employee_id" jdbcType="BIGINT" property="employeeId" />
+    <result column="training_content_id" jdbcType="BIGINT" property="trainingContentId" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Mon Apr 06 21:17:02 CST 2020.-->
+    id, employee_id, training_content_id, create_time, end_time, `status`
+  </sql>
+</mapper>
