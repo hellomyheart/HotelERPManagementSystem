@@ -13,7 +13,7 @@ public  class CommonsFeignFallback<T> {
 
 
 
-    public String Message(Integer status, FeignFallbackMessage fallbackMessage, T data) {
+    public String message(Integer status, FeignFallbackMessage fallbackMessage, T data) {
         try {
             return MapperUtils.obj2json(new ResponseResult<T>(status, fallbackMessage.getMessage(),data));
         } catch (Exception e) {
@@ -22,7 +22,7 @@ public  class CommonsFeignFallback<T> {
         return null;
     }
 
-    public  String Message(Integer status, FeignFallbackMessage fallbackMessage) {
+    public  String message(Integer status, FeignFallbackMessage fallbackMessage) {
         try {
             return MapperUtils.obj2json(new ResponseResult<Void>(status,fallbackMessage.getMessage()));
         } catch (Exception e) {

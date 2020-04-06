@@ -1,8 +1,8 @@
 package com.demo.hotel.provider.service;
 
-import com.demo.hotel.provider.domain.Department;
-
 import javax.annotation.Resource;
+
+import com.demo.hotel.provider.domain.Department;
 import com.demo.hotel.provider.mapper.DepartmentMapper;
 import com.demo.hotel.provider.api.DepartmentService;
 import org.apache.dubbo.config.annotation.Service;
@@ -17,6 +17,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 
     @Resource
     private DepartmentMapper departmentMapper;
+
 
     @Override
     public int insert(Department department) {

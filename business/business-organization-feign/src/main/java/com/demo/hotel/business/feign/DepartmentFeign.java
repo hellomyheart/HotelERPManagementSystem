@@ -29,7 +29,7 @@ public interface DepartmentFeign {
      * @return
      */
     @GetMapping(value = "info")
-    String departmentInfo();
+    String info();
 
     /**
      * 新增部门

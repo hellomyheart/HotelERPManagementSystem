@@ -25,7 +25,7 @@ import java.util.List;
  **/
 @RequestMapping(value = "department")
 @RestController
-public class DepartmentController  {
+public class DepartmentController {
 
     @Reference(version = "1.0.0")
     DepartmentService departmentService;
@@ -58,6 +58,7 @@ public class DepartmentController  {
      */
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody DepartmentParam departmentParam){
+
         Department department=new Department();
         BeanUtils.copyProperties(departmentParam,department);
         int result = departmentService.insert(department);

@@ -6,16 +6,14 @@ import javax.persistence.*;
 import lombok.Data;
 
 @Data
-@Table(name = "employee")
-public class Employee implements Serializable {
+@Table(name = "employee_p")
+public class EmployeeP implements Serializable {
 
-    private static final long serialVersionUID = -9049478278019381120L;
+    private static final long serialVersionUID = -4072317838075047864L;
     /**
      * 职工ID
      */
-    @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -65,5 +63,11 @@ public class Employee implements Serializable {
      */
     @Column(name = "birthday")
     private Date birthday;
+
+    /**
+     * 职位名
+     */
+    @Column(name = "position_name")
+    private String positionName;
 
 }

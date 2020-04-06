@@ -8,6 +8,7 @@ import java.util.List;
  * @author syj
  */
 public interface DepartmentService{
+
     /**
      * 新增
      * @param department

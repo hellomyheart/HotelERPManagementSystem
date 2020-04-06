@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.hotel.provider.mapper.PositionMapper">
   <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Position">
-    <!--@mbg.generated generated on Fri Apr 03 14:24:30 CST 2020.-->
+    <!--@mbg.generated generated on Mon Apr 06 16:14:19 CST 2020.-->
     <!--@Table position-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="position_name" jdbcType="VARCHAR" property="positionName" />
     <result column="baseSalary" jdbcType="DOUBLE" property="basesalary" />
-    <result column="time" jdbcType="DOUBLE" property="time" />
-    <result column="deployment_id" jdbcType="BIGINT" property="deploymentId" />
+    <result column="base_time" jdbcType="DOUBLE" property="baseTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated generated on Fri Apr 03 14:24:30 CST 2020.-->
-    id, `name`, baseSalary, `time`, deployment_id
+    <!--@mbg.generated generated on Mon Apr 06 16:14:19 CST 2020.-->
+    id, department_id, position_name, baseSalary, base_time
   </sql>
 </mapper>

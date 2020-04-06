@@ -17,6 +17,7 @@ import java.util.Map;
  * <p>Title: MapperUtils</p>
  * <p>Description: </p>
  *
+ * @author syj
  */
 public class MapperUtils {
     private final static ObjectMapper objectMapper = new ObjectMapper();
@@ -78,15 +79,15 @@ public class MapperUtils {
     /**
      * 字符串转换为 Map<String, T>
      */
-    public static <T> Map<String, T> json2map(String jsonString, Class<T> clazz) throws Exception {
-        Map<String, Map<String, Object>> map = objectMapper.readValue(jsonString, new TypeReference<Map<String, T>>() {
-        });
-        Map<String, T> result = new HashMap<String, T>();
-        for (Map.Entry<String, Map<String, Object>> entry : map.entrySet()) {
-            result.put(entry.getKey(), map2pojo(entry.getValue(), clazz));
-        }
-        return result;
-    }
+//    public static <T> Map<String, T> json2map(String jsonString, Class<T> clazz) throws Exception {
+//        Map<String, Map<String, Object>> map = objectMapper.readValue(jsonString, new TypeReference<Map<String, T>>() {
+//        });
+//        Map<String, T> result = new HashMap<String, T>();
+//        for (Map.Entry<String, Map<String, Object>> entry : map.entrySet()) {
+//            result.put(entry.getKey(), map2pojo(entry.getValue(), clazz));
+//        }
+//        return result;
+//    }
 
     /**
      * 深度转换 JSON 成 Map

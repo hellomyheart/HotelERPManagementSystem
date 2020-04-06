@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 @Data
 public class DepartmentDTO implements Serializable {
+
+    private static final long serialVersionUID = -4105952180716404741L;
     /**
      * 部门ID
      */
@@ -17,7 +19,7 @@ public class DepartmentDTO implements Serializable {
     /**
      * 部门名
      */
-    private String name;
+    private String departmentName;
 
     /**
      * 部门介绍
