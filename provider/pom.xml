@@ -81,7 +81,7 @@
     </dependencies>
 
     <modules>
-
+        <!--后台业务-->
         <module>provider-admin-api</module>
         <module>provider-admin-service</module>
         <module>provider-admin-login-log-api</module>
@@ -92,5 +92,8 @@
         <module>provider-organization-service</module>
         <module>provider-training-api</module>
         <module>provider-training-service</module>
+
+        <module>provider-shift-api</module>
+        <module>provider-shift-service</module>
     </modules>
 </project>

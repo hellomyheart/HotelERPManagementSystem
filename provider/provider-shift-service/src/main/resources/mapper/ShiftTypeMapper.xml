@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.ShiftTypeMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.ShiftType">
+    <!--@mbg.generated generated on Tue Apr 07 14:20:50 CST 2020.-->
+    <!--@Table shift_type-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Apr 07 14:20:50 CST 2020.-->
+    id, type_name, department_id
+  </sql>
+</mapper>

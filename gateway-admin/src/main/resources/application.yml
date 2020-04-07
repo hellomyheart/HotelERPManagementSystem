@@ -61,6 +61,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-SHIFT
+          uri: lb://business-shift
+          predicates:
+            - Path=/api/shift/**
+          filters:
+            - StripPrefix=1
+
 
 server:
   port: 8888

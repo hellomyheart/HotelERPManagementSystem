@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.ShiftTMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.ShiftT">
+    <!--@mbg.generated generated on Tue Apr 07 14:23:05 CST 2020.-->
+    <!--@Table shift_t-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="start_time" jdbcType="TIME" property="startTime" />
+    <result column="end_time" jdbcType="TIME" property="endTime" />
+    <result column="times" jdbcType="INTEGER" property="times" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+</mapper>
