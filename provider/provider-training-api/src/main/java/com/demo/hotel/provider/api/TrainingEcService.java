@@ -15,6 +15,4 @@ public interface TrainingEcService{
      */
     List<TrainingEc> selectAll();
 
-
-
 }

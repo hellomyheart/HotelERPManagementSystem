@@ -19,7 +19,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class OrganizationResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-    //配置权限，需要ORGANIZATION权限
+    //配置权限
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
@@ -28,11 +28,10 @@ public class OrganizationResourceServerConfiguration extends ResourceServerConfi
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                //部门管理,职位管理，职工管理
-                .antMatchers("/organization/department/**").hasAuthority("Department")
-                .antMatchers("/organization/position/**").hasAuthority("Position")
-                .antMatchers("/organization/employee/**").hasAuthority("Employee")
-                .antMatchers("/organization/**").hasAuthority("ORGAN");
+                //培训内容管理，培训管理
+                .antMatchers("/train/training/**").hasAuthority("Training")
+                .antMatchers("/train/content/**").hasAuthority("TrainingContent")
+                .antMatchers("/train/**").hasAuthority("Train");
     }
 
     @Override

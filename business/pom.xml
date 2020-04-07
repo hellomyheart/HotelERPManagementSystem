@@ -72,5 +72,7 @@
         <module>business-admin-profile-service</module>
         <module>business-organization-feign</module>
         <module>business-organization-service</module>
+        <module>business-training-feign</module>
+        <module>business-training-service</module>
     </modules>
 </project>

@@ -30,4 +30,9 @@ public class TrainingContentServiceImpl implements TrainingContentService{
     public int delete(Long id) {
         return trainingContentMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public TrainingContent searchByID(Long id) {
+        return trainingContentMapper.selectByPrimaryKey(id);
+    }
 }

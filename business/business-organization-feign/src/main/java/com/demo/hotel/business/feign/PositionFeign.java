@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 //path对应controller中的ResquestMapping
 //feign类似于http客户端
 //configuration = FeignRequestConfiguration.class是为了配置拦截器在请求头中加token
-@FeignClient(value = "business-organization", path = "position", configuration = FeignRequestConfiguration.class, fallback = PositionFeignFallback.class)
+@FeignClient(value = "business-organization", path = "organization/position", configuration = FeignRequestConfiguration.class, fallback = PositionFeignFallback.class)
 public interface PositionFeign {
 
     /**

@@ -26,7 +26,7 @@ import java.util.List;
  * @author: syj
  * @create: 2020-04-03 16:52
  **/
-@RequestMapping(value = "position")
+@RequestMapping(value = "organization/position")
 @RestController
 public class PositionController {
 

@@ -58,8 +58,8 @@ public class TrainingContentTests {
         TrainingContent trainingContent=new TrainingContent();
         trainingContent.setId(2L);
         trainingContent.setPositionId(3L);
-        trainingContent.setTitle("cs测试555");
-        trainingContent.setNote("555");
+        trainingContent.setTitle("5cs测试5556");
+        trainingContent.setNote("666");
         trainingContent.setSumTime(0);
         trainingContent.setCreateTime(new Date());
 
@@ -69,6 +69,11 @@ public class TrainingContentTests {
     @Test
     public void selectAllTest(){
         System.out.println(trainingContentPService.selectAll());
+    }
+
+    @Test
+    public void searchByIDTest(){
+        System.out.println(trainingContentService.searchByID(3L));
     }
 
 }

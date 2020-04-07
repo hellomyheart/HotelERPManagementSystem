@@ -27,7 +27,7 @@ import java.util.List;
  * @author: syj
  * @create: 2020-04-03 16:52
  **/
-@RequestMapping(value = "employee")
+@RequestMapping(value = "organization/employee")
 @RestController
 public class EmployeeController {
 

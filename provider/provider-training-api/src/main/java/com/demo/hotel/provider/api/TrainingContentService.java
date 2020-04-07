@@ -30,5 +30,12 @@ public interface TrainingContentService {
      */
     int delete(Long id);
 
+    /**
+     * 查询单个信息
+     * @param id
+     * @return
+     */
+    TrainingContent searchByID(Long id);
+
 
 }

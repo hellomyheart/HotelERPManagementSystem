@@ -9,7 +9,6 @@
     <result column="training_content_id" jdbcType="BIGINT" property="trainingContentId" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
     <result column="end_time" jdbcType="DATE" property="endTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="employee_name" jdbcType="VARCHAR" property="employeeName" />
   </resultMap>

@@ -47,10 +47,17 @@ spring:
             - Path=/api/upload/**
           filters:
             - StripPrefix=1
+
         - id: BUSINESS-ORGANIZATION
           uri: lb://business-organization
           predicates:
-            - Path=/api/**
+            - Path=/api/organization/**
+          filters:
+            - StripPrefix=1
+        - id: BUSINESS-TRAINING
+          uri: lb://business-training
+          predicates:
+            - Path=/api/train/**
           filters:
             - StripPrefix=1
 
@@ -58,7 +65,7 @@ spring:
 server:
   port: 8888
 
-# 配置日志级别，方别调试
+# 配置日志级别，方便调试
 logging:
   level:
     org.springframework.cloud.gateway: debug

@@ -1,57 +1,53 @@
-package com.demo.hotel.provider.domain;
+package com.demo.hotel.business.dto;
+
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
-import lombok.Data;
 
 /**
- * @author syj
- */
+ * @program: HotelERPManagementSystem
+ * @description: TrainingEcDTO
+ * @author: syj
+ * @create: 2020-04-07 06:51
+ **/
 @Data
-@Table(name = "training_ec")
-public class TrainingEc implements Serializable {
+public class TrainingEcDTO implements Serializable {
+
+    private static final long serialVersionUID = 1301451087941071343L;
 
 
-    private static final long serialVersionUID = 460071636254209960L;
     /**
      * id
      */
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "employee_id")
+
     private Long employeeId;
 
     /**
      * 培训内容ID
      */
-    @Column(name = "training_content_id")
     private Long trainingContentId;
 
     /**
      * 开始时间
      */
-    @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 结束时间
      */
-    @Column(name = "end_time")
     private Date endTime;
 
 
     /**
      * 培训内容标题
      */
-    @Column(name = "title")
     private String title;
 
     /**
      * 职工姓名
      */
-    @Column(name = "employee_name")
     private String employeeName;
-
 }

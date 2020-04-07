@@ -32,4 +32,6 @@ public interface TrainingService {
     int delete(Long id);
 
 
+
+
 }

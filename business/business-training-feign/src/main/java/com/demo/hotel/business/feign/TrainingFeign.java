@@ -1,10 +1,8 @@
 package com.demo.hotel.business.feign;
 
-import com.demo.hotel.business.dto.DepartmentDTO;
-import com.demo.hotel.business.dto.param.DepartmentParam;
-import com.demo.hotel.business.dto.param.EmployeeParam;
-import com.demo.hotel.business.feign.fallback.DepartmentFeignFallback;
-import com.demo.hotel.business.feign.fallback.EmployeeFeignFallback;
+import com.demo.hotel.business.dto.TrainingDTO;
+import com.demo.hotel.business.dto.param.TrainingParam;
+import com.demo.hotel.business.feign.fallback.TrainingFeignFallback;
 import com.demo.hotel.configuration.FeignRequestConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,20 +11,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @program: HotelERPManagementSystem
- * @description: 职工Feign
+ * @description: TrainingFeign
  * @author: syj
- * @create: 2020-04-03 16:04
+ * @create: 2020-04-07 07:46
  **/
+
 
 //value指向服务名，application
 //path对应controller中的ResquestMapping
 //feign类似于http客户端
 //configuration = FeignRequestConfiguration.class是为了配置拦截器在请求头中加token
-@FeignClient(value = "business-organization", path = "organization/employee", configuration = FeignRequestConfiguration.class, fallback = EmployeeFeignFallback.class)
-public interface EmployeeFeign {
+@FeignClient(value = "business-training", path = "train/training", configuration = FeignRequestConfiguration.class, fallback = TrainingFeignFallback.class)
+public interface TrainingFeign {
 
     /**
-     * 获取职工信息
+     * 获取培训信息
      *
      * @return
      */
@@ -34,29 +33,19 @@ public interface EmployeeFeign {
     String info();
 
     /**
-     * 新增职工
-     * @param employeeParam
+     * 新增培训
+     * @param trainingParam
      * @return
      */
     @PostMapping(value = "add")
-    String add(@RequestBody EmployeeParam employeeParam);
-
-
-    /**
-     * 修改职工信息
-     * @param employeeParam
-     * @return
-     */
-    @PostMapping(value = "update")
-    String update(@RequestBody EmployeeParam employeeParam);
+    String add(@RequestBody TrainingParam trainingParam);
 
     /**
-     * 删除职工
+     * 删除培训内容
      *
      * @param id
      * @return
      */
     @PostMapping(value = "delete")
     String delete(@RequestBody Long id);
-
 }

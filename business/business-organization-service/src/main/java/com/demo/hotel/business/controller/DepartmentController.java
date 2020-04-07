@@ -23,7 +23,7 @@ import java.util.List;
  * @author: syj
  * @create: 2020-04-03 16:52
  **/
-@RequestMapping(value = "department")
+@RequestMapping(value = "organization/department")
 @RestController
 public class DepartmentController {
 

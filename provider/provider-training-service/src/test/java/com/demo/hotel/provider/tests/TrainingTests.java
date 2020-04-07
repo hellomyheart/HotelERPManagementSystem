@@ -39,7 +39,6 @@ public class TrainingTests {
         training.setTrainingContentId(2L);
         training.setCreateTime(new Date());
         training.setEndTime(new Date());
-        training.setStatus(0);
 
 
         Assert.assertEquals(trainingService.insert(training),1);
@@ -47,18 +46,17 @@ public class TrainingTests {
 
     @Test
     public void deleteTest(){
-        Assert.assertEquals(trainingService.delete(2L),1);
+        Assert.assertEquals(trainingService.delete(3L),1);
     }
 
     @Test
     public void updateTest(){
         Training training=new Training();
         training.setId(1L);
-        training.setEmployeeId(3L);
+        training.setEmployeeId(2L);
         training.setTrainingContentId(5L);
         training.setCreateTime(new Date());
         training.setEndTime(new Date());
-        training.setStatus(0);
         Assert.assertEquals(trainingService.update(training),1);
     }
 

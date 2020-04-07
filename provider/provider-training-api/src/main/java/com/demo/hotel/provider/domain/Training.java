@@ -42,10 +42,4 @@ public class Training implements Serializable {
     @Column(name = "end_time")
     private Date endTime;
 
-    /**
-     * 状态，0是未开始，1是已开始，2是培训结束
-     */
-    @Column(name = "`status`")
-    private Integer status;
-
 }

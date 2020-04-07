@@ -9,10 +9,9 @@
     <result column="training_content_id" jdbcType="BIGINT" property="trainingContentId" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
     <result column="end_time" jdbcType="DATE" property="endTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Mon Apr 06 21:17:02 CST 2020.-->
-    id, employee_id, training_content_id, create_time, end_time, `status`
+    id, employee_id, training_content_id, create_time, end_time
   </sql>
 </mapper>
