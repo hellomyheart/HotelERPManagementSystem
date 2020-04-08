@@ -55,6 +55,6 @@ public interface DepartmentFeign {
      * @return
      */
     @PostMapping(value = "delete")
-    String delete(@RequestBody Long id);
+    String delete(@RequestBody DepartmentDTO departmentDTO);
 
 }

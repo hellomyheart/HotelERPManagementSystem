@@ -94,7 +94,8 @@ public class DepartmentController {
     }
 
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id){
+    public ResponseResult<Void> delete(@RequestBody DepartmentDTO departmentDTO){
+        Long id = departmentDTO.getId();
         int result = departmentService.delete(id);
         if (result>0){
             //删除部门成功

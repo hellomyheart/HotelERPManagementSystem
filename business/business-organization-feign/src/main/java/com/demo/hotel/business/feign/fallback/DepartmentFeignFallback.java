@@ -35,7 +35,7 @@ public class DepartmentFeignFallback implements DepartmentFeign {
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(DepartmentDTO departmentDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

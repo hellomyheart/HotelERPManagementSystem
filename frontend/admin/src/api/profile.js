@@ -1,10 +1,10 @@
 import request from '@/utils/request'
 
-/**
- * 获取个人信息
- * @param username
- * @returns {AxiosPromise}
- */
+// /**
+//  * 获取个人信息
+//  * @param username
+//  * @returns {AxiosPromise}
+//  */
 export function info(username) {
   return request({
     url: '/profile/info/' + username,
@@ -12,11 +12,11 @@ export function info(username) {
   })
 }
 
-/**
- * 更新个人信息
- * @param username
- * @returns {AxiosPromise}
- */
+// /**
+//  * 更新个人信息
+//  * @param username
+//  * @returns {AxiosPromise}
+//  */
 export function update(data) {
   return request({
     url: '/profile/update/',
@@ -25,12 +25,10 @@ export function update(data) {
   })
 }
 
-
-
-/**
- * 更新密码
- * @param data
- */
+// /**
+//  * 更新密码
+//  * @param data
+//  */
 export function modifyPassword(data) {
   return request({
     url: '/profile/modify/password',
@@ -39,12 +37,10 @@ export function modifyPassword(data) {
   })
 }
 
-
-
-/**
- * 更新头像
- * @param data
- */
+// /**
+//  * 更新头像
+//  * @param data
+//  */
 export function modifyIcon(data) {
   return request({
     url: '/profile/modify/icon',

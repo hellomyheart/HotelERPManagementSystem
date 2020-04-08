@@ -88,29 +88,30 @@ export const constantRoutes = [
 
 
   {
-    path: '/department',
+    path: '/organization/department',
     component: Layout,
-    redirect: '/department/info',
+    redirect: '/organization/department/info',
     name: 'department',
-    meta: { title: '部门信息', icon: 'user' },
+    meta: { title: '部门管理', icon: 'user' },
     children: [
       {
         path: 'info',
-        name: 'ProfileInfo',
-        component: () => import('@/views/department/info'),
+        name: 'DepartmentInfo',
+        component: () => import('@/views/organization/department/info'),
+        meta: { title: '部门详情', icon: "user"}
+      },
+      {
+        path: 'edit',
+        name: 'DepartmentEdit',
+        hidden: true,
+        component: () => import('@/views/organization/department/edit'),
         meta: { title: '修改部门', icon: "user"}
       },
       {
         path: 'add',
-        name: 'departmentAdd',
-        component: () => import('@/views/department/add'),
+        name: 'DepartmentAdd',
+        component: () => import('@/views/organization/department/add'),
         meta: { title: '添加部门' ,icon: 'user'}
-      },
-      {
-        path: 'delete',
-        name: 'departmentDelete',
-        component: () => import('@/views/department/delete'),
-        meta: { title: '删除部门' ,icon: 'user'}
       }
     ]
   },
