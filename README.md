@@ -1,2 +1,2 @@
 # HotelERPManagementSystem
-我的毕设，酒店ERP管理系统,详细文档在[我的博客](<https://hellomyheart.cn/tags/%E9%85%92%E5%BA%97ERP%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/>).
+我的毕设，酒店ERP管理系统,详细文档在[我的博客](<https://www.hellomyheart.cn/tags/%E9%85%92%E5%BA%97ERP%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/>),或者到[我的学习笔记](<http://book.hellomyheart.cn/2020/03/28/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/java%E5%BE%AE%E6%9C%8D%E5%8A%A1-hotel/01-01-provider%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0/>)查看。
