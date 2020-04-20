@@ -34,3 +34,6 @@ cloud/cloud-upload-service/src/test/java/com/demo/hotel/cloud/tests/UploadCloudT
 cloud/cloud-upload-service/src/main/java/com/demo/hotel/cloud/controller/UploadController.java
 
 vpproject/
+
+provider/provider-sms-service/src/main/java/com/demo/hotel/provider/service/SendSmsServiceImpl.java
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Users">
+    <!--@mbg.generated generated on Mon Apr 20 18:38:57 CST 2020.-->
+    <!--@Table users-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="identify" jdbcType="VARCHAR" property="identify" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="name_2" jdbcType="VARCHAR" property="name2" />
+    <result column="phone_2" jdbcType="VARCHAR" property="phone2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Mon Apr 20 18:38:57 CST 2020.-->
+    id, username, identify, nickname, phone, `password`, creat_time, update_time, icon, 
+    gender, name_2, phone_2
+  </sql>
+</mapper>

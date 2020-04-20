@@ -24,6 +24,8 @@
 
         <!-- Ali Cloud -->
         <aliyun-sdk-oss.version>3.8.0</aliyun-sdk-oss.version>
+        <aliyun-java-sdk-core.version>4.0.3</aliyun-java-sdk-core.version>
+        <redis.clients.version>3.0.1</redis.clients.version>
     </properties>
 
 
@@ -47,7 +49,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Ali Cloud -->
+            <!-- Ali Cloud oss -->
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
@@ -59,7 +61,19 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!-- Ali Cloud 短信服务-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
 
+            <!-- redis客户端-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.clients.version}</version>
+            </dependency>
             <!-- Apache Dubbo -->
             <dependency>
                 <groupId>com.alibaba.nacos</groupId>

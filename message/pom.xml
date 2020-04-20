@@ -44,5 +44,6 @@
 
     <modules>
         <module>message-admin-login-log</module>
+        <module>message-user-code</module>
     </modules>
 </project>

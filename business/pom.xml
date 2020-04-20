@@ -67,7 +67,6 @@
         <!--        后台业务-->
         <module>business-admin-reg-feign</module>
         <module>business-admin-reg-service</module>
-        <module>business-admin-oauth2-feign</module>
         <module>business-admin-oauth2-service</module>
         <module>business-admin-profile-feign</module>
         <module>business-admin-profile-service</module>
@@ -81,7 +80,6 @@
 
         <!--前台业务-->
 
-        <module>business-user-oauth2-feign</module>
         <module>business-user-oauth2-service</module>
     </modules>
 </project>

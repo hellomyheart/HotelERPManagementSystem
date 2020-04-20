@@ -1,0 +1,22 @@
+base:
+  config:
+    nacos:
+      hostname: nacos.demo.com
+      port: 80
+
+spring:
+  application:
+    name: redis-provider
+  main:
+    allow-bean-definition-overriding: true
+
+dubbo:
+  scan:
+    base-packages: com.demo.hotel.provider.service
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}

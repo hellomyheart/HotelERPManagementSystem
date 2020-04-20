@@ -7,6 +7,7 @@ import com.demo.hotel.business.dto.LoginParam;
 import com.demo.hotel.business.feign.ProfileFeign;
 import com.demo.hotel.cloud.api.MessageService;
 import com.demo.hotel.cloud.dto.AdminLoginLogDTO;
+import com.demo.hotel.cloud.dto.UserCodeDTO;
 import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
@@ -76,6 +77,7 @@ public class LoginController {
     @Reference(version = "1.0.0")
     private MessageService messageService;
 
+
     /**
      * 登录
      *
@@ -86,6 +88,14 @@ public class LoginController {
     public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam, HttpServletRequest request) throws Exception {
         // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
+
+
+//        //TODO 短信验证
+//        UserCodeDTO userCodeDTO = new UserCodeDTO();
+//        userCodeDTO.setPhoneNumber("15038405422");
+//        userCodeDTO.setCode("95566");
+//        messageService.sendUserCode(userCodeDTO);
+
 
         //验证账号密码
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
@@ -134,7 +144,6 @@ public class LoginController {
         // 获取个人信息,使用feign
         String jsonString = profileFeign.info(authentication.getName());
         Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
-//TODO
         //熔断
         if (admin == null) {
             return MapperUtils.json2pojo(jsonString, ResponseResult.class);

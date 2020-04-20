@@ -95,5 +95,17 @@
 
         <module>provider-shift-api</module>
         <module>provider-shift-service</module>
+
+        <!-- 前台业务-->
+        <module>provider-user-api</module>
+        <module>provider-user-service</module>
+
+        <!--redis-->
+        <module>provider-redis-api</module>
+        <module>provider-redis-service</module>
+
+        <!-- sms-->
+        <module>provider-sms-api</module>
+        <module>provider-sms-service</module>
     </modules>
 </project>
