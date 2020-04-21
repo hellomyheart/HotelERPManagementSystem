@@ -1,13 +1,19 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.departmentName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.employeeName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       style="width: 100%"
-      :height= 500
+      :height="500"
     >
-      <el-table-column label="ID" prop="id"></el-table-column>
-      <el-table-column label="部门名称" prop="departmentName"></el-table-column>
-      <el-table-column label="部门介绍" prop="note"></el-table-column>
+      <el-table-column label="ID" prop="id"/>
+      <el-table-column label="职工姓名" prop="employeeName"/>
+      <el-table-column label="职位名" prop="positionName"/>
+      <el-table-column label="身份证号" prop="identify"/>
+      <el-table-column label="手机号" prop="phone"/>
+      <el-table-column label="入职时间" type="datetime" prop="createTime"/>
+      <el-table-column label="更新时间" prop="updateTime"/>
+      <el-table-column label="性别" :formatter="formatSex" prop="gender"/>
+      <el-table-column label="出生日期" prop="birthday"/>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -33,7 +39,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/department";
+import { info, deleteD } from "@/api/employee";
 export default {
   data() {
     return {
@@ -60,9 +66,12 @@ export default {
         this.totalCount = this.tableData.length;
       });
     },
+    formatSex: function (row, column, cellValue, index) {
+			return row.gender == 0 ? '未知' : row.gender == 1 ? '男' : '女';
+		},
     handleEdit(index, row) {
       this.$router.push({
-        name: "DepartmentEdit",
+        name: 'EmployeeEdit',
         params: {
           data: row
         }
@@ -78,7 +87,6 @@ export default {
         })
         .catch(() => {});
       this.$delete(this.tableData, index);
-      // this.$router.go(0);
     },
     // 分页
     // 每页显示的条数

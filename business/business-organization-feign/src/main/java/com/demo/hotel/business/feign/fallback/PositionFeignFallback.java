@@ -34,7 +34,7 @@ public class PositionFeignFallback implements PositionFeign {
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(PositionDTO positionDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

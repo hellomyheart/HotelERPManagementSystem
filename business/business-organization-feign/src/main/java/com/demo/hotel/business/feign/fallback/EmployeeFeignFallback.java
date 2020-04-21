@@ -1,5 +1,6 @@
 package com.demo.hotel.business.feign.fallback;
 
+import com.demo.hotel.business.dto.EmployeeDTO;
 import com.demo.hotel.business.dto.param.EmployeeParam;
 import com.demo.hotel.business.feign.EmployeeFeign;
 import com.demo.hotel.commons.dto.CodeStatus;
@@ -25,13 +26,14 @@ public class EmployeeFeignFallback implements EmployeeFeign {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 
+
     @Override
-    public String update(EmployeeParam employeeParam) {
+    public String update(EmployeeDTO employeeDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(EmployeeDTO employeeDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

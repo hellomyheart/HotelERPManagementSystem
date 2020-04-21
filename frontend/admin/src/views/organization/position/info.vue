@@ -1,13 +1,15 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.departmentName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.positionName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       style="width: 100%"
-      :height= 500
+      :height="500"
     >
       <el-table-column label="ID" prop="id"></el-table-column>
+      <el-table-column label="职位名称" prop="positionName"></el-table-column>
       <el-table-column label="部门名称" prop="departmentName"></el-table-column>
-      <el-table-column label="部门介绍" prop="note"></el-table-column>
+      <el-table-column label="基础工资" prop="basesalary"></el-table-column>
+      <el-table-column label="基础工时" prop="baseTime"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -33,7 +35,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/department";
+import { info, deleteD } from "@/api/position";
 export default {
   data() {
     return {
@@ -62,7 +64,7 @@ export default {
     },
     handleEdit(index, row) {
       this.$router.push({
-        name: "DepartmentEdit",
+        name: "PositionEdit",
         params: {
           data: row
         }
@@ -78,7 +80,6 @@ export default {
         })
         .catch(() => {});
       this.$delete(this.tableData, index);
-      // this.$router.go(0);
     },
     // 分页
     // 每页显示的条数

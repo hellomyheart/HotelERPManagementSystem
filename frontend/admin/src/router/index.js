@@ -119,6 +119,66 @@ export const constantRoutes = [
 
 
   {
+    path: '/organization/position',
+    component: Layout,
+    redirect: '/organization/position/info',
+    name: 'Position',
+    meta: { title: '职位管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'PositionInfo',
+        component: () => import('@/views/organization/position/info'),
+        meta: { title: '职位详情', icon: "user"}
+      },
+      {
+        path: 'edit',
+        name: 'PositionEdit',
+        hidden: true,
+        component: () => import('@/views/organization/position/edit'),
+        meta: { title: '修改职位', icon: "user"}
+      },
+      {
+        path: 'add',
+        name: 'PositionAdd',
+        component: () => import('@/views/organization/position/add'),
+        meta: { title: '添加职位' ,icon: 'user'}
+      }
+    ]
+  },
+
+
+  {
+    path: '/organization/employee',
+    component: Layout,
+    redirect: '/organization/employee/info',
+    name: 'Employee',
+    meta: { title: '职工管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'EmployeeInfo',
+        component: () => import('@/views/organization/employee/info'),
+        meta: { title: '职工详情', icon: "user"}
+      },
+      {
+        path: 'edit',
+        name: 'EmployeeEdit',
+        hidden: true,
+        component: () => import('@/views/organization/employee/edit'),
+        meta: { title: '修改职工', icon: "user"}
+      },
+      {
+        path: 'add',
+        name: 'EmployeeAdd',
+        component: () => import('@/views/organization/employee/add'),
+        meta: { title: '添加职工' ,icon: 'user'}
+      }
+    ]
+  },
+
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',

@@ -109,7 +109,8 @@ public class EmployeeController {
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
+    public ResponseResult<Void> delete(@RequestBody EmployeeDTO employeeDTO) {
+        Long id = employeeDTO.getId();
         int delete = employeeService.delete(id);
         if (delete > 0) {
             //删除成功

@@ -1,4 +1,4 @@
-import {info,add,deleteD,update } from '@/api/department'
+import {info,add,deleteD,update } from '@/api/position'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -29,7 +29,7 @@ const mutations = {
 
 const actions = {
 
-  // get department info
+  // get position info
   info({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {

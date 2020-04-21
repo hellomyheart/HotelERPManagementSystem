@@ -1,6 +1,7 @@
 package com.demo.hotel.business.feign;
 
 import com.demo.hotel.business.dto.DepartmentDTO;
+import com.demo.hotel.business.dto.EmployeeDTO;
 import com.demo.hotel.business.dto.param.DepartmentParam;
 import com.demo.hotel.business.dto.param.EmployeeParam;
 import com.demo.hotel.business.feign.fallback.DepartmentFeignFallback;
@@ -44,11 +45,10 @@ public interface EmployeeFeign {
 
     /**
      * 修改职工信息
-     * @param employeeParam
      * @return
      */
     @PostMapping(value = "update")
-    String update(@RequestBody EmployeeParam employeeParam);
+    String update(@RequestBody EmployeeDTO employeeDTO);
 
     /**
      * 删除职工
@@ -57,6 +57,6 @@ public interface EmployeeFeign {
      * @return
      */
     @PostMapping(value = "delete")
-    String delete(@RequestBody Long id);
+    String delete(@RequestBody EmployeeDTO employeeDTO);
 
 }

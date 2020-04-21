@@ -51,10 +51,9 @@ public interface PositionFeign {
     /**
      * 删除职位
      *
-     * @param id
      * @return
      */
     @PostMapping(value = "delete")
-    String delete(@RequestBody Long id);
+    String delete(@RequestBody PositionDTO positionDTO);
 
 }

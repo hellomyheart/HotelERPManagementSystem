@@ -103,7 +103,8 @@ public class PositionController {
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id){
+    public ResponseResult<Void> delete(@RequestBody PositionDTO positionDTO){
+        Long id = positionDTO.getId();
         int result = positionService.delete(id);
         if (result>0){
             //删除职位成功

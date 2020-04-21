@@ -24,7 +24,7 @@
     import {add} from '@/api/department'
 
     export default {
-        name: 'ProfileInfo',
+        name: 'DepartmentAdd',
         data() {
             return {
                 formLoading: true,

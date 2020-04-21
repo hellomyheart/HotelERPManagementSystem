@@ -51,7 +51,6 @@ public interface DepartmentFeign {
     /**
      * 删除部门
      *
-     * @param id
      * @return
      */
     @PostMapping(value = "delete")
