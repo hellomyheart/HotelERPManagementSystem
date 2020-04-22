@@ -95,11 +95,12 @@ public class TrainingController {
     /**
      * 删除
      *
-     * @param id
+     * @param trainingDTO
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
+    public ResponseResult<Void> delete(@RequestBody TrainingDTO trainingDTO) {
+        Long id = trainingDTO.getId();
         int delete = trainingService.delete(id);
         if (delete > 0) {
             //删除成功

@@ -7,6 +7,8 @@ import user from './modules/user'
 import department from './modules/department'
 import position from './modules/position'
 import employee from './modules/employee'
+import training from './modules/training'
+import trainingContent from './modules/trainingContent'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -16,7 +18,9 @@ const store = new Vuex.Store({
     user,
     department,
     position,
-    employee
+    employee,
+    training,
+    trainingContent
   },
   getters
 })

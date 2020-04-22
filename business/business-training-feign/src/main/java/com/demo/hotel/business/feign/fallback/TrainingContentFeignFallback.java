@@ -32,7 +32,7 @@ public class TrainingContentFeignFallback implements TrainingContentFeign {
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(TrainingContentDTO trainingContentDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

@@ -33,6 +33,7 @@ public interface TrainingContentFeign {
 
     /**
      * 新增培训内容
+     *
      * @param trainingContentParam
      * @return
      */
@@ -42,6 +43,7 @@ public interface TrainingContentFeign {
 
     /**
      * 修改培训内容
+     *
      * @param trainingContentDTO
      * @return
      */
@@ -51,9 +53,9 @@ public interface TrainingContentFeign {
     /**
      * 删除培训内容
      *
-     * @param id
+     * @param trainingContentDTO
      * @return
      */
     @PostMapping(value = "delete")
-    String delete(@RequestBody Long id);
+    String delete(@RequestBody TrainingContentDTO trainingContentDTO);
 }

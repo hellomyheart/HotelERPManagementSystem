@@ -28,7 +28,7 @@ public class TrainingFeignFallback  implements TrainingFeign {
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(TrainingDTO trainingDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

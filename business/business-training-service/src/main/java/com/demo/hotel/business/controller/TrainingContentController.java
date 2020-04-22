@@ -60,14 +60,15 @@ public class TrainingContentController {
 
     /**
      * 添加培训内容
+     *
      * @param trainingContentParam
      * @return
      */
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody TrainingContentParam trainingContentParam) {
 
-        TrainingContent trainingContent=new TrainingContent();
-        BeanUtils.copyProperties(trainingContentParam,trainingContent);
+        TrainingContent trainingContent = new TrainingContent();
+        BeanUtils.copyProperties(trainingContentParam, trainingContent);
         trainingContent.setCreateTime(new Date());
         int insert = trainingContentService.insert(trainingContent);
         if (insert > 0) {
@@ -82,12 +83,13 @@ public class TrainingContentController {
 
     /**
      * 更新培训内容
+     *
      * @param trainingContentDTO
      * @return
      */
     @PostMapping(value = "update")
     public ResponseResult<TrainingContentDTO> update(@RequestBody TrainingContentDTO trainingContentDTO) {
-        TrainingContent trainingContent=new TrainingContent();
+        TrainingContent trainingContent = new TrainingContent();
         BeanUtils.copyProperties(trainingContentDTO, trainingContent);
         trainingContent.setCreateTime(new Date());
         int update = trainingContentService.update(trainingContent);
@@ -104,11 +106,12 @@ public class TrainingContentController {
     /**
      * 删除
      *
-     * @param id
+     * @param trainingContentDTO
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
+    public ResponseResult<Void> delete(@RequestBody TrainingContentDTO trainingContentDTO) {
+        Long id = trainingContentDTO.getId();
         int delete = trainingContentService.delete(id);
         if (delete > 0) {
             //删除成功

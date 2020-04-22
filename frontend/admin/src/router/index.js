@@ -55,8 +55,6 @@ export const constantRoutes = [
     }]
   },
 
-
-
   {
     path: '/profile',
     component: Layout,
@@ -84,8 +82,6 @@ export const constantRoutes = [
       }
     ]
   },
-
-
 
   {
     path: '/organization/department',
@@ -116,8 +112,6 @@ export const constantRoutes = [
     ]
   },
 
-
-
   {
     path: '/organization/position',
     component: Layout,
@@ -147,7 +141,6 @@ export const constantRoutes = [
     ]
   },
 
-
   {
     path: '/organization/employee',
     component: Layout,
@@ -173,6 +166,57 @@ export const constantRoutes = [
         name: 'EmployeeAdd',
         component: () => import('@/views/organization/employee/add'),
         meta: { title: '添加职工' ,icon: 'user'}
+      }
+    ]
+  },
+
+  {
+    path: '/train/content',
+    component: Layout,
+    redirect: '/train/content/info',
+    name: 'TrainContent',
+    meta: { title: '培训内容管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'TrainContentInfo',
+        component: () => import('@/views/train/content/info'),
+        meta: { title: '培训内容详情', icon: "user"}
+      },
+      {
+        path: 'edit',
+        name: 'TrainContentEdit',
+        hidden: true,
+        component: () => import('@/views/train/content/edit'),
+        meta: { title: '修改培训内容', icon: "user"}
+      },
+      {
+        path: 'add',
+        name: 'TrainContentAdd',
+        component: () => import('@/views/train/content/add'),
+        meta: { title: '添加培训内容' ,icon: 'user'}
+      }
+    ]
+  },
+
+  {
+    path: '/train/training',
+    component: Layout,
+    redirect: '/train/training/info',
+    name: 'Training',
+    meta: { title: '培训管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'Training',
+        component: () => import('@/views/train/training/info'),
+        meta: { title: '培训详情', icon: "user"}
+      },
+      {
+        path: 'add',
+        name: 'TrainingAdd',
+        component: () => import('@/views/train/training/add'),
+        meta: { title: '添加培训' ,icon: 'user'}
       }
     ]
   },
