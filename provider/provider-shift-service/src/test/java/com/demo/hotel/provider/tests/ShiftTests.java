@@ -1,5 +1,6 @@
 package com.demo.hotel.provider.tests;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 import com.demo.hotel.provider.api.ShiftService;
@@ -40,9 +41,11 @@ public class ShiftTests {
     @Test
     public void insertTest() {
         Shift shift = new Shift();
+        shift.setTitle("test");
         shift.setTypeId(3L);
-        shift.setStartTime(new Date());
-        shift.setEndTime(new Date());
+        LocalTime l=LocalTime.of(8,8,8);
+        shift.setStartTime(l);
+        shift.setEndTime(l);
         shift.setTimes(3);
 
         Assert.assertEquals(shiftService.insert(shift), 1);
@@ -58,8 +61,9 @@ public class ShiftTests {
         Shift shift = new Shift();
         shift.setId(2L);
         shift.setTypeId(2L);
-        shift.setStartTime(new Date());
-        shift.setEndTime(new Date());
+        LocalTime localTime=LocalTime.of(8,8,8);
+        shift.setStartTime(localTime);
+        shift.setEndTime(localTime);
         shift.setTimes(5);
 
 

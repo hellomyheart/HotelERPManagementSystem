@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.TrainingDTO;
 import com.demo.hotel.business.dto.TrainingEcDTO;
 import com.demo.hotel.business.dto.param.TrainingParam;
@@ -20,6 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,6 +47,7 @@ public class TrainingController {
     @Reference(version = "1.0.0")
     TrainingContentService trainingContentService;
 
+    BaseController<TrainingService, TrainingDTO, Training, TrainingParam> bc = new BaseController<>();
     /**
      * 获取培训
      *
@@ -76,19 +82,18 @@ public class TrainingController {
 
         int sumTime = trainingContentService.searchByID(trainingParam.getTrainingContentId()).getSumTime().intValue();
 
+        //培训开始时间改类型
+        Instant instant = trainingParam.getCreateTime().toInstant();
+        ZoneId zone = ZoneId.systemDefault();
+        training.setCreateTime(LocalDateTime.ofInstant(instant,zone).toLocalDate());
         Date date = DateUtils.addDays(trainingParam.getCreateTime(), sumTime);
-        training.setEndTime(date);
 
+        //培训结束时间改类型
+        Instant instant2 = date.toInstant();
 
-        int insert = trainingService.insert(training);
-        if (insert > 0) {
-            //添加培训成功
-            return new ResponseResult<>(CodeStatus.OK, "添加培训成功");
-        }
-        //添加培训失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加培训失败");
-        }
+        training.setEndTime(LocalDateTime.ofInstant(instant2, zone).toLocalDate());
+
+        return bc.add(trainingService, training);
     }
 
 
@@ -101,14 +106,6 @@ public class TrainingController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody TrainingDTO trainingDTO) {
         Long id = trainingDTO.getId();
-        int delete = trainingService.delete(id);
-        if (delete > 0) {
-            //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除培训成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除培训失败");
-        }
+        return bc.delete(trainingService, id);
     }
 }

@@ -7,28 +7,8 @@ import java.util.List;
 /**
  * @author syj
  */
-public interface DepartmentService{
+public interface DepartmentService extends BaseTableApi<Department>{
 
-    /**
-     * 新增
-     * @param department
-     * @return
-     */
-    int insert(Department department);
-
-    /**
-     * 修改
-     * @param department
-     * @return
-     */
-    int update(Department department);
-
-    /**
-     * 删除
-     * @param id
-     * @return
-     */
-    int delete(Long id);
 
     /**
      * 查询所有

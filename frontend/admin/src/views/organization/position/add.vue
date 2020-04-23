@@ -34,8 +34,8 @@
   </div>
 </template>
 <script>
-import { add } from "@/api/position";
-import { info } from "@/api/department";
+import { add } from '@/api/organization/position'
+import { info } from '@/api/organization/department'
 
 export default {
   name: "PositionAdd",

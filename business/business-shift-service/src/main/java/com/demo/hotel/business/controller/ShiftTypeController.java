@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.ShiftTypeDDTO;
 import com.demo.hotel.business.dto.ShiftTypeDTO;
 import com.demo.hotel.business.dto.param.ShiftTypeParam;
@@ -37,6 +38,8 @@ public class ShiftTypeController {
     @Reference(version = "1.0.0")
     ShiftTypeDService shiftTypeDService;
 
+    BaseController<ShiftTypeService, ShiftTypeDTO, ShiftType, ShiftTypeParam> bc = new BaseController<>();
+
     /**
      * 获取排班分类
      *
@@ -53,68 +56,43 @@ public class ShiftTypeController {
             BeanUtils.copyProperties(shiftTypeD, shiftTypeDDTO);
             shiftTypeDDTOS.add(shiftTypeDDTO);
         });
-
         return new ResponseResult<>(CodeStatus.OK, "获取排班分类", shiftTypeDDTOS);
     }
 
     /**
      * 添加排班分类
+     *
      * @param shiftTypeParam
      * @return
      */
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody ShiftTypeParam shiftTypeParam) {
 
-        ShiftType shiftType=new ShiftType();
-        BeanUtils.copyProperties(shiftTypeParam,shiftType);
-
-        int insert = shiftTypeService.insert(shiftType);
-        if (insert > 0) {
-            //添加排班分类
-            return new ResponseResult<>(CodeStatus.OK, "添加排班分类成功");
-        }
-        //添加排班分类失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加排班分类失败");
-        }
+        ShiftType shiftType = new ShiftType();
+        return bc.add(shiftTypeService, shiftType, shiftTypeParam);
     }
 
     /**
      * 更新排班分类
+     *
      * @param shiftTypeDTO
      * @return
      */
     @PostMapping(value = "update")
-    public ResponseResult<ShiftTypeDTO> update(@RequestBody ShiftTypeDTO shiftTypeDTO) {
-        ShiftType shiftType=new ShiftType();
-        BeanUtils.copyProperties(shiftTypeDTO, shiftType);
-        int update = shiftTypeService.update(shiftType);
-        if (update > 0) {
-            //更新排班分类成功
-            return new ResponseResult<>(CodeStatus.OK, "更新排班分类成功", shiftTypeDTO);
-        }
-        //更新失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "更新失败");
-        }
+    public ResponseResult<Void> update(@RequestBody ShiftTypeDTO shiftTypeDTO) {
+        ShiftType shiftType = new ShiftType();
+        return bc.update(shiftTypeService, shiftType, shiftTypeDTO);
     }
 
     /**
      * 删除
      *
-     * @param id
+     * @param shiftTypeDTO
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
-        int delete = shiftTypeService.delete(id);
-        if (delete > 0) {
-            //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除排班分类成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除排班分类失败");
-        }
+    public ResponseResult<Void> delete(@RequestBody ShiftTypeDTO shiftTypeDTO) {
+        Long id = shiftTypeDTO.getId();
+        return bc.delete(shiftTypeService, id);
     }
 }

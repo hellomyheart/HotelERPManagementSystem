@@ -36,8 +36,8 @@
   </div>
 </template>
 <script>
-import { add } from "@/api/trainingContent";
-import { info } from "@/api/position";
+import { add } from '@/api/train/trainingContent'
+import { info } from '@/api/organization/position'
 
 export default {
   name: "TrainingContentAdd",

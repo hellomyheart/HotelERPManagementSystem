@@ -50,8 +50,8 @@
   </div>
 </template>
 <script>
-import { add } from "@/api/employee";
-import { info } from "@/api/position";
+import { add } from '@/api/organization/employee'
+import { info } from '@/api/organization/position'
 
 export default {
   name: "EmployeeAdd",

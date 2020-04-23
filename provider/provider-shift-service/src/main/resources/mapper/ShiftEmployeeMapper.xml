@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.hotel.provider.mapper.ShiftEmployeeMapper">
   <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.ShiftEmployee">
-    <!--@mbg.generated generated on Tue Apr 07 14:20:50 CST 2020.-->
+    <!--@mbg.generated generated on Thu Apr 23 07:24:07 CST 2020.-->
     <!--@Table shift_employee-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="shift_id" jdbcType="BIGINT" property="shiftId" />
@@ -11,7 +11,7 @@
     <result column="attendance_status" jdbcType="INTEGER" property="attendanceStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated generated on Tue Apr 07 14:20:50 CST 2020.-->
+    <!--@mbg.generated generated on Thu Apr 23 07:24:07 CST 2020.-->
     id, shift_id, work_date, employee_id, attendance_status
   </sql>
 </mapper>

@@ -21,39 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 //feign类似于http客户端
 //configuration = FeignRequestConfiguration.class是为了配置拦截器在请求头中加token
 @FeignClient(value = "business-organization", path = "organization/department", configuration = FeignRequestConfiguration.class, fallback = DepartmentFeignFallback.class)
-public interface DepartmentFeign {
-
-    /**
-     * 获取部门信息
-     *
-     * @return
-     */
-    @GetMapping(value = "info")
-    String info();
-
-    /**
-     * 新增部门
-     * @param departmentParam
-     * @return
-     */
-    @PostMapping(value = "add")
-    String add(@RequestBody DepartmentParam departmentParam);
-
-
-    /**
-     * 修改部门信息
-     * @param departmentDTO
-     * @return
-     */
-    @PostMapping(value = "update")
-    String update(@RequestBody DepartmentDTO departmentDTO);
-
-    /**
-     * 删除部门
-     *
-     * @return
-     */
-    @PostMapping(value = "delete")
-    String delete(@RequestBody DepartmentDTO departmentDTO);
+public interface DepartmentFeign extends BaseFeign<DepartmentParam,DepartmentDTO> {
 
 }

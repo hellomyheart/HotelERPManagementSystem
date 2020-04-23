@@ -8,7 +8,10 @@
       :model="form"
       label-width="120px"
     >
-<el-form-item label="职工姓名">
+      <el-form-item label="ID">
+        <el-input v-model="form.id" :disabled="true"/>
+      </el-form-item>
+      <el-form-item label="职工姓名">
         <el-input v-model="form.employeeName" />
       </el-form-item>
       <el-form-item label="身份证号">
@@ -50,8 +53,8 @@
   </div>
 </template>
 <script>
-import { update } from "@/api/employee";
-import { info } from "@/api/position";
+import { update } from '@/api/organization/employee'
+import { info } from '@/api/organization/position'
 
 export default {
   name: 'EmployeeEdit',
@@ -59,6 +62,7 @@ export default {
     return {
       formLoading: true,
       form: {
+        id: '',
         positionId: '',
         employeeName: '',
         identify: '',

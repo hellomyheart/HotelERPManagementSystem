@@ -1,5 +1,6 @@
 package com.demo.hotel.business.controller;
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.EmployeeDTO;
 import com.demo.hotel.business.dto.EmployeePDTO;
 import com.demo.hotel.business.dto.param.EmployeeParam;
@@ -37,6 +38,8 @@ public class EmployeeController {
     @Reference(version = "1.0.0")
     EmployeePService employeePService;
 
+    BaseController<EmployeeService, EmployeeDTO, Employee, EmployeeParam> bc = new BaseController<>();
+
     /**
      * 获取职工信息
      *
@@ -66,19 +69,12 @@ public class EmployeeController {
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody EmployeeParam employeeParam) {
 
+
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeParam, employee);
         employee.setCreateTime(new Date());
         employee.setUpdateTime(new Date());
-        int insert = employeeService.insert(employee);
-        if (insert > 0) {
-            //添加职工成功
-            return new ResponseResult<>(CodeStatus.OK, "添加职工成功");
-        }
-        //添加职工失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加职工失败");
-        }
+        return bc.add(employeeService, employee);
     }
 
     /**
@@ -88,37 +84,22 @@ public class EmployeeController {
      * @return
      */
     @PostMapping(value = "update")
-    public ResponseResult<EmployeeDTO> update(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseResult<Void> update(@RequestBody EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-        int update = employeeService.update(employee);
-        if (update > 0) {
-            //更新职工成功
-            return new ResponseResult<>(CodeStatus.OK, "更新职工成功", employeeDTO);
-        }
-        //更新职工失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "更新失败");
-        }
+        employee.setUpdateTime(new Date());
+        return bc.update(employeeService, employee);
     }
 
     /**
      * 删除
      *
-     * @param id
+     * @param employeeDTO
      * @return
      */
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody EmployeeDTO employeeDTO) {
         Long id = employeeDTO.getId();
-        int delete = employeeService.delete(id);
-        if (delete > 0) {
-            //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除职工成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除职工失败");
-        }
+        return bc.delete(employeeService,id);
     }
 }

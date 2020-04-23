@@ -48,9 +48,9 @@
   </div>
 </template>
 <script>
-import { add } from "@/api/training";
-import { info as eInfo } from "@/api/employee";
-import { info as cInfo } from "@/api/trainingContent";
+import { add } from "@/api/train/training";
+import { info as eInfo } from '@/api/organization/employee'
+import { info as cInfo } from '@/api/train/trainingContent'
 
 export default {
   name: "trainingAdd",
@@ -76,10 +76,10 @@ export default {
       this.formLoading = false;
       eInfo().then(response => {
         this.employeeInfo = response.data;
-      });
+      })
       cInfo().then(response => {
         this.contentInfo = response.data;
-      });
+      })
     },
     onSubmit() {
       this.formLoading = true;

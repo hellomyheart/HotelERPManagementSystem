@@ -8,6 +8,9 @@
       :model="form"
       label-width="120px"
     >
+      <el-form-item label="ID">
+        <el-input v-model="form.id" :disabled="true"/>
+      </el-form-item>
       <el-form-item label="职位名称">
         <el-input v-model="form.positionName" />
       </el-form-item>
@@ -34,8 +37,8 @@
   </div>
 </template>
 <script>
-    import { update } from "@/api/position";
-    import { info } from '@/api/department'
+import { update } from '@/api/organization/position'
+import { info } from '@/api/organization/department'
 
     export default {
         name: 'PositionEdit',

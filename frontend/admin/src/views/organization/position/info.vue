@@ -2,12 +2,14 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.positionName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      border
+      stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" prop="id"></el-table-column>
-      <el-table-column label="职位名称" prop="positionName"></el-table-column>
-      <el-table-column label="部门名称" prop="departmentName"></el-table-column>
+      <el-table-column label="职位名称" sortable prop="positionName"></el-table-column>
+      <el-table-column label="部门名称" sortable prop="departmentName"></el-table-column>
       <el-table-column label="基础工资" prop="basesalary"></el-table-column>
       <el-table-column label="基础工时" prop="baseTime"></el-table-column>
       <el-table-column align="right">
@@ -35,7 +37,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/position";
+import { info, deleteD } from '@/api/organization/position'
 export default {
   data() {
     return {
@@ -64,7 +66,7 @@ export default {
     },
     handleEdit(index, row) {
       this.$router.push({
-        name: "PositionEdit",
+        name: 'PositionEdit',
         params: {
           data: row
         }
@@ -75,7 +77,7 @@ export default {
         .then(response => {
           this.$message({
             message: response.message,
-            type: "success"
+            type: 'success'
           });
         })
         .catch(() => {});
@@ -95,5 +97,5 @@ export default {
       this.currentPage = val;
     }
   }
-};
+}
 </script>

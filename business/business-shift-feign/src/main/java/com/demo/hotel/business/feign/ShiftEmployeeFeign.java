@@ -1,5 +1,6 @@
 package com.demo.hotel.business.feign;
 
+import com.demo.hotel.business.dto.ShiftEmployeeDTO;
 import com.demo.hotel.business.dto.param.ShiftEmployeeParam;
 import com.demo.hotel.business.dto.param.ShiftParam;
 import com.demo.hotel.business.feign.fallback.ShiftEmployeeFeignFallback;
@@ -16,40 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @create: 2020-04-07 18:09
  **/
 @FeignClient(value = "business-shift", path = "shift/employee", configuration = FeignRequestConfiguration.class, fallback = ShiftEmployeeFeignFallback.class)
-public interface ShiftEmployeeFeign {
-
-    /**
-     * 获取职工排班
-     *
-     * @return
-     */
-    @GetMapping(value = "info")
-    String info();
-
-    /**
-     * 新增职工排班
-     * @param shiftEmployeeParam
-     * @return
-     */
-    @PostMapping(value = "add")
-    String add(@RequestBody ShiftEmployeeParam shiftEmployeeParam);
-
-
-    /**
-     * 修改职工排班
-     * @param shiftEmployeeParam
-     * @return
-     */
-    @PostMapping(value = "update")
-    String update(@RequestBody ShiftEmployeeParam shiftEmployeeParam);
-
-    /**
-     * 删除职工排班
-     *
-     * @param id
-     * @return
-     */
-    @PostMapping(value = "delete")
-    String delete(@RequestBody Long id);
+public interface ShiftEmployeeFeign extends BaseFeign<ShiftEmployeeParam, ShiftEmployeeDTO>{
 
 }

@@ -2,11 +2,13 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.departmentName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      border
+      stripe
       style="width: 100%"
-      :height= 500
+      height= 500
     >
       <el-table-column label="ID" prop="id"></el-table-column>
-      <el-table-column label="部门名称" prop="departmentName"></el-table-column>
+      <el-table-column label="部门名称" sortable prop="departmentName"></el-table-column>
       <el-table-column label="部门介绍" prop="note"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
@@ -33,7 +35,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/department";
+import { info, deleteD } from '@/api/organization/department'
 export default {
   data() {
     return {

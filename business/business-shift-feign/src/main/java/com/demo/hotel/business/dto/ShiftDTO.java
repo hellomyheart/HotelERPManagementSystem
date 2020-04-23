@@ -3,6 +3,7 @@ package com.demo.hotel.business.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -27,14 +28,19 @@ public class ShiftDTO implements Serializable {
     private Long typeId;
 
     /**
+     * 班次标题
+     */
+    private String title;
+
+    /**
      * 开始时间
      */
-    private Date startTime;
+    private LocalTime startTime;
 
     /**
      * 结束时间
      */
-    private Date endTime;
+    private LocalTime endTime;
 
     /**
      * 工时

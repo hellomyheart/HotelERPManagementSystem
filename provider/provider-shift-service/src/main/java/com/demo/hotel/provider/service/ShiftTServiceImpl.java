@@ -9,9 +9,6 @@ import org.apache.dubbo.config.annotation.Service;
 
 import java.util.List;
 
-/**
- * @author syj
- */
 @Service(version = "1.0.0")
 public class ShiftTServiceImpl implements ShiftTService{
 
@@ -22,4 +19,5 @@ public class ShiftTServiceImpl implements ShiftTService{
     public List<ShiftT> selectAll() {
         return shiftTMapper.selectAll();
     }
+
 }

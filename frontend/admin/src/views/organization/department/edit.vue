@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-    import {update} from '@/api/department'
+import { update } from '@/api/organization/department'
 
     export default {
         name: 'DepartmentEdit',

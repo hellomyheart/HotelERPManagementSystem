@@ -31,4 +31,9 @@ public class TrainingFeignFallback  implements TrainingFeign {
     public String delete(TrainingDTO trainingDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
+
+    @Override
+    public String update(TrainingDTO trainingDTO) {
+        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+    }
 }

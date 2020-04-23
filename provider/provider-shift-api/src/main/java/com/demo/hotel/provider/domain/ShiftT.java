@@ -1,6 +1,7 @@
 package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
@@ -8,7 +9,9 @@ import lombok.Data;
 @Data
 @Table(name = "shift_t")
 public class ShiftT implements Serializable {
-    private static final long serialVersionUID = -3730824392286593667L;
+
+
+    private static final long serialVersionUID = -2978791720330580188L;
     /**
      * id
      */
@@ -25,13 +28,13 @@ public class ShiftT implements Serializable {
      * 开始时间
      */
     @Column(name = "start_time")
-    private Date startTime;
+    private LocalTime startTime;
 
     /**
      * 结束时间
      */
     @Column(name = "end_time")
-    private Date endTime;
+    private LocalTime endTime;
 
     /**
      * 工时
@@ -45,5 +48,10 @@ public class ShiftT implements Serializable {
     @Column(name = "type_name")
     private String typeName;
 
+    /**
+     * 班次标题
+     */
+    @Column(name = "title")
+    private String title;
 
 }

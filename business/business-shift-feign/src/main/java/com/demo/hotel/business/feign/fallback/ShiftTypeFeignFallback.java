@@ -33,7 +33,7 @@ public class ShiftTypeFeignFallback implements ShiftTypeFeign {
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(ShiftTypeDTO shiftTypeDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

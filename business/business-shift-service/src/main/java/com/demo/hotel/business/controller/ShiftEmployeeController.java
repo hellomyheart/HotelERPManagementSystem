@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.ShiftEmployeeDTO;
 import com.demo.hotel.business.dto.ShiftEmployeeEDTO;
 import com.demo.hotel.business.dto.param.ShiftEmployeeParam;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class ShiftEmployeeController {
     @Reference(version = "1.0.0")
     ShiftEmployeeEService shiftEmployeeEService;
 
+    BaseController<ShiftEmployeeService, ShiftEmployeeDTO, ShiftEmployee, ShiftEmployeeParam> bc = new BaseController<>();
+
     /**
      * 获取职位排班
      *
@@ -51,6 +55,8 @@ public class ShiftEmployeeController {
         shiftEmployeeES.forEach(shiftEmployeeE -> {
             ShiftEmployeeEDTO shiftEmployeeEDTO = new ShiftEmployeeEDTO();
             BeanUtils.copyProperties(shiftEmployeeE, shiftEmployeeEDTO);
+            System.out.println(shiftEmployeeE);
+            System.out.println(shiftEmployeeEDTO);
             shiftEmployeeEDTOS.add(shiftEmployeeEDTO);
         });
 
@@ -66,17 +72,7 @@ public class ShiftEmployeeController {
     public ResponseResult<Void> add(@RequestBody ShiftEmployeeParam shiftEmployeeParam) {
 
         ShiftEmployee shiftEmployee=new ShiftEmployee();
-        BeanUtils.copyProperties(shiftEmployeeParam,shiftEmployee);
-
-        int insert = shiftEmployeeService.insert(shiftEmployee);
-        if (insert > 0) {
-            //添加职工排班成功
-            return new ResponseResult<>(CodeStatus.OK, "添加职工排班成功");
-        }
-        //添加职工排班失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加职工排班失败");
-        }
+        return bc.add(shiftEmployeeService, shiftEmployee, shiftEmployeeParam);
     }
 
     /**
@@ -85,36 +81,19 @@ public class ShiftEmployeeController {
      * @return
      */
     @PostMapping(value = "update")
-    public ResponseResult<ShiftEmployeeDTO> update(@RequestBody ShiftEmployeeDTO shiftEmployeeDTO) {
+    public ResponseResult<Void> update(@RequestBody ShiftEmployeeDTO shiftEmployeeDTO) {
         ShiftEmployee shiftEmployee=new ShiftEmployee();
-        BeanUtils.copyProperties(shiftEmployeeDTO, shiftEmployee);
-        int update = shiftEmployeeService.update(shiftEmployee);
-        if (update > 0) {
-            //更新职工排班成功
-            return new ResponseResult<>(CodeStatus.OK, "更新职工排班成功", shiftEmployeeDTO);
-        }
-        //更新失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "更新失败");
-        }
+        return bc.update(shiftEmployeeService, shiftEmployee, shiftEmployeeDTO);
     }
 
     /**
      * 删除
-     *
-     * @param id
+     * @param shiftEmployeeDTO
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
-        int delete = shiftEmployeeService.delete(id);
-        if (delete>0){
-        //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除职工排班成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除职工排班失败");
-        }
+    public ResponseResult<Void> delete(@RequestBody ShiftEmployeeDTO shiftEmployeeDTO) {
+        Long id = shiftEmployeeDTO.getId();
+        return bc.delete(shiftEmployeeService, id);
     }
 }

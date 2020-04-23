@@ -2,18 +2,20 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.employeeName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      border
+      stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" prop="id"/>
-      <el-table-column label="职工姓名" prop="employeeName"/>
-      <el-table-column label="职位名" prop="positionName"/>
+      <el-table-column label="职工姓名" sortable prop="employeeName"/>
+      <el-table-column label="职位名" sortable prop="positionName"/>
       <el-table-column label="身份证号" prop="identify"/>
       <el-table-column label="手机号" prop="phone"/>
-      <el-table-column label="入职时间" type="datetime" prop="createTime"/>
+      <el-table-column label="入职时间" sortable type="datetime" prop="createTime"/>
       <el-table-column label="更新时间" prop="updateTime"/>
       <el-table-column label="性别" :formatter="formatSex" prop="gender"/>
-      <el-table-column label="出生日期" prop="birthday"/>
+      <el-table-column label="出生日期" sortable prop="birthday"/>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/employee";
+import { info, deleteD } from '@/api/organization/employee'
 export default {
   data() {
     return {

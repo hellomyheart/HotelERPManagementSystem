@@ -32,37 +32,37 @@ public class TrainingTests {
     @Resource
     TrainingEcService trainingEcService;
 
-    @Test
-    public void insertTest(){
-        Training training=new Training();
-        training.setEmployeeId(2L);
-        training.setTrainingContentId(2L);
-        training.setCreateTime(new Date());
-        training.setEndTime(new Date());
-
-
-        Assert.assertEquals(trainingService.insert(training),1);
-    }
-
-    @Test
-    public void deleteTest(){
-        Assert.assertEquals(trainingService.delete(3L),1);
-    }
-
-    @Test
-    public void updateTest(){
-        Training training=new Training();
-        training.setId(1L);
-        training.setEmployeeId(2L);
-        training.setTrainingContentId(5L);
-        training.setCreateTime(new Date());
-        training.setEndTime(new Date());
-        Assert.assertEquals(trainingService.update(training),1);
-    }
-
-    @Test
-    public void selectAllTest(){
-        System.out.println(trainingEcService.selectAll());
-    }
+//    @Test
+//    public void insertTest(){
+//        Training training=new Training();
+//        training.setEmployeeId(2L);
+//        training.setTrainingContentId(2L);
+//        training.setCreateTime(new Date());
+//        training.setEndTime(new Date());
+//
+//
+//        Assert.assertEquals(trainingService.insert(training),1);
+//    }
+//
+//    @Test
+//    public void deleteTest(){
+//        Assert.assertEquals(trainingService.delete(3L),1);
+//    }
+//
+//    @Test
+//    public void updateTest(){
+//        Training training=new Training();
+//        training.setId(1L);
+//        training.setEmployeeId(2L);
+//        training.setTrainingContentId(5L);
+//        training.setCreateTime(new Date());
+//        training.setEndTime(new Date());
+//        Assert.assertEquals(trainingService.update(training),1);
+//    }
+//
+//    @Test
+//    public void selectAllTest(){
+//        System.out.println(trainingEcService.selectAll());
+//    }
 
 }

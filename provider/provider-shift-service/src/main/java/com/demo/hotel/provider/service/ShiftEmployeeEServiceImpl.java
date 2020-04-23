@@ -23,4 +23,5 @@ public class ShiftEmployeeEServiceImpl implements ShiftEmployeeEService{
     public List<ShiftEmployeeE> selectAll() {
         return shiftEmployeeEMapper.selectAll();
     }
+
 }

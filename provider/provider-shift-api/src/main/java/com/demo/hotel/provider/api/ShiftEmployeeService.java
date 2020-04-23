@@ -7,29 +7,6 @@ import com.demo.hotel.provider.domain.ShiftEmployee;
  *
  * @author syj
  */
-public interface ShiftEmployeeService {
+public interface ShiftEmployeeService extends BaseTableApi<ShiftEmployee> {
 
-    /**
-     * 新增
-     *
-     * @param shiftEmployee
-     * @return
-     */
-    int insert(ShiftEmployee shiftEmployee);
-
-    /**
-     * 修改
-     *
-     * @param shiftEmployee
-     * @return
-     */
-    int update(ShiftEmployee shiftEmployee);
-
-    /**
-     * 删除
-     *
-     * @param id
-     * @return
-     */
-    int delete(Long id);
 }

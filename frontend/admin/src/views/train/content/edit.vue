@@ -8,6 +8,9 @@
       :model="form"
       label-width="120px"
     >
+      <el-form-item label="ID">
+        <el-input v-model="form.id" :disabled="true"/>
+      </el-form-item>
       <el-form-item label="培训内容标题">
         <el-input v-model="form.title" />
       </el-form-item>
@@ -35,8 +38,8 @@
   </div>
 </template>
 <script>
-import { update } from "@/api/trainingContent";
-import { info } from "@/api/position";
+import { update } from '@/api/train/trainingContent'
+import { info } from '@/api/organization/position'
 
 export default {
   name: 'EmployeeEdit',
@@ -44,6 +47,7 @@ export default {
     return {
       formLoading: true,
       form: {
+        id: '',
         title: "",
         note: "",
         sumTime: "",

@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.ShiftDTO;
 import com.demo.hotel.business.dto.ShiftTDTO;
 import com.demo.hotel.business.dto.param.ShiftParam;
@@ -36,6 +37,9 @@ public class ShiftController {
 
     @Reference(version = "1.0.0")
     ShiftTService shiftTService;
+
+    BaseController<ShiftService, ShiftDTO, Shift, ShiftParam> bc = new BaseController<>();
+
     /**
      * 获取排班内容
      *
@@ -58,62 +62,38 @@ public class ShiftController {
 
     /**
      * 添加排班内容
+     *
      * @param shiftParam
      * @return
      */
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody ShiftParam shiftParam) {
 
-        Shift shift=new Shift();
-        BeanUtils.copyProperties(shiftParam,shift);
-
-        int insert = shiftService.insert(shift);
-        if (insert > 0) {
-            //添加排班
-            return new ResponseResult<>(CodeStatus.OK, "添加排班成功");
-        }
-        //添加排班失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加排班失败");
-        }
+        Shift shift = new Shift();
+        return bc.add(shiftService, shift, shiftParam);
     }
 
     /**
      * 更新排班
+     *
      * @param shiftDTO
      * @return
      */
     @PostMapping(value = "update")
-    public ResponseResult<ShiftDTO> update(@RequestBody ShiftDTO shiftDTO) {
-       Shift shift=new Shift();
-        BeanUtils.copyProperties(shiftDTO, shift);
-        int update = shiftService.update(shift);
-        if (update > 0) {
-            //更新排班成功
-            return new ResponseResult<>(CodeStatus.OK, "更新排班分类成功", shiftDTO);
-        }
-        //更新失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "更新失败");
-        }
+    public ResponseResult<Void> update(@RequestBody ShiftDTO shiftDTO) {
+        Shift shift = new Shift();
+        return bc.update(shiftService, shift, shiftDTO);
     }
 
     /**
      * 删除
      *
-     * @param id
+     * @param shiftDTO
      * @return
      */
     @PostMapping(value = "delete")
-    public ResponseResult<Void> delete(@RequestBody Long id) {
-        int delete = shiftService.delete(id);
-        if (delete > 0) {
-            //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除排班成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除排班失败");
-        }
+    public ResponseResult<Void> delete(@RequestBody ShiftDTO shiftDTO) {
+        Long id = shiftDTO.getId();
+        return bc.delete(shiftService, id);
     }
 }

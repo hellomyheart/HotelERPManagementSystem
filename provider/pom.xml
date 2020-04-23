@@ -93,6 +93,7 @@
         <module>provider-training-api</module>
         <module>provider-training-service</module>
 
+        <!--排班管理-->
         <module>provider-shift-api</module>
         <module>provider-shift-service</module>
 

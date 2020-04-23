@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 
+import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.dto.TrainingContentDTO;
 import com.demo.hotel.business.dto.TrainingContentPDTO;
 import com.demo.hotel.business.dto.param.TrainingContentParam;
@@ -37,7 +38,7 @@ public class TrainingContentController {
 
     @Reference(version = "1.0.0")
     TrainingContentPService trainingContentPService;
-
+    BaseController<TrainingContentService, TrainingContentDTO, TrainingContent, TrainingContentParam> bc = new BaseController<>();
     /**
      * 获取培训内容
      *
@@ -70,15 +71,7 @@ public class TrainingContentController {
         TrainingContent trainingContent = new TrainingContent();
         BeanUtils.copyProperties(trainingContentParam, trainingContent);
         trainingContent.setCreateTime(new Date());
-        int insert = trainingContentService.insert(trainingContent);
-        if (insert > 0) {
-            //添加培训内容成功
-            return new ResponseResult<>(CodeStatus.OK, "添加培训内容成功");
-        }
-        //添加培训内容失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "添加培训内容失败");
-        }
+        return bc.add(trainingContentService, trainingContent);
     }
 
     /**
@@ -88,19 +81,11 @@ public class TrainingContentController {
      * @return
      */
     @PostMapping(value = "update")
-    public ResponseResult<TrainingContentDTO> update(@RequestBody TrainingContentDTO trainingContentDTO) {
+    public ResponseResult<Void> update(@RequestBody TrainingContentDTO trainingContentDTO) {
         TrainingContent trainingContent = new TrainingContent();
         BeanUtils.copyProperties(trainingContentDTO, trainingContent);
         trainingContent.setCreateTime(new Date());
-        int update = trainingContentService.update(trainingContent);
-        if (update > 0) {
-            //更新培训内容成功
-            return new ResponseResult<>(CodeStatus.OK, "更新培训内容成功", trainingContentDTO);
-        }
-        //更新失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "更新失败");
-        }
+        return bc.update(trainingContentService, trainingContent);
     }
 
     /**
@@ -112,14 +97,6 @@ public class TrainingContentController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody TrainingContentDTO trainingContentDTO) {
         Long id = trainingContentDTO.getId();
-        int delete = trainingContentService.delete(id);
-        if (delete > 0) {
-            //删除成功
-            return new ResponseResult<>(CodeStatus.OK, "删除培训内容成功");
-        }
-        //删除失败
-        else {
-            return new ResponseResult<>(CodeStatus.FAIL, "删除培训内容失败");
-        }
+        return bc.delete(trainingContentService, id);
     }
 }

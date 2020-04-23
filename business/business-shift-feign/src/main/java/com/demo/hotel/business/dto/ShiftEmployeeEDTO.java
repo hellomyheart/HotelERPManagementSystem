@@ -3,6 +3,7 @@ package com.demo.hotel.business.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -28,7 +29,7 @@ public class ShiftEmployeeEDTO implements Serializable {
     /**
      * 工作日期
      */
-    private Date workDate;
+    private LocalDate workDate;
 
     /**
      * 职工号
@@ -44,5 +45,10 @@ public class ShiftEmployeeEDTO implements Serializable {
      * 职工姓名
      */
     private String employeeName;
+
+    /**
+     * 班次标题
+     */
+    private String title;
 
 }

@@ -1,8 +1,8 @@
 import request from '@/utils/request'
-
+var BaserURL = '/user/'
 export function login(data) {
   return request({
-    url: '/user/login',
+    url: BaserURL + 'login',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/user/info',
+    url: BaserURL + 'info',
     method: 'get'
   })
 }
 
 export function logout(token) {
   return request({
-    url: '/user/logout',
+    url: BaserURL + 'logout',
     method: 'post',
     params: { access_token: token }
   })

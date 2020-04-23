@@ -2,15 +2,17 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      border
+      stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" prop="id"/>
-      <el-table-column label="培训内容标题" prop="title"/>
+      <el-table-column label="培训内容" sortable prop="title"/>
       <el-table-column label="简单介绍" prop="note"/>
       <el-table-column label="培训时长" prop="sumTime"/>
       <el-table-column label="创建时间"  prop="createTime"/>
-      <el-table-column label="职位名" prop="positionName"/>
+      <el-table-column label="职位名" sortable prop="positionName"/>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -36,7 +38,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/trainingContent";
+import { info, deleteD } from '@/api/train/trainingContent'
 export default {
   data() {
     return {

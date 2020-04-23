@@ -8,13 +8,6 @@ import java.util.List;
 /**
  * @author syj
  */
-public interface PositionDService{
-
-    /**
-     * 查询所有
-     * @return
-     */
-    List<PositionD> selectAll();
-
+public interface PositionDService extends BaseViewApi<PositionD>{
 
 }

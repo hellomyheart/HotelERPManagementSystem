@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-
+var BaseURL = '/profile/'
 // /**
 //  * 获取个人信息
 //  * @param username
@@ -7,7 +7,7 @@ import request from '@/utils/request'
 //  */
 export function info(username) {
   return request({
-    url: '/profile/info/' + username,
+    url: BaseURL + 'info/' + username,
     method: 'get'
   })
 }
@@ -19,7 +19,7 @@ export function info(username) {
 //  */
 export function update(data) {
   return request({
-    url: '/profile/update/',
+    url: BaseURL + 'update',
     method: 'post',
     data
   })
@@ -31,7 +31,7 @@ export function update(data) {
 //  */
 export function modifyPassword(data) {
   return request({
-    url: '/profile/modify/password',
+    url: BaseURL + 'modify/password',
     method: 'post',
     data
   })
@@ -43,7 +43,7 @@ export function modifyPassword(data) {
 //  */
 export function modifyIcon(data) {
   return request({
-    url: '/profile/modify/icon',
+    url: BaseURL + 'modify/icon',
     method: 'post',
     data
   })

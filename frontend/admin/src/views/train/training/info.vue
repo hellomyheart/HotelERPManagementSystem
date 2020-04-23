@@ -2,13 +2,15 @@
   <div>
     <el-table
       :data="tableData.filter(data => !search || data.employeeName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      border
+      stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" prop="id"></el-table-column>
-      <el-table-column label="职工姓名" prop="employeeName"></el-table-column>
+      <el-table-column label="职工姓名" sortable prop="employeeName"></el-table-column>
       <el-table-column label="培训内容" prop="title"></el-table-column>
-      <el-table-column label="开始时间" prop="createTime"></el-table-column>
+      <el-table-column label="开始时间" sortable prop="createTime"></el-table-column>
       <el-table-column label="结束时间" prop="endTime"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-import { info, deleteD } from "@/api/training";
+import { info, deleteD } from '@/api/train/training'
 export default {
   data() {
     return {

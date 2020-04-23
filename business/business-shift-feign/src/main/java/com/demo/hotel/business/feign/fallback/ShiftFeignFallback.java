@@ -1,5 +1,6 @@
 package com.demo.hotel.business.feign.fallback;
 
+import com.demo.hotel.business.dto.ShiftDTO;
 import com.demo.hotel.business.dto.param.ShiftParam;
 import com.demo.hotel.business.feign.ShiftFeign;
 import com.demo.hotel.commons.dto.CodeStatus;
@@ -26,12 +27,12 @@ public class ShiftFeignFallback implements ShiftFeign {
     }
 
     @Override
-    public String update(ShiftParam shiftParam) {
+    public String update(ShiftDTO shiftDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 
     @Override
-    public String delete(Long id) {
+    public String delete(ShiftDTO shiftDTO) {
         return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
     }
 }

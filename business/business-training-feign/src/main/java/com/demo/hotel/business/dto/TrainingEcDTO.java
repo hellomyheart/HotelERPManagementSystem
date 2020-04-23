@@ -3,7 +3,7 @@ package com.demo.hotel.business.dto;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @program: HotelERPManagementSystem
@@ -33,12 +33,12 @@ public class TrainingEcDTO implements Serializable {
     /**
      * 开始时间
      */
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 结束时间
      */
-    private Date endTime;
+    private LocalDate endTime;
 
 
     /**

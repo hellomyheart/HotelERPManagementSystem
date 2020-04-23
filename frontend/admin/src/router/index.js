@@ -66,19 +66,19 @@ export const constantRoutes = [
         path: 'info',
         name: 'ProfileInfo',
         component: () => import('@/views/profile/info'),
-        meta: { title: '修改信息', icon: "user"}
+        meta: { title: '修改信息', icon: 'user' }
       },
       {
         path: 'password',
         name: 'ProfilePassword',
         component: () => import('@/views/profile/password'),
-        meta: { title: '修改密码' ,icon: 'user'}
+        meta: { title: '修改密码', icon: 'user' }
       },
       {
         path: 'icon',
         name: 'ProfileIcon',
         component: () => import('@/views/profile/icon'),
-        meta: { title: '修改头像' ,icon: 'user'}
+        meta: { title: '修改头像', icon: 'user' }
       }
     ]
   },
@@ -94,20 +94,20 @@ export const constantRoutes = [
         path: 'info',
         name: 'DepartmentInfo',
         component: () => import('@/views/organization/department/info'),
-        meta: { title: '部门详情', icon: "user"}
+        meta: { title: '部门详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'DepartmentEdit',
         hidden: true,
         component: () => import('@/views/organization/department/edit'),
-        meta: { title: '修改部门', icon: "user"}
+        meta: { title: '修改部门', icon: 'user' }
       },
       {
         path: 'add',
         name: 'DepartmentAdd',
         component: () => import('@/views/organization/department/add'),
-        meta: { title: '添加部门' ,icon: 'user'}
+        meta: { title: '添加部门', icon: 'user' }
       }
     ]
   },
@@ -123,20 +123,20 @@ export const constantRoutes = [
         path: 'info',
         name: 'PositionInfo',
         component: () => import('@/views/organization/position/info'),
-        meta: { title: '职位详情', icon: "user"}
+        meta: { title: '职位详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'PositionEdit',
         hidden: true,
         component: () => import('@/views/organization/position/edit'),
-        meta: { title: '修改职位', icon: "user"}
+        meta: { title: '修改职位', icon: 'user' }
       },
       {
         path: 'add',
         name: 'PositionAdd',
         component: () => import('@/views/organization/position/add'),
-        meta: { title: '添加职位' ,icon: 'user'}
+        meta: { title: '添加职位', icon: 'user' }
       }
     ]
   },
@@ -152,20 +152,20 @@ export const constantRoutes = [
         path: 'info',
         name: 'EmployeeInfo',
         component: () => import('@/views/organization/employee/info'),
-        meta: { title: '职工详情', icon: "user"}
+        meta: { title: '职工详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'EmployeeEdit',
         hidden: true,
         component: () => import('@/views/organization/employee/edit'),
-        meta: { title: '修改职工', icon: "user"}
+        meta: { title: '修改职工', icon: 'user' }
       },
       {
         path: 'add',
         name: 'EmployeeAdd',
         component: () => import('@/views/organization/employee/add'),
-        meta: { title: '添加职工' ,icon: 'user'}
+        meta: { title: '添加职工', icon: 'user' }
       }
     ]
   },
@@ -181,20 +181,20 @@ export const constantRoutes = [
         path: 'info',
         name: 'TrainContentInfo',
         component: () => import('@/views/train/content/info'),
-        meta: { title: '培训内容详情', icon: "user"}
+        meta: { title: '培训内容详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'TrainContentEdit',
         hidden: true,
         component: () => import('@/views/train/content/edit'),
-        meta: { title: '修改培训内容', icon: "user"}
+        meta: { title: '修改培训内容', icon: 'user' }
       },
       {
         path: 'add',
         name: 'TrainContentAdd',
         component: () => import('@/views/train/content/add'),
-        meta: { title: '添加培训内容' ,icon: 'user'}
+        meta: { title: '添加培训内容', icon: 'user' }
       }
     ]
   },
@@ -210,16 +210,106 @@ export const constantRoutes = [
         path: 'info',
         name: 'Training',
         component: () => import('@/views/train/training/info'),
-        meta: { title: '培训详情', icon: "user"}
+        meta: { title: '培训详情', icon: 'user' }
       },
       {
         path: 'add',
         name: 'TrainingAdd',
         component: () => import('@/views/train/training/add'),
-        meta: { title: '添加培训' ,icon: 'user'}
+        meta: { title: '添加培训', icon: 'user' }
       }
     ]
   },
+
+  {
+    path: '/shift/type',
+    component: Layout,
+    redirect: '/shift/type/info',
+    name: 'ShiftType',
+    meta: { title: '排班分类管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'ShiftTypeInfo',
+        component: () => import('@/views/shift/type/info'),
+        meta: { title: '排班分类详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'ShiftTypeEdit',
+        hidden: true,
+        component: () => import('@/views/shift/type/edit'),
+        meta: { title: '修改排班分类', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'ShiftTypeAdd',
+        component: () => import('@/views/shift/type/add'),
+        meta: { title: '添加排班分类', icon: 'user' }
+      }
+    ]
+  },
+
+  {
+    path: '/shift/content',
+    component: Layout,
+    redirect: '/shift/content/info',
+    name: 'ShiftContent',
+    meta: { title: '排班内容管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'ShiftContentInfo',
+        component: () => import('@/views/shift/content/info'),
+        meta: { title: '排班内容详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'ShiftContentEdit',
+        hidden: true,
+        component: () => import('@/views/shift/content/edit'),
+        meta: { title: '修改排班内容', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'ShiftContentAdd',
+        component: () => import('@/views/shift/content/add'),
+        meta: { title: '添加排班内容', icon: 'user' }
+      }
+    ]
+  },
+
+  {
+    path: '/shift/employee',
+    component: Layout,
+    redirect: '/shift/employee/info',
+    name: 'ShiftEmployee',
+    meta: { title: '职工排班管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'ShiftEmployeeInfo',
+        component: () => import('@/views/shift/employee/info'),
+        meta: { title: '职工排班详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'ShiftEmployeeEdit',
+        hidden: true,
+        component: () => import('@/views/shift/employee/edit'),
+        meta: { title: '修改职工排班', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'ShiftEmployeeAdd',
+        component: () => import('@/views/shift/employee/add'),
+        meta: { title: '添加职工排班', icon: 'user' }
+      }
+    ]
+  },
+
+
+
 
 
   {

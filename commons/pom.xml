@@ -26,5 +26,6 @@
         <module>commons-provider</module>
         <module>commons-feign</module>
         <module>commons-sentinel</module>
+        <module>commons-business</module>
     </modules>
 </project>

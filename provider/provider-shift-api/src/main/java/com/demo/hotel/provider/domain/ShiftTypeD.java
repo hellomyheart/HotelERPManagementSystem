@@ -10,7 +10,8 @@ import lombok.Data;
 @Data
 @Table(name = "shift_type_d")
 public class ShiftTypeD implements Serializable {
-    private static final long serialVersionUID = -8872127075965452267L;
+
+    private static final long serialVersionUID = 3302393509732287548L;
     /**
      * 分类ID
      */
@@ -34,6 +35,5 @@ public class ShiftTypeD implements Serializable {
      */
     @Column(name = "department_name")
     private String departmentName;
-
 
 }

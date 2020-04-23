@@ -1,13 +1,14 @@
 package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
 @Table(name = "shift_employee")
 public class ShiftEmployee implements Serializable {
+
     private static final long serialVersionUID = -1235312546686429753L;
     /**
      * id
@@ -27,7 +28,7 @@ public class ShiftEmployee implements Serializable {
      * 工作日期
      */
     @Column(name = "work_date")
-    private Date workDate;
+    private LocalDate workDate;
 
     /**
      * 职工号
@@ -40,5 +41,6 @@ public class ShiftEmployee implements Serializable {
      */
     @Column(name = "attendance_status")
     private Integer attendanceStatus;
+
 
 }

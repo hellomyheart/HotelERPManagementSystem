@@ -13,7 +13,7 @@ import java.util.List;
  * @author syj
  */
 @Service(version = "1.0.0")
-public class ShiftTypeDServiceImpl implements ShiftTypeDService {
+public class ShiftTypeDServiceImpl implements ShiftTypeDService{
 
     @Resource
     private ShiftTypeDMapper shiftTypeDMapper;
@@ -22,4 +22,5 @@ public class ShiftTypeDServiceImpl implements ShiftTypeDService {
     public List<ShiftTypeD> selectAll() {
         return shiftTypeDMapper.selectAll();
     }
+
 }

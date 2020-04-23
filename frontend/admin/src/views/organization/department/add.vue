@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-    import {add} from '@/api/department'
+import { add } from '@/api/organization/department'
 
     export default {
         name: 'DepartmentAdd',

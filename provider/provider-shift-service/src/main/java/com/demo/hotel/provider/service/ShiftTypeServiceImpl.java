@@ -30,4 +30,5 @@ public class ShiftTypeServiceImpl implements ShiftTypeService{
     public int delete(Long id) {
         return shiftTypeMapper.deleteByPrimaryKey(id);
     }
+
 }
