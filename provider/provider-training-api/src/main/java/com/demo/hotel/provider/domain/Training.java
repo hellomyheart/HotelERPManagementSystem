@@ -3,6 +3,8 @@ package com.demo.hotel.provider.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
 /**
@@ -10,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @Table(name = "training")
-public class Training implements Serializable {
+public class Training implements TableDomain {
 
     private static final long serialVersionUID = 971167139468031598L;
     /**

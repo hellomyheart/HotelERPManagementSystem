@@ -12,7 +12,7 @@ import java.util.Date;
  * @create: 2020-04-07 07:33
  **/
 @Data
-public class TrainingContentDTO implements Serializable {
+public class TrainingContentDTO implements TableDTO {
 
     private static final long serialVersionUID = -6074445996057546409L;
 

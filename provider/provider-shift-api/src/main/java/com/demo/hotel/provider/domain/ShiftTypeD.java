@@ -2,6 +2,8 @@ package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.ViewDomain;
 import lombok.Data;
 
 /**
@@ -9,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @Table(name = "shift_type_d")
-public class ShiftTypeD implements Serializable {
+public class ShiftTypeD implements ViewDomain {
 
     private static final long serialVersionUID = 3302393509732287548L;
     /**

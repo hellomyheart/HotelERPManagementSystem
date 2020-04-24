@@ -2,7 +2,10 @@ package com.demo.hotel.provider.api;
 
 import com.demo.hotel.provider.domain.AdminLoginLog;
 
-public interface AdminLoginLogService{
+/**
+ * @author syj
+ */
+public interface AdminLoginLogService {
 
     /**
      * 新增日志

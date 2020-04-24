@@ -2,6 +2,8 @@ package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
 /**
@@ -9,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @Table(name = "department")
-public class Department implements Serializable {
+public class Department implements TableDomain {
     private static final long serialVersionUID = 1627315360341866183L;
     /**
      * 部门ID

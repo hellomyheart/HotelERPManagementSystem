@@ -12,7 +12,7 @@ import java.util.Date;
  * @create: 2020-04-07 06:53
  **/
 @Data
-public class TrainingParam implements Serializable {
+public class TrainingParam implements BaseParam {
 
     private static final long serialVersionUID = 4748589646000685381L;
 

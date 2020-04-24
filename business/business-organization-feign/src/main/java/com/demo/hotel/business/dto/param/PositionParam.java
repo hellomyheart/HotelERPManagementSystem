@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @create: 2020-04-06 17:17
  **/
 @Data
-public class PositionParam implements Serializable {
+public class PositionParam implements BaseParam {
 
     private static final long serialVersionUID = -1473395228322908698L;
 

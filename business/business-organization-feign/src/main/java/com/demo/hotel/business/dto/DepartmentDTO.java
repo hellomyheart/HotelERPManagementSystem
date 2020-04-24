@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author syj
  */
 @Data
-public class DepartmentDTO implements Serializable {
+public class DepartmentDTO implements TableDTO {
 
     private static final long serialVersionUID = -4105952180716404741L;
     /**

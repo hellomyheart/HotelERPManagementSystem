@@ -3,11 +3,13 @@ package com.demo.hotel.provider.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.ViewDomain;
 import lombok.Data;
 
 @Data
 @Table(name = "shift_employee_e")
-public class ShiftEmployeeE implements Serializable {
+public class ShiftEmployeeE implements ViewDomain {
 
 
     private static final long serialVersionUID = -3622578614116870506L;

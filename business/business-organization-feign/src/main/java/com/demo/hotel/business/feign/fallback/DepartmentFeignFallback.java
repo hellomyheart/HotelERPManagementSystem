@@ -17,25 +17,25 @@ import javax.annotation.Resource;
 @Component
 public class DepartmentFeignFallback implements DepartmentFeign {
 
-    CommonsFeignFallback<Void> commonsFeignFallback=new CommonsFeignFallback<>();
+    CommonsFeignFallback<Void> cf=new CommonsFeignFallback<>();
 
     @Override
     public String info() {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String add(DepartmentParam departmentParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String update(DepartmentDTO departmentDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String delete(DepartmentDTO departmentDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 }

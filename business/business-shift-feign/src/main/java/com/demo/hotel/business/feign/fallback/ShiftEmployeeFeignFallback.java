@@ -15,24 +15,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShiftEmployeeFeignFallback implements ShiftEmployeeFeign {
 
-    CommonsFeignFallback<Void> commonsFeignFallback=new CommonsFeignFallback<>();
+    CommonsFeignFallback<Void> cf=new CommonsFeignFallback<>();
     @Override
     public String info() {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String add(ShiftEmployeeParam shiftEmployeeParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String update(ShiftEmployeeDTO shiftEmployeeDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String delete(ShiftEmployeeDTO shiftEmployeeDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 }

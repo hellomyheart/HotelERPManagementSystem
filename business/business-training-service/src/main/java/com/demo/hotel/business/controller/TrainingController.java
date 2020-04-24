@@ -2,6 +2,7 @@ package com.demo.hotel.business.controller;
 
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.TrainingDTO;
 import com.demo.hotel.business.dto.TrainingEcDTO;
 import com.demo.hotel.business.dto.param.TrainingParam;
@@ -47,7 +48,7 @@ public class TrainingController {
     @Reference(version = "1.0.0")
     TrainingContentService trainingContentService;
 
-    BaseController<TrainingService, TrainingDTO, Training, TrainingParam> bc = new BaseController<>();
+    BaseTableController<TrainingService,TrainingEcService,TrainingDTO,TrainingEcDTO,Training,TrainingEc,TrainingParam> bt =new BaseTableController<>();
     /**
      * 获取培训
      *
@@ -55,17 +56,7 @@ public class TrainingController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<TrainingEcDTO>> info() {
-        List<TrainingEc> trainingEcs = trainingEcService.selectAll();
-
-        List<TrainingEcDTO> trainingEcDTOS = new ArrayList<>();
-
-        trainingEcs.forEach(trainingEc -> {
-            TrainingEcDTO trainingEcDTO = new TrainingEcDTO();
-            BeanUtils.copyProperties(trainingEc, trainingEcDTO);
-            trainingEcDTOS.add(trainingEcDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取培训", trainingEcDTOS);
+        return bt.info(trainingEcService, new TrainingEcDTO());
     }
 
     /**
@@ -93,7 +84,7 @@ public class TrainingController {
 
         training.setEndTime(LocalDateTime.ofInstant(instant2, zone).toLocalDate());
 
-        return bc.add(trainingService, training);
+        return bt.add(trainingService, training);
     }
 
 
@@ -106,6 +97,6 @@ public class TrainingController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody TrainingDTO trainingDTO) {
         Long id = trainingDTO.getId();
-        return bc.delete(trainingService, id);
+        return bt.delete(trainingService, id);
     }
 }

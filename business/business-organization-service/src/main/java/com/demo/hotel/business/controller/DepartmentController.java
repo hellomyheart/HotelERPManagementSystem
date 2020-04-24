@@ -1,14 +1,12 @@
 package com.demo.hotel.business.controller;
 
-import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseSingleTableController;
 import com.demo.hotel.business.dto.DepartmentDTO;
 import com.demo.hotel.business.dto.param.DepartmentParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.DepartmentService;
 import com.demo.hotel.provider.domain.Department;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +29,7 @@ public class DepartmentController {
     @Reference(version = "1.0.0")
     DepartmentService departmentService;
 
-    BaseController<DepartmentService,DepartmentDTO,Department,DepartmentParam> bc=new BaseController<>();
+    BaseSingleTableController<DepartmentService,DepartmentDTO,Department,DepartmentParam> bs=new BaseSingleTableController<>();
     /**
      * 获取部门信息
      *
@@ -39,17 +37,7 @@ public class DepartmentController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<DepartmentDTO>> info() {
-        List<Department> departments = departmentService.selectAll();
-
-        List<DepartmentDTO> departmentDTOs= new ArrayList<>();
-
-        departments.forEach(department -> {
-            DepartmentDTO departmentDTO=new DepartmentDTO();
-            BeanUtils.copyProperties(department,departmentDTO);
-            departmentDTOs.add(departmentDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取部门信息", departmentDTOs);
+        return bs.info(departmentService, new DepartmentDTO());
     }
 
     /**
@@ -62,7 +50,7 @@ public class DepartmentController {
 
 
         Department department=new Department();
-        return bc.add(departmentService, department, departmentParam);
+        return bs.add(departmentService, department, departmentParam);
     }
 
     /**
@@ -73,7 +61,7 @@ public class DepartmentController {
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody DepartmentDTO departmentDTO){
         Department department =new Department();
-        return bc.update(departmentService, department, departmentDTO);
+        return bs.update(departmentService, department, departmentDTO);
     }
 
     /**
@@ -84,6 +72,6 @@ public class DepartmentController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody DepartmentDTO departmentDTO){
         Long id = departmentDTO.getId();
-        return bc.delete(departmentService, id);
+        return bs.delete(departmentService, id);
     }
 }

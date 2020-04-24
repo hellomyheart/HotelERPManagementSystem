@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.demo.hotel.provider.doamin.TableDomain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
 @Table(name = "`admin`")
-public class Admin implements Serializable {
+public class Admin implements TableDomain {
     /**
      * 管理员Id
      */

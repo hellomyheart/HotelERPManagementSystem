@@ -2,6 +2,7 @@ package com.demo.hotel.business.controller;
 
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.ShiftTypeDDTO;
 import com.demo.hotel.business.dto.ShiftTypeDTO;
 import com.demo.hotel.business.dto.param.ShiftTypeParam;
@@ -37,8 +38,7 @@ public class ShiftTypeController {
 
     @Reference(version = "1.0.0")
     ShiftTypeDService shiftTypeDService;
-
-    BaseController<ShiftTypeService, ShiftTypeDTO, ShiftType, ShiftTypeParam> bc = new BaseController<>();
+    BaseTableController<ShiftTypeService, ShiftTypeDService, ShiftTypeDTO, ShiftTypeDDTO, ShiftType, ShiftTypeD, ShiftTypeParam> bt = new BaseTableController<>();
 
     /**
      * 获取排班分类
@@ -47,16 +47,7 @@ public class ShiftTypeController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<ShiftTypeDDTO>> info() {
-        List<ShiftTypeD> shiftTypeDS = shiftTypeDService.selectAll();
-
-        List<ShiftTypeDDTO> shiftTypeDDTOS = new ArrayList<>();
-
-        shiftTypeDS.forEach(shiftTypeD -> {
-            ShiftTypeDDTO shiftTypeDDTO = new ShiftTypeDDTO();
-            BeanUtils.copyProperties(shiftTypeD, shiftTypeDDTO);
-            shiftTypeDDTOS.add(shiftTypeDDTO);
-        });
-        return new ResponseResult<>(CodeStatus.OK, "获取排班分类", shiftTypeDDTOS);
+        return bt.info(shiftTypeDService, new ShiftTypeDDTO());
     }
 
     /**
@@ -69,7 +60,7 @@ public class ShiftTypeController {
     public ResponseResult<Void> add(@RequestBody ShiftTypeParam shiftTypeParam) {
 
         ShiftType shiftType = new ShiftType();
-        return bc.add(shiftTypeService, shiftType, shiftTypeParam);
+        return bt.add(shiftTypeService, shiftType, shiftTypeParam);
     }
 
     /**
@@ -81,7 +72,7 @@ public class ShiftTypeController {
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody ShiftTypeDTO shiftTypeDTO) {
         ShiftType shiftType = new ShiftType();
-        return bc.update(shiftTypeService, shiftType, shiftTypeDTO);
+        return bt.update(shiftTypeService, shiftType, shiftTypeDTO);
     }
 
     /**
@@ -93,6 +84,6 @@ public class ShiftTypeController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody ShiftTypeDTO shiftTypeDTO) {
         Long id = shiftTypeDTO.getId();
-        return bc.delete(shiftTypeService, id);
+        return bt.delete(shiftTypeService, id);
     }
 }

@@ -1,5 +1,7 @@
 package com.demo.hotel.business.feign;
 
+import com.demo.hotel.business.dto.TableDTO;
+import com.demo.hotel.business.dto.param.BaseParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @param <T> param
  * @param <U> DTO
  */
-public interface BaseFeign<T, U> {
+public interface BaseFeign<T extends BaseParam, U extends TableDTO> {
 
     /**
      * 获取

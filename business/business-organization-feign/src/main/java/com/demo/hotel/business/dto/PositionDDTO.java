@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @create: 2020-04-06 17:13
  **/
 @Data
-public class PositionDDTO implements Serializable {
+public class PositionDDTO implements ViewDTO {
 
 
     private static final long serialVersionUID = -5689808030425209856L;

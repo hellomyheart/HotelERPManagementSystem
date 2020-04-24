@@ -2,11 +2,13 @@ package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
 @Data
 @Table(name = "`position`")
-public class Position implements Serializable {
+public class Position implements TableDomain {
 
     private static final long serialVersionUID = -920475015226776766L;
     /**

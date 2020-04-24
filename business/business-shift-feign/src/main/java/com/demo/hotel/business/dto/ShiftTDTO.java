@@ -13,7 +13,7 @@ import java.util.Date;
  * @create: 2020-04-07 17:26
  **/
 @Data
-public class ShiftTDTO  implements Serializable {
+public class ShiftTDTO  implements ViewDTO {
 
     private static final long serialVersionUID = 1998082678936239919L;
 

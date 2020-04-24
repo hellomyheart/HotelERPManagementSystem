@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.demo.hotel.provider.doamin.ViewDomain;
 import lombok.Data;
 
 /**
@@ -11,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @Table(name = "training_content_p")
-public class TrainingContentP implements Serializable {
+public class TrainingContentP implements ViewDomain {
 
     private static final long serialVersionUID = 2573915995843566143L;
     /**

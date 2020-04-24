@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.demo.hotel.provider.doamin.TableDomain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+/**
+ * @author syj
+ */
 @Data
 @Table(name = "admin_login_log")
-public class AdminLoginLog implements Serializable {
+public class AdminLoginLog implements TableDomain {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")

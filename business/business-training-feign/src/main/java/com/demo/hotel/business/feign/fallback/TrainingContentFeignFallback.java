@@ -14,25 +14,25 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class TrainingContentFeignFallback implements TrainingContentFeign {
-    CommonsFeignFallback<Void> commonsFeignFallback=new CommonsFeignFallback<>();
+    CommonsFeignFallback<Void> cf=new CommonsFeignFallback<>();
 
     @Override
     public String info() {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String add(TrainingContentParam trainingContentParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String update(TrainingContentDTO trainingContentDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String delete(TrainingContentDTO trainingContentDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 }

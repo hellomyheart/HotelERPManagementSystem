@@ -17,25 +17,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProfileFeignFallback implements ProfileFeign {
 
-    CommonsFeignFallback<AdminDTO> commonsFeignFallback=new CommonsFeignFallback<>();
+    CommonsFeignFallback<AdminDTO> cf=new CommonsFeignFallback<>();
 
     @Override
     public String info(String username) {
-     return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+     return cf.message();
     }
 
     @Override
     public String update(ProfileParam profileParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String modifyPassword(PasswordParam passwordParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String modifyIcon(IconParam iconParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 }

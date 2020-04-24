@@ -16,25 +16,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class PositionFeignFallback implements PositionFeign {
 
-    CommonsFeignFallback<Void> commonsFeignFallback=new CommonsFeignFallback<>();
+    CommonsFeignFallback<Void> cf=new CommonsFeignFallback<>();
 
     @Override
     public String info() {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String add(PositionParam PositionParam) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String update(PositionDTO positionDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 
     @Override
     public String delete(PositionDTO positionDTO) {
-        return commonsFeignFallback.message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return cf.message();
     }
 }

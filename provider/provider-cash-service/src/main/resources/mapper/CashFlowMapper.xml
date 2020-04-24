@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.CashFlowMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.CashFlow">
+    <!--@mbg.generated generated on Fri Apr 24 09:00:50 CST 2020.-->
+    <!--@Table cash_flow-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="flow_type" jdbcType="INTEGER" property="flowType" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Apr 24 09:00:50 CST 2020.-->
+    id, flow_type, money, note
+  </sql>
+</mapper>

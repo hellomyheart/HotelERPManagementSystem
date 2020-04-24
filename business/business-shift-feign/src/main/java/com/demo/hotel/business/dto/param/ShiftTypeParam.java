@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @create: 2020-04-07 17:24
  **/
 @Data
-public class ShiftTypeParam implements Serializable {
+public class ShiftTypeParam implements BaseParam {
 
     private static final long serialVersionUID = 6881379876087115105L;
 

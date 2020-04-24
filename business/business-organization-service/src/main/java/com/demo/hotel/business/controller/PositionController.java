@@ -1,6 +1,7 @@
 package com.demo.hotel.business.controller;
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.PositionDDTO;
 import com.demo.hotel.business.dto.PositionDTO;
 import com.demo.hotel.business.dto.param.PositionParam;
@@ -37,7 +38,7 @@ public class PositionController {
     @Reference(version = "1.0.0")
     PositionDService positionDService;
 
-    BaseController<PositionService, PositionDTO, Position, PositionParam> bc = new BaseController<>();
+    BaseTableController<PositionService,PositionDService,PositionDTO,PositionDDTO,Position,PositionD,PositionParam> bt=new BaseTableController<>();
 
     /**
      * 获取职位信息
@@ -46,17 +47,7 @@ public class PositionController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<PositionDDTO>> info() {
-        List<PositionD> positionDS = positionDService.selectAll();
-
-        List<PositionDDTO> positionDDTOS = new ArrayList<>();
-
-        positionDS.forEach(positionD -> {
-            PositionDDTO positionDDTO = new PositionDDTO();
-            BeanUtils.copyProperties(positionD, positionDDTO);
-            positionDDTOS.add(positionDDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取职位信息", positionDDTOS);
+        return bt.info(positionDService, new PositionDDTO());
     }
 
     /**
@@ -68,7 +59,7 @@ public class PositionController {
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody PositionParam positionParam) {
         Position position = new Position();
-        return bc.add(positionService, position, positionParam);
+        return bt.add(positionService, position, positionParam);
     }
 
     /**
@@ -80,7 +71,7 @@ public class PositionController {
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody PositionDTO positionDTO) {
         Position position = new Position();
-        return bc.update(positionService, position, positionDTO);
+        return bt.update(positionService, position, positionDTO);
     }
 
     /**
@@ -92,6 +83,6 @@ public class PositionController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody PositionDTO positionDTO) {
         Long id = positionDTO.getId();
-        return bc.delete(positionService, id);
+        return bt.delete(positionService, id);
     }
 }

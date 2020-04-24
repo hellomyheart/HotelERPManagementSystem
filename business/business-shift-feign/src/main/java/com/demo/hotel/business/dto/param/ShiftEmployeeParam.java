@@ -13,7 +13,7 @@ import java.util.Date;
  * @create: 2020-04-07 17:43
  **/
 @Data
-public class ShiftEmployeeParam implements Serializable {
+public class ShiftEmployeeParam implements BaseParam {
 
     private static final long serialVersionUID = -6372355350306419552L;
 

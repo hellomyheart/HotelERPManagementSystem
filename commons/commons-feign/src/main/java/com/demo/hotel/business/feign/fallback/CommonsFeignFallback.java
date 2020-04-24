@@ -1,5 +1,6 @@
 package com.demo.hotel.business.feign.fallback;
 
+import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 
@@ -9,22 +10,30 @@ import com.demo.hotel.commons.utils.MapperUtils;
  * @author: syj
  * @create: 2020-04-02 14:23
  **/
-public  class CommonsFeignFallback<T> {
-
+public class CommonsFeignFallback<T> {
 
 
     public String message(Integer status, FeignFallbackMessage fallbackMessage, T data) {
         try {
-            return MapperUtils.obj2json(new ResponseResult<T>(status, fallbackMessage.getMessage(),data));
+            return MapperUtils.obj2json(new ResponseResult<T>(status, fallbackMessage.getMessage(), data));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public  String message(Integer status, FeignFallbackMessage fallbackMessage) {
+    public String message(Integer status, FeignFallbackMessage fallbackMessage) {
         try {
-            return MapperUtils.obj2json(new ResponseResult<Void>(status,fallbackMessage.getMessage()));
+            return MapperUtils.obj2json(new ResponseResult<Void>(status, fallbackMessage.getMessage()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String message() {
+        try {
+            return MapperUtils.obj2json(new ResponseResult<T>(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE.getMessage()));
         } catch (Exception e) {
             e.printStackTrace();
         }

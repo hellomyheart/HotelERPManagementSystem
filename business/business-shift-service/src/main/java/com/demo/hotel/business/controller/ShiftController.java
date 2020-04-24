@@ -2,6 +2,7 @@ package com.demo.hotel.business.controller;
 
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.ShiftDTO;
 import com.demo.hotel.business.dto.ShiftTDTO;
 import com.demo.hotel.business.dto.param.ShiftParam;
@@ -38,7 +39,7 @@ public class ShiftController {
     @Reference(version = "1.0.0")
     ShiftTService shiftTService;
 
-    BaseController<ShiftService, ShiftDTO, Shift, ShiftParam> bc = new BaseController<>();
+    BaseTableController<ShiftService,ShiftTService,ShiftDTO,ShiftTDTO,Shift,ShiftT,ShiftParam> bt =new BaseTableController<>();
 
     /**
      * 获取排班内容
@@ -47,17 +48,7 @@ public class ShiftController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<ShiftTDTO>> info() {
-        List<ShiftT> shiftTS = shiftTService.selectAll();
-
-        List<ShiftTDTO> shiftTDTOS = new ArrayList<>();
-
-        shiftTS.forEach(shiftT -> {
-            ShiftTDTO shiftTDTO = new ShiftTDTO();
-            BeanUtils.copyProperties(shiftT, shiftTDTO);
-            shiftTDTOS.add(shiftTDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取排班内容", shiftTDTOS);
+        return bt.info(shiftTService, new ShiftTDTO());
     }
 
     /**
@@ -70,7 +61,7 @@ public class ShiftController {
     public ResponseResult<Void> add(@RequestBody ShiftParam shiftParam) {
 
         Shift shift = new Shift();
-        return bc.add(shiftService, shift, shiftParam);
+        return bt.add(shiftService, shift, shiftParam);
     }
 
     /**
@@ -82,7 +73,7 @@ public class ShiftController {
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody ShiftDTO shiftDTO) {
         Shift shift = new Shift();
-        return bc.update(shiftService, shift, shiftDTO);
+        return bt.update(shiftService, shift, shiftDTO);
     }
 
     /**
@@ -94,6 +85,6 @@ public class ShiftController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody ShiftDTO shiftDTO) {
         Long id = shiftDTO.getId();
-        return bc.delete(shiftService, id);
+        return bt.delete(shiftService, id);
     }
 }

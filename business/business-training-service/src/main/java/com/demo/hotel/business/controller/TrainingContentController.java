@@ -2,6 +2,7 @@ package com.demo.hotel.business.controller;
 
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.TrainingContentDTO;
 import com.demo.hotel.business.dto.TrainingContentPDTO;
 import com.demo.hotel.business.dto.param.TrainingContentParam;
@@ -38,7 +39,8 @@ public class TrainingContentController {
 
     @Reference(version = "1.0.0")
     TrainingContentPService trainingContentPService;
-    BaseController<TrainingContentService, TrainingContentDTO, TrainingContent, TrainingContentParam> bc = new BaseController<>();
+
+    BaseTableController<TrainingContentService,TrainingContentPService,TrainingContentDTO,TrainingContentPDTO,TrainingContent,TrainingContentP,TrainingContentParam> bt =new BaseTableController<>();
     /**
      * 获取培训内容
      *
@@ -46,17 +48,7 @@ public class TrainingContentController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<TrainingContentPDTO>> info() {
-        List<TrainingContentP> trainingContentPS = trainingContentPService.selectAll();
-
-        List<TrainingContentPDTO> trainingContentPDTOS = new ArrayList<>();
-
-        trainingContentPS.forEach(trainingContentP -> {
-            TrainingContentPDTO trainingContentPDTO = new TrainingContentPDTO();
-            BeanUtils.copyProperties(trainingContentP, trainingContentPDTO);
-            trainingContentPDTOS.add(trainingContentPDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取培训内容", trainingContentPDTOS);
+        return bt.info(trainingContentPService, new TrainingContentPDTO());
     }
 
     /**
@@ -71,7 +63,7 @@ public class TrainingContentController {
         TrainingContent trainingContent = new TrainingContent();
         BeanUtils.copyProperties(trainingContentParam, trainingContent);
         trainingContent.setCreateTime(new Date());
-        return bc.add(trainingContentService, trainingContent);
+        return bt.add(trainingContentService, trainingContent);
     }
 
     /**
@@ -85,7 +77,7 @@ public class TrainingContentController {
         TrainingContent trainingContent = new TrainingContent();
         BeanUtils.copyProperties(trainingContentDTO, trainingContent);
         trainingContent.setCreateTime(new Date());
-        return bc.update(trainingContentService, trainingContent);
+        return bt.update(trainingContentService, trainingContent);
     }
 
     /**
@@ -97,6 +89,6 @@ public class TrainingContentController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody TrainingContentDTO trainingContentDTO) {
         Long id = trainingContentDTO.getId();
-        return bc.delete(trainingContentService, id);
+        return bt.delete(trainingContentService, id);
     }
 }

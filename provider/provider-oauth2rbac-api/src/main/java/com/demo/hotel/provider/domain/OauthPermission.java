@@ -3,11 +3,13 @@ package com.demo.hotel.provider.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
 @Data
 @Table(name = "oauth_permission")
-public class OauthPermission implements Serializable {
+public class OauthPermission implements TableDomain {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")

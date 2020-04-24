@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @create: 2020-04-07 06:51
  **/
 @Data
-public class TrainingEcDTO implements Serializable {
+public class TrainingEcDTO implements ViewDTO {
 
     private static final long serialVersionUID = 1301451087941071343L;
 

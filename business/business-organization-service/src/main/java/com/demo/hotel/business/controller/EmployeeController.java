@@ -1,10 +1,9 @@
 package com.demo.hotel.business.controller;
 
-import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.EmployeeDTO;
 import com.demo.hotel.business.dto.EmployeePDTO;
 import com.demo.hotel.business.dto.param.EmployeeParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.EmployeePService;
 import com.demo.hotel.provider.api.EmployeeService;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class EmployeeController {
     @Reference(version = "1.0.0")
     EmployeePService employeePService;
 
-    BaseController<EmployeeService, EmployeeDTO, Employee, EmployeeParam> bc = new BaseController<>();
+    BaseTableController<EmployeeService,EmployeePService,EmployeeDTO,EmployeePDTO,Employee,EmployeeP,EmployeeParam> bt=new BaseTableController<>();
 
     /**
      * 获取职工信息
@@ -47,17 +45,7 @@ public class EmployeeController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<EmployeePDTO>> info() {
-        List<EmployeeP> employeePS = employeePService.selectAll();
-
-        List<EmployeePDTO> employeePDTOS = new ArrayList<>();
-
-        employeePS.forEach(employeeP -> {
-            EmployeePDTO employeePDTO = new EmployeePDTO();
-            BeanUtils.copyProperties(employeeP, employeePDTO);
-            employeePDTOS.add(employeePDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取职工信息", employeePDTOS);
+        return bt.info(employeePService, new EmployeePDTO());
     }
 
     /**
@@ -74,7 +62,7 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeParam, employee);
         employee.setCreateTime(new Date());
         employee.setUpdateTime(new Date());
-        return bc.add(employeeService, employee);
+        return bt.add(employeeService, employee);
     }
 
     /**
@@ -88,7 +76,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
         employee.setUpdateTime(new Date());
-        return bc.update(employeeService, employee);
+        return bt.update(employeeService, employee);
     }
 
     /**
@@ -100,6 +88,6 @@ public class EmployeeController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody EmployeeDTO employeeDTO) {
         Long id = employeeDTO.getId();
-        return bc.delete(employeeService,id);
+        return bt.delete(employeeService,id);
     }
 }

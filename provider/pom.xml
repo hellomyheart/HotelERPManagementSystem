@@ -97,6 +97,10 @@
         <module>provider-shift-api</module>
         <module>provider-shift-service</module>
 
+        <!--资金管理-->
+        <module>provider-cash-api</module>
+        <module>provider-cash-service</module>
+
         <!-- 前台业务-->
         <module>provider-user-api</module>
         <module>provider-user-service</module>

@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @create: 2020-04-07 17:08
  **/
 @Data
-public class ShiftTypeDTO implements Serializable {
+public class ShiftTypeDTO implements TableDTO {
 
 
     private static final long serialVersionUID = 6780781899514356621L;

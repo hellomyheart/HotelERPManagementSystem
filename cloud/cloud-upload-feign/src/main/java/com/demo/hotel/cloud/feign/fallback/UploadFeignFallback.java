@@ -18,6 +18,6 @@ public class UploadFeignFallback implements UploadFeign {
 
     @Override
     public String upload(MultipartFile multipartFile) {
-        return new CommonsFeignFallback<Void>().message(CodeStatus.BREAKING, FeignFallbackMessage.BREAKING_MESSAGE);
+        return new CommonsFeignFallback().message();
     }
 }

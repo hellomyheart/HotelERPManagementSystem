@@ -1,5 +1,6 @@
 package com.demo.hotel.business.base.controller;
 
+import com.demo.hotel.provider.api.BaseViewApi;
 import org.springframework.beans.BeanUtils;
 import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
@@ -14,12 +15,8 @@ import java.util.List;
  * @author: syj
  * @create: 2020-04-23 10:58
  **/
-public class BaseController<S extends BaseTableApi, D, M, P> {
+public class BaseController<S extends BaseTableApi, D,  M, P> {
 
-    //S Services
-    //D DTO
-    //M Domain
-    //P param
 
     /**
      * 添加

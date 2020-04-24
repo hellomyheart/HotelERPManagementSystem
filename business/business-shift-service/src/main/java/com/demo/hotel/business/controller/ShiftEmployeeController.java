@@ -2,6 +2,7 @@ package com.demo.hotel.business.controller;
 
 
 import com.demo.hotel.business.base.controller.BaseController;
+import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.ShiftEmployeeDTO;
 import com.demo.hotel.business.dto.ShiftEmployeeEDTO;
 import com.demo.hotel.business.dto.param.ShiftEmployeeParam;
@@ -39,8 +40,7 @@ public class ShiftEmployeeController {
     @Reference(version = "1.0.0")
     ShiftEmployeeEService shiftEmployeeEService;
 
-    BaseController<ShiftEmployeeService, ShiftEmployeeDTO, ShiftEmployee, ShiftEmployeeParam> bc = new BaseController<>();
-
+    BaseTableController<ShiftEmployeeService,ShiftEmployeeEService,ShiftEmployeeDTO,ShiftEmployeeEDTO,ShiftEmployee,ShiftEmployeeE,ShiftEmployeeParam> bt=new BaseTableController<>();
     /**
      * 获取职位排班
      *
@@ -48,19 +48,7 @@ public class ShiftEmployeeController {
      */
     @GetMapping(value = "info")
     public ResponseResult<List<ShiftEmployeeEDTO>> info() {
-        List<ShiftEmployeeE> shiftEmployeeES = shiftEmployeeEService.selectAll();
-
-        List<ShiftEmployeeEDTO> shiftEmployeeEDTOS = new ArrayList<>();
-
-        shiftEmployeeES.forEach(shiftEmployeeE -> {
-            ShiftEmployeeEDTO shiftEmployeeEDTO = new ShiftEmployeeEDTO();
-            BeanUtils.copyProperties(shiftEmployeeE, shiftEmployeeEDTO);
-            System.out.println(shiftEmployeeE);
-            System.out.println(shiftEmployeeEDTO);
-            shiftEmployeeEDTOS.add(shiftEmployeeEDTO);
-        });
-
-        return new ResponseResult<>(CodeStatus.OK, "获取职位排班", shiftEmployeeEDTOS);
+        return bt.info(shiftEmployeeEService, new ShiftEmployeeEDTO());
     }
 
     /**
@@ -72,7 +60,7 @@ public class ShiftEmployeeController {
     public ResponseResult<Void> add(@RequestBody ShiftEmployeeParam shiftEmployeeParam) {
 
         ShiftEmployee shiftEmployee=new ShiftEmployee();
-        return bc.add(shiftEmployeeService, shiftEmployee, shiftEmployeeParam);
+        return bt.add(shiftEmployeeService, shiftEmployee, shiftEmployeeParam);
     }
 
     /**
@@ -83,7 +71,7 @@ public class ShiftEmployeeController {
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody ShiftEmployeeDTO shiftEmployeeDTO) {
         ShiftEmployee shiftEmployee=new ShiftEmployee();
-        return bc.update(shiftEmployeeService, shiftEmployee, shiftEmployeeDTO);
+        return bt.update(shiftEmployeeService, shiftEmployee, shiftEmployeeDTO);
     }
 
     /**
@@ -94,6 +82,6 @@ public class ShiftEmployeeController {
     @PostMapping(value = "delete")
     public ResponseResult<Void> delete(@RequestBody ShiftEmployeeDTO shiftEmployeeDTO) {
         Long id = shiftEmployeeDTO.getId();
-        return bc.delete(shiftEmployeeService, id);
+        return bt.delete(shiftEmployeeService, id);
     }
 }

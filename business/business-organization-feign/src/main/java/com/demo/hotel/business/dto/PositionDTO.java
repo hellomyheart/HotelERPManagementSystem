@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @create: 2020-04-06 17:15
  **/
 @Data
-public class PositionDTO implements Serializable {
+public class PositionDTO implements TableDTO {
 
     private static final long serialVersionUID = 5573776996827968237L;
 

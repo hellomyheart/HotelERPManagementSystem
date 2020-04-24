@@ -7,13 +7,6 @@ import java.util.List;
 /**
  * @author syj
  */
-public interface DepartmentService extends BaseTableApi<Department>{
-
-
-    /**
-     * 查询所有
-     * @return
-     */
-    List<Department> selectAll();
+public interface DepartmentService extends BaseSingleTableApi<Department> {
 
 }

@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
 import javax.persistence.*;
+
+import com.demo.hotel.provider.doamin.ViewDomain;
 import lombok.Data;
 
 @Data
 @Table(name = "shift_t")
-public class ShiftT implements Serializable {
+public class ShiftT implements ViewDomain {
 
 
     private static final long serialVersionUID = -2978791720330580188L;
