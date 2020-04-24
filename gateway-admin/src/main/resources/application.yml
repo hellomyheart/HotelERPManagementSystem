@@ -68,6 +68,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-CASH
+          uri: lb://business-cash
+          predicates:
+            - Path=/api/cash/**
+          filters:
+            - StripPrefix=1
+
 
 server:
   port: 8888

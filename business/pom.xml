@@ -77,6 +77,8 @@
         <module>business-shift-feign</module>
         <module>business-shift-service</module>
 
+        <module>business-cash-feign</module>
+        <module>business-cash-service</module>
 
         <!--前台业务-->
 

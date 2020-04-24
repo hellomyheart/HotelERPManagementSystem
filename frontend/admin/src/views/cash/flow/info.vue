@@ -1,27 +1,21 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.employeeName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.note.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       border
       stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" sortable prop="id"/>
-      <el-table-column label="职工姓名" sortable prop="employeeName"/>
-      <el-table-column label="职位名" sortable prop="positionName"/>
-      <el-table-column label="身份证号" prop="identify"/>
-      <el-table-column label="手机号" prop="phone"/>
-      <el-table-column label="入职时间" sortable type="datetime" prop="createTime"/>
-      <el-table-column label="更新时间" prop="updateTime"/>
-      <el-table-column label="性别" :formatter="formatSex" prop="gender"/>
-      <el-table-column label="出生日期" sortable prop="birthday"/>
+      <el-table-column label="流动类型" :formatter="formatType" sortable prop="flowType"/>
+      <el-table-column label="金额" sortable prop="money"/>
+      <el-table-column label="备注" sortable prop="note"/>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
         </template>
       </el-table-column>
@@ -41,7 +35,7 @@
 </template>
 
 <script>
-import { info, deleteD } from '@/api/organization/employee'
+import { info, deleteD } from '@/api/cash/flow'
 export default {
   data() {
     return {
@@ -68,16 +62,8 @@ export default {
         this.totalCount = this.tableData.length;
       });
     },
-    formatSex: function (row, column, cellValue, index) {
-			return row.gender == 0 ? '未知' : row.gender == 1 ? '男' : '女';
-		},
-    handleEdit(index, row) {
-      this.$router.push({
-        name: 'EmployeeEdit',
-        params: {
-          data: row
-        }
-      });
+    formatType: function (row, column, cellValue, index) {
+      return row.flowType == 0 ? '出账' : '入账'
     },
     handleDelete(index, row) {
       deleteD(row)

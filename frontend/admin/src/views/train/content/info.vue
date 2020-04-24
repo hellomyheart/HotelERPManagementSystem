@@ -7,7 +7,7 @@
       style="width: 100%"
       :height="500"
     >
-      <el-table-column label="ID" prop="id"/>
+      <el-table-column label="ID" sortable prop="id"/>
       <el-table-column label="培训内容" sortable prop="title"/>
       <el-table-column label="简单介绍" prop="note"/>
       <el-table-column label="培训时长" prop="sumTime"/>

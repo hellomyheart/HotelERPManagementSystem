@@ -308,6 +308,27 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/cash/flow',
+    component: Layout,
+    redirect: '/cash/flow/info',
+    name: 'CashFlow',
+    meta: { title: '资金流动管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'CashFlowInfo',
+        component: () => import('@/views/cash/flow/info'),
+        meta: { title: '资金流动详情', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'CashFlowAdd',
+        component: () => import('@/views/cash/flow/add'),
+        meta: { title: '添加资金流动', icon: 'user' }
+      }
+    ]
+  },
 
 
 

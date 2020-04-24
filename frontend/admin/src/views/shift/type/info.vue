@@ -7,7 +7,7 @@
       style="width: 100%"
       :height="500"
     >
-      <el-table-column label="ID" prop="id"/>
+      <el-table-column label="ID" sortable prop="id"/>
       <el-table-column label="分类名" sortable prop="typeName"/>
       <el-table-column label="部门名" sortable prop="departmentName"/>
       <el-table-column align="right">

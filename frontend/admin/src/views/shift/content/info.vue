@@ -7,7 +7,7 @@
       style="width: 100%"
       :height="500"
     >
-      <el-table-column label="ID" prop="id"/>
+      <el-table-column label="ID" sortable prop="id"/>
       <el-table-column label="班次标题" sortable prop="title"/>
       <el-table-column label="分类名" prop="typeName"/>
       <el-table-column label="开始时间" prop="startTime"/>
