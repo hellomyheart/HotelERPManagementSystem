@@ -1,27 +1,22 @@
 package com.demo.hotel.business.controller;
 
 
-import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.ShiftEmployeeDTO;
 import com.demo.hotel.business.dto.ShiftEmployeeEDTO;
 import com.demo.hotel.business.dto.param.ShiftEmployeeParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.ShiftEmployeeEService;
 import com.demo.hotel.provider.api.ShiftEmployeeService;
 import com.demo.hotel.provider.domain.ShiftEmployee;
 import com.demo.hotel.provider.domain.ShiftEmployeeE;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

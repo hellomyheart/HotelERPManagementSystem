@@ -80,6 +80,9 @@
         <module>business-cash-feign</module>
         <module>business-cash-service</module>
 
+        <module>business-budget-feign</module>
+        <module>business-budget-service</module>
+
         <!--前台业务-->
 
         <module>business-user-oauth2-service</module>

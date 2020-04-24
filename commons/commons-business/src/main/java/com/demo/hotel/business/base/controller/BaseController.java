@@ -15,7 +15,7 @@ import java.util.List;
  * @author: syj
  * @create: 2020-04-23 10:58
  **/
-public class BaseController<S extends BaseTableApi, D,  M, P> {
+class BaseController<S extends BaseTableApi, D,  M, P> {
 
 
     /**

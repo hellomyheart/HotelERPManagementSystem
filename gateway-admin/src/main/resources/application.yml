@@ -75,6 +75,15 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-CASH
+          uri: lb://business-budget
+          predicates:
+            - Path=/api/budget/**
+          filters:
+            - StripPrefix=1
+
+
+
 
 server:
   port: 8888

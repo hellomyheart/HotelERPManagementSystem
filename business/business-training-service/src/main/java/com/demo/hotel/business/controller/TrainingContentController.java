@@ -1,12 +1,10 @@
 package com.demo.hotel.business.controller;
 
 
-import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.TrainingContentDTO;
 import com.demo.hotel.business.dto.TrainingContentPDTO;
 import com.demo.hotel.business.dto.param.TrainingContentParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.TrainingContentPService;
 import com.demo.hotel.provider.api.TrainingContentService;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

@@ -3,7 +3,6 @@ import BaseRequest from '@/api/Base'
 var BaseURL = 'organization/department/'
 var br = new BaseRequest(BaseURL)
 
-
 // /**
 //  * 获取部门信息
 //  * @returns {AxiosPromise}

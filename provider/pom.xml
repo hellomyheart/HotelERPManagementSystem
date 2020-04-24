@@ -101,6 +101,10 @@
         <module>provider-cash-api</module>
         <module>provider-cash-service</module>
 
+        <!-- 预算管理-->
+        <module>provider-budget-api</module>
+        <module>provider-budget-service</module>
+
         <!-- 前台业务-->
         <module>provider-user-api</module>
         <module>provider-user-service</module>

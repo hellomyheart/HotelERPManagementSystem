@@ -313,7 +313,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/cash/flow/info',
     name: 'CashFlow',
-    meta: { title: '资金流动管理', icon: 'user' },
+    meta: { title: '资金管理', icon: 'user' },
     children: [
       {
         path: 'info',
@@ -330,6 +330,34 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/budget/apply',
+    component: Layout,
+    redirect: '/budget/apply/info',
+    name: 'BudgetApply',
+    meta: { title: '预算管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'BudgetApplyInfo',
+        component: () => import('@/views/budget/apply/info'),
+        meta: { title: '资金申请详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'BudgetApplyEdit',
+        hidden: true,
+        component: () => import('@/views/budget/apply/edit'),
+        meta: { title: '修改资金申请', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'BudgetApplyAdd',
+        component: () => import('@/views/budget/apply/add'),
+        meta: { title: '资金申请', icon: 'user' }
+      }
+    ]
+  },
 
 
 

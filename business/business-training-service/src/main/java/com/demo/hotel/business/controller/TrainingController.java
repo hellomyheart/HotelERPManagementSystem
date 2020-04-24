@@ -1,12 +1,10 @@
 package com.demo.hotel.business.controller;
 
 
-import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.TrainingDTO;
 import com.demo.hotel.business.dto.TrainingEcDTO;
 import com.demo.hotel.business.dto.param.TrainingParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.TrainingContentService;
 import com.demo.hotel.provider.api.TrainingEcService;

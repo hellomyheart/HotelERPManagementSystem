@@ -1,25 +1,21 @@
 package com.demo.hotel.business.controller;
 
-import com.demo.hotel.business.base.controller.BaseController;
 import com.demo.hotel.business.base.controller.BaseTableController;
 import com.demo.hotel.business.dto.PositionDDTO;
 import com.demo.hotel.business.dto.PositionDTO;
 import com.demo.hotel.business.dto.param.PositionParam;
-import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.provider.api.PositionDService;
 import com.demo.hotel.provider.api.PositionService;
 import com.demo.hotel.provider.domain.Position;
 import com.demo.hotel.provider.domain.PositionD;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
