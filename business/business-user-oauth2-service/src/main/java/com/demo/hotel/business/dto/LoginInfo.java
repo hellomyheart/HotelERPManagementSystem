@@ -12,7 +12,11 @@ import java.io.Serializable;
  **/
 @Data
 public class LoginInfo implements Serializable {
+
+
+    private static final long serialVersionUID = 8913499440092179437L;
     private String name;
     private String avatar;
     private String nickname;
+    private Object[] roles;
 }

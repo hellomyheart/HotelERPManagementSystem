@@ -4,16 +4,12 @@ import com.demo.hotel.business.BusinessException;
 import com.demo.hotel.business.BusinessStatus;
 import com.demo.hotel.business.dto.LoginInfo;
 import com.demo.hotel.business.dto.LoginParam;
-import com.demo.hotel.business.feign.ProfileFeign;
-import com.demo.hotel.cloud.api.MessageService;
-import com.demo.hotel.cloud.dto.AdminLoginLogDTO;
 import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
 import com.demo.hotel.commons.utils.UserAgentUtils;
-import com.demo.hotel.provider.api.AdminService;
-import com.demo.hotel.provider.domain.Admin;
+import com.demo.hotel.provider.api.UsersService;
 import com.google.common.collect.Maps;
 import eu.bitwalker.useragentutils.Browser;
 import okhttp3.Response;
@@ -67,14 +63,13 @@ public class LoginController {
     @Resource
     public TokenStore tokenStore;
 
-    @Resource
-    private ProfileFeign profileFeign;
+//    @Resource
+//    private ProfileFeign profileFeign;
 
     @Reference(version = "1.0.0")
-    private AdminService adminService;
+    private UsersService usersService;
 
-    @Reference(version = "1.0.0")
-    private MessageService messageService;
+
 
     /**
      * 登录
@@ -86,6 +81,14 @@ public class LoginController {
     public ResponseResult<Map<String, Object>> login(@RequestBody LoginParam loginParam, HttpServletRequest request) throws Exception {
         // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
+
+
+//        //TODO 短信验证
+//        UserCodeDTO userCodeDTO = new UserCodeDTO();
+//        userCodeDTO.setPhoneNumber("1");
+//        userCodeDTO.setCode("95566");
+//        messageService.sendUserCode(userCodeDTO);
+
 
         //验证账号密码
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
@@ -109,8 +112,6 @@ public class LoginController {
             Map<String, Object> jsonMap = MapperUtils.json2map(jsonString);
             String token = String.valueOf(jsonMap.get("access_token"));
             result.put("token", token);
-            // 发送登录日志
-            sendAdminLoginLog(userDetails.getUsername(), request);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,27 +126,26 @@ public class LoginController {
      * @Date: 2020/3/29
      */
     //以下注解设置访问权限
-    @PreAuthorize("hasAuthority('USER')")
-    @GetMapping(value = "/user/info")
-    public ResponseResult<LoginInfo> info() throws Exception {
-        //获取认证信息上下文的信息
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        // 获取个人信息,使用feign
-        String jsonString = profileFeign.info(authentication.getName());
-        Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
-//TODO
-        //熔断
-        if (admin == null) {
-            return MapperUtils.json2pojo(jsonString, ResponseResult.class);
-        }
-        // 封装并返回结果
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setName(admin.getUsername());
-        loginInfo.setAvatar(admin.getIcon());
-        loginInfo.setNickname(admin.getNickname());
-        return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
-    }
+//    @PreAuthorize("hasAuthority('USER')")
+//    @GetMapping(value = "/user/info")
+//    public ResponseResult<LoginInfo> info() throws Exception {
+//        //获取认证信息上下文的信息
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        // 获取个人信息,使用feign
+//        String jsonString = profileFeign.info(authentication.getName());
+//        Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
+//        //熔断
+//        if (admin == null) {
+//            return MapperUtils.json2pojo(jsonString, ResponseResult.class);
+//        }
+//        // 封装并返回结果
+//        LoginInfo loginInfo = new LoginInfo();
+//        loginInfo.setName(admin.getUsername());
+//        loginInfo.setAvatar(admin.getIcon());
+//        loginInfo.setNickname(admin.getNickname());
+//        loginInfo.setRoles( authentication.getAuthorities().toArray());
+//        return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
+//    }
 
     /**
      * @Description: 注销
@@ -163,30 +163,5 @@ public class LoginController {
         tokenStore.removeAccessToken(oAuth2AccessToken);
 
         return new ResponseResult<Void>(CodeStatus.OK, "用户注销", null);
-    }
-
-    /**
-     * 发送登录日志
-     *
-     * @param request {@link HttpServletRequest}
-     */
-    private void sendAdminLoginLog(String username, HttpServletRequest request) {
-        Admin admin = adminService.get(username);
-
-        if (admin != null) {
-            // 获取请求的用户代理信息
-            Browser browser = UserAgentUtils.getBrowser(request);
-            String ip = UserAgentUtils.getIpAddr(request);
-            String address = UserAgentUtils.getIpInfo(ip).getCity();
-
-            AdminLoginLogDTO dto = new AdminLoginLogDTO();
-            dto.setAdminId(admin.getId());
-            dto.setCreateTime(new Date());
-            dto.setIp(ip);
-            dto.setAddress(address);
-            dto.setUserAgent(browser.getName());
-
-            messageService.sendAdminLoginLog(dto);
-        }
     }
 }

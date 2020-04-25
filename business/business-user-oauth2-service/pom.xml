@@ -66,29 +66,14 @@
         </dependency>
 
         <!-- Projects -->
+<!--        <dependency>-->
+<!--            <groupId>com.demo.hotel</groupId>-->
+<!--            <artifactId>business-admin-profile-feign</artifactId>-->
+<!--            <version>${project.parent.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.demo.hotel</groupId>
-            <artifactId>business-admin-profile-feign</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.demo.hotel</groupId>
-            <artifactId>provider-admin-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.demo.hotel</groupId>
-            <artifactId>cloud-message-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.demo.hotel</groupId>
-            <artifactId>provider-oauth2rbac-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.demo.hotel</groupId>
-            <artifactId>cloud-message-feign</artifactId>
+            <artifactId>provider-user-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
