@@ -1,4 +1,5 @@
 package com.demo.hotel.provider.tests;
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.demo.hotel.provider.api.EmployeePService;
@@ -41,7 +42,8 @@ public class EmployeeTests {
         employee.setCreateTime(new Date());
         employee.setUpdateTime(new Date());
         employee.setGender(0);
-        employee.setBirthday(new Date());
+        employee.setBirthday(LocalDate.now());
+        employee.setStatus(0);
         int insert = employeeService.insert(employee);
         Assert.assertEquals(insert,1);
     }
@@ -63,7 +65,8 @@ public class EmployeeTests {
         employee.setCreateTime(new Date());
         employee.setUpdateTime(new Date());
         employee.setGender(0);
-        employee.setBirthday(new Date());
+        employee.setBirthday(LocalDate.now());
+        employee.setStatus(1);
 
 
         int update = employeeService.update(employee);

@@ -16,6 +16,7 @@
       <el-table-column label="更新时间" prop="updateTime"/>
       <el-table-column label="性别" :formatter="formatSex" prop="gender"/>
       <el-table-column label="出生日期" sortable prop="birthday"/>
+      <el-table-column label="状态" :formatter="formatS" sortable prop="status"/>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -70,6 +71,9 @@ export default {
     },
     formatSex: function (row, column, cellValue, index) {
 			return row.gender == 0 ? '未知' : row.gender == 1 ? '男' : '女';
+    },
+    formatS: function (row, column, cellValue, index) {
+			return row.status == 0 ? '正常' : row.status == 1 ? '休假' : '离职';
 		},
     handleEdit(index, row) {
       this.$router.push({

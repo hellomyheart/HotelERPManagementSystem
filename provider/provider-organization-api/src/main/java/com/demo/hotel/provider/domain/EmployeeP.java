@@ -1,6 +1,7 @@
 package com.demo.hotel.provider.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -64,7 +65,13 @@ public class EmployeeP implements ViewDomain {
      * 出生日期
      */
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
+
+    /**
+     * 状态，0正常，1休假，2离职
+     */
+    @Column(name = "status")
+    private Integer status;
 
     /**
      * 职位名

@@ -21,12 +21,12 @@
         <el-input v-model="form.phone" />
       </el-form-item>
       <el-form-item label="选择性别">
-        <el-select v-model="selectGender" filterable clearable placeholder="请选择">
+        <el-select v-model="form.gender" filterable clearable placeholder="请选择">
           <el-option v-for="item in GenderInfo" :key="item.id" :label="item.name" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="选择职位">
-        <el-select v-model="selectPosition" filterable clearable placeholder="请选择">
+        <el-select v-model="form.positionId" filterable clearable placeholder="请选择">
           <el-option
             v-for="item in positionInfo"
             :key="item.id"
@@ -41,9 +41,13 @@
           align="right"
           type="date"
           placeholder="选择日期"
-          :picker-options="pickerOptions"
-          value-format="yyyy-MM-dd HH:mm:ss"
+          value-format="yyyy-MM-dd"
         ></el-date-picker>
+      </el-form-item>
+      <el-form-item label="选择状态">
+        <el-select v-model="form.status" filterable clearable placeholder="请选择">
+          <el-option v-for="item in SInfo" :key="item.id" :label="item.name" :value="item.id"></el-option>
+        </el-select>
       </el-form-item>
 
       <el-form-item>
@@ -68,10 +72,10 @@ export default {
         identify: '',
         phone: '',
         gender: '',
+        status: '',
         birthday: ''
       },
       positionInfo: '',
-      selectPosition: '',
       GenderInfo: [
         {
           id: 0,
@@ -86,8 +90,21 @@ export default {
           name: '女'
         }
       ],
-      selectGender: ''
-    };
+      SInfo: [
+        {
+          id: 0,
+          name: '正常'
+        },
+        {
+          id: 1,
+          name: '休假'
+        },
+        {
+          id: 2,
+          name: '离职'
+        }
+      ]
+    }
   },
   created() {
     this.fetchData()
@@ -98,14 +115,11 @@ export default {
       this.formLoading = false
       info().then(response => {
         this.positionInfo = response.data;
-      });
-      this.selectGender=this.form.gender;
-      this.selectPosition=this.form.positionId;     
+      })
+      console.log(this.$route.params.data)
     },
     onSubmit() {
       this.formLoading = true
-      this.form.positionId=this.selectPosition;
-      this.form.gender=this.selectGender;
       update(this.form).then(response => {
         this.formLoading = false
         this.$message({

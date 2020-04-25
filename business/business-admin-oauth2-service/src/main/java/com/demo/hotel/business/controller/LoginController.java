@@ -152,7 +152,6 @@ public class LoginController {
         loginInfo.setName(admin.getUsername());
         loginInfo.setAvatar(admin.getIcon());
         loginInfo.setNickname(admin.getNickname());
-        String[] s=new String[2];
         loginInfo.setRoles( authentication.getAuthorities().toArray());
         return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
     }

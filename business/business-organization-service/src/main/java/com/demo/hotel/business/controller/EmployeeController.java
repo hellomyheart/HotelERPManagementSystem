@@ -62,6 +62,7 @@ public class EmployeeController {
         BeanUtils.copyProperties(employeeParam, employee);
         employee.setCreateTime(new Date());
         employee.setUpdateTime(new Date());
+        employee.setStatus(0);
         return bt.add(employeeService, employee);
     }
 

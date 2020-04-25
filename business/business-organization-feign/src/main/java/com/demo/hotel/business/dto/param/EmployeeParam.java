@@ -3,6 +3,7 @@ package com.demo.hotel.business.dto.param;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -46,6 +47,11 @@ public class EmployeeParam implements BaseParam {
     /**
      * 出生日期
      */
-    private Date birthday;
+    private LocalDate birthday;
+
+    /**
+     * 状态，0正常，1休假，2离职
+     */
+    private Integer status;
 
 }

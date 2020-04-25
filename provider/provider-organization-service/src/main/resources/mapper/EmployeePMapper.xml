@@ -13,6 +13,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="position_name" jdbcType="VARCHAR" property="positionName" />
   </resultMap>
 </mapper>

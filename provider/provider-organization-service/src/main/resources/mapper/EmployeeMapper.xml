@@ -13,10 +13,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Mon Apr 06 18:30:16 CST 2020.-->
     id, position_id, employee_name, identify, phone, create_time, update_time, gender, 
-    birthday
+    birthday,status
   </sql>
 </mapper>

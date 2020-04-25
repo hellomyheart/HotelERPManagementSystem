@@ -3,6 +3,7 @@ package com.demo.hotel.business.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -58,7 +59,12 @@ public class EmployeePDTO implements ViewDTO {
     /**
      * 出生日期
      */
-    private Date birthday;
+    private LocalDate birthday;
+
+    /**
+     * 状态，0正常，1休假，2离职
+     */
+    private Integer status;
 
     /**
      * 职位名
