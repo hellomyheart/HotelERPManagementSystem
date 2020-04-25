@@ -1,12 +1,14 @@
 package com.demo.hotel.provider.api;
 
+import com.demo.hotel.provider.doamin.TableDomain;
+
 /**
  * @program: HotelERPManagementSystem
  * @description: 基础的表Api
  * @author: syj
  * @create: 2020-04-23 08:10
  **/
-public interface BaseTableApi<T>{
+public interface BaseTableApi<T> {
 
     /**
      * 新增

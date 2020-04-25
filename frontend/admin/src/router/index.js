@@ -389,6 +389,35 @@ export const asyncRoutes = [
   },
 
   {
+    path: '/facility/apply',
+    component: Layout,
+    redirect: '/facility/apply/info',
+    name: 'FacilityApply',
+    meta: { title: '设备管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'FacilityApplyInfo',
+        component: () => import('@/views/facility/apply/info'),
+        meta: { title: '设备申请信息', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'FacilityApplyAdd',
+        component: () => import('@/views/facility/apply/add'),
+        meta: { title: '设备申请', icon: 'user' }
+      }
+    ]
+  },
+
+
+
+
+
+
+
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',

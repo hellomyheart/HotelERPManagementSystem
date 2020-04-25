@@ -82,6 +82,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-FACILITY
+          uri: lb://business-facility
+          predicates:
+            - Path=/api/facility/**
+          filters:
+            - StripPrefix=1
+
 
 
 

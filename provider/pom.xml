@@ -105,6 +105,14 @@
         <module>provider-budget-api</module>
         <module>provider-budget-service</module>
 
+        <!-- 绩效管理-->
+<!--        <module>provider-performance-api</module>-->
+<!--        <module>provider-performance-service</module>-->
+
+        <!-- 设备管理-->
+        <module>provider-facility-api</module>
+        <module>provider-facility-service</module>
+
         <!-- 前台业务-->
         <module>provider-user-api</module>
         <module>provider-user-service</module>

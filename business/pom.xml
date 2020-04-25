@@ -83,6 +83,8 @@
         <module>business-budget-feign</module>
         <module>business-budget-service</module>
 
+        <module>business-facility-feign</module>
+        <module>business-facility-service</module>
         <!--前台业务-->
 
         <module>business-user-oauth2-service</module>

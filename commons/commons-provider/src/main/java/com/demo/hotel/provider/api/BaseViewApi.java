@@ -1,5 +1,7 @@
 package com.demo.hotel.provider.api;
 
+import com.demo.hotel.provider.doamin.ViewDomain;
+
 import java.util.List;
 
 /**
