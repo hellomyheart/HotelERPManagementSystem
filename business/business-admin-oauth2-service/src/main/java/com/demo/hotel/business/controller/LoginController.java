@@ -92,7 +92,7 @@ public class LoginController {
 
 //        //TODO 短信验证
 //        UserCodeDTO userCodeDTO = new UserCodeDTO();
-//        userCodeDTO.setPhoneNumber("15038405422");
+//        userCodeDTO.setPhoneNumber("1");
 //        userCodeDTO.setCode("95566");
 //        messageService.sendUserCode(userCodeDTO);
 
@@ -140,7 +140,6 @@ public class LoginController {
     public ResponseResult<LoginInfo> info() throws Exception {
         //获取认证信息上下文的信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         // 获取个人信息,使用feign
         String jsonString = profileFeign.info(authentication.getName());
         Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
@@ -153,6 +152,8 @@ public class LoginController {
         loginInfo.setName(admin.getUsername());
         loginInfo.setAvatar(admin.getIcon());
         loginInfo.setNickname(admin.getNickname());
+        String[] s=new String[2];
+        loginInfo.setRoles( authentication.getAuthorities().toArray());
         return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
     }
 

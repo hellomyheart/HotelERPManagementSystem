@@ -56,11 +56,40 @@ export const constantRoutes = [
   },
 
   {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/table',
+    name: 'Example',
+    meta: { title: 'Example', icon: 'example' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Table', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  }
+]
+
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
+
+  {
     path: '/profile',
     component: Layout,
     redirect: '/profile/info',
     name: 'Profile',
-    meta: { title: '个人信息', icon: 'user' },
+    meta: { title: '个人信息', icon: 'user', roles: ['USER'] },
     children: [
       {
         path: 'info',
@@ -88,7 +117,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/organization/department/info',
     name: 'department',
-    meta: { title: '部门管理', icon: 'user' },
+    meta: { title: '部门管理', icon: 'user', roles: ['Department'] },
     children: [
       {
         path: 'info',
@@ -117,7 +146,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/organization/position/info',
     name: 'Position',
-    meta: { title: '职位管理', icon: 'user' },
+    meta: { title: '职位管理', icon: 'user', roles: ['Position'] },
     children: [
       {
         path: 'info',
@@ -358,8 +387,6 @@ export const constantRoutes = [
       }
     ]
   },
-
-
 
   {
     path: '/example',
