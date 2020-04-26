@@ -1,6 +1,5 @@
 package com.demo.hotel.provider.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 

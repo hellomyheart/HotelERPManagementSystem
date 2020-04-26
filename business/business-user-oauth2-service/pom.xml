@@ -66,16 +66,16 @@
         </dependency>
 
         <!-- Projects -->
-<!--        <dependency>-->
-<!--            <groupId>com.demo.hotel</groupId>-->
-<!--            <artifactId>business-admin-profile-feign</artifactId>-->
-<!--            <version>${project.parent.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>business-user-profile-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.demo.hotel</groupId>
             <artifactId>provider-user-api</artifactId>
             <version>${project.parent.version}</version>
-        </dependency>
+        </dependency
     </dependencies>
 
     <build>

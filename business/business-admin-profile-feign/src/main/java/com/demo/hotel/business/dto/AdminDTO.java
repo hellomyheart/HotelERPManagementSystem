@@ -14,6 +14,8 @@ import java.util.Date;
 @Data
 public class AdminDTO implements Serializable {
 
+
+    private static final long serialVersionUID = -5727496863576681101L;
     /**
      * 管理员Id
      */

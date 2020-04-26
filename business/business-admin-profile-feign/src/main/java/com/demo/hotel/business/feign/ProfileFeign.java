@@ -27,12 +27,10 @@ public interface ProfileFeign {
 
     /**
      * 获取个人信息
-     *
-     * @param username {@code String} 用户名
-     * @return {@code String} JSON
+     * @return
      */
-    @GetMapping(value = "info/{username}")
-    String info(@PathVariable String username);
+    @GetMapping(value = "info")
+    String info();
 
     /**
      * 更新个人信息

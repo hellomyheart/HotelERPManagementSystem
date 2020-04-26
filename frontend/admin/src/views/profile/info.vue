@@ -8,7 +8,6 @@
       :model="form"
       label-width="120px"
     >
-      <el-input type="hidden" v-model="form.id"/>
       <el-form-item label="头像">
         <img :src="form.icon" width="60" height="60">
       </el-form-item>
@@ -52,7 +51,6 @@
             return {
                 formLoading: true,
                 form: {
-                    id: '',
                     employeeId: '',
                     username: '',
                     nickname: '',

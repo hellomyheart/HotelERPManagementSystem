@@ -1,0 +1,37 @@
+import BaseRequest from '@/api/Base'
+
+var BaseURL = 'organization/department/'
+var br = new BaseRequest(BaseURL)
+
+// /**
+//  * 获取部门信息
+//  * @returns {AxiosPromise}
+//  */
+export function info() {
+  return br.info()
+}
+
+// /**
+//  * 更新部门信息
+//  * @param username
+//  * @returns {AxiosPromise}
+//  */
+export function update(data) {
+  return br.update(data)
+}
+
+// /**
+//  * 删除部门信息
+//  * @param data
+//  */
+export function deleteD(data) {
+  return br.deleteD(data)
+}
+
+// /**
+//  * 添加部门
+//  * @param data
+//  */
+export function add(data) {
+  return br.add(data)
+}

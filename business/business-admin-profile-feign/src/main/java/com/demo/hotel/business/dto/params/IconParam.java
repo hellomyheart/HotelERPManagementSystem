@@ -13,6 +13,8 @@ import java.io.Serializable;
 @Data
 public class IconParam implements Serializable {
 
+
+    private static final long serialVersionUID = -5468049685733211188L;
     /**
      * 用户名
      */

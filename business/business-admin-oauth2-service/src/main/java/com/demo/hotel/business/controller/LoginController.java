@@ -141,7 +141,7 @@ public class LoginController {
         //获取认证信息上下文的信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // 获取个人信息,使用feign
-        String jsonString = profileFeign.info(authentication.getName());
+        String jsonString = profileFeign.info();
         Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
         //熔断
         if (admin == null) {

@@ -13,7 +13,8 @@ import java.io.Serializable;
 @Data
 public class PasswordParam implements Serializable {
 
-    private String username;
+
+    private static final long serialVersionUID = 5617617717832198551L;
     private String oldPassword;
     private String newPassword;
 

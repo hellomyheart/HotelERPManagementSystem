@@ -10,7 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableDiscoveryClient
 @EnableFeignClients
-@SpringBootApplication(scanBasePackageClasses = {BusinessUserOAuth2Application.class}, scanBasePackages = "com.demo.hotel.cloud.feign")
+//@SpringBootApplication(scanBasePackageClasses = {BusinessUserOAuth2Application.class}, scanBasePackages = "com.demo.hotel.cloud.feign")
+@SpringBootApplication(scanBasePackageClasses = {BusinessUserOAuth2Application.class})
 public class BusinessUserOAuth2Application {
     public static void main(String[] args) {
         SpringApplication.run(BusinessUserOAuth2Application.class, args);

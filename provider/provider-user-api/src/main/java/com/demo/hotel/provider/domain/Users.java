@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.demo.hotel.provider.doamin.TableDomain;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -56,12 +57,14 @@ public class Users implements TableDomain {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "creat_time")
     private Date creatTime;
 
     /**
      * 更新时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "update_time")
     private Date updateTime;
 

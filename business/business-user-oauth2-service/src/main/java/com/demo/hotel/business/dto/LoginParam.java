@@ -12,6 +12,8 @@ import java.io.Serializable;
 @Data
 public class LoginParam implements Serializable {
 
+
+    private static final long serialVersionUID = -246920634529618754L;
     private String username;
     private String password;
 }

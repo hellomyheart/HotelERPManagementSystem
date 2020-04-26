@@ -12,9 +12,10 @@ import com.demo.hotel.provider.api.AdminService;
 import com.demo.hotel.provider.domain.Admin;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,15 +41,15 @@ public class ProfileController {
 
 
     /**
-     * 获取个人信息
-     *
-     * @param username {@code String} 用户名
-     * @return {@link ResponseResult}
+     * 获取
+     * @return
      */
-    @GetMapping(value = "info/{username}")
+    @GetMapping(value = "info")
     @SentinelResource(value = "info", fallback = "infoFallback", fallbackClass = ProfileControllerFallback.class)
-    public ResponseResult<AdminDTO> info(@PathVariable String username) {
-        Admin admin = adminService.get(username);
+    public ResponseResult<AdminDTO> info() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Admin admin = adminService.get(authentication.getName());
         AdminDTO dto = new AdminDTO();
         BeanUtils.copyProperties(admin, dto);
         return new ResponseResult<AdminDTO>(CodeStatus.OK, "获取个人信息", dto);
@@ -62,9 +63,9 @@ public class ProfileController {
      */
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody ProfileParam profileParam) {
-//TODO 更新职工号没写
         Admin newAdmin = new Admin();
         BeanUtils.copyProperties(profileParam, newAdmin);
+        newAdmin.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         int result = adminService.update(newAdmin);
 
         // 成功
@@ -88,7 +89,7 @@ public class ProfileController {
      */
     @PostMapping(value = "modify/password")
     public ResponseResult<Void> modifyPassword(@RequestBody PasswordParam passwordParam) {
-        Admin admin = adminService.get(passwordParam.getUsername());
+        Admin admin = adminService.get(SecurityContextHolder.getContext().getAuthentication().getName());
 
         // 旧密码正确
         if (passwordEncoder.matches(passwordParam.getOldPassword(), admin.getPassword())) {

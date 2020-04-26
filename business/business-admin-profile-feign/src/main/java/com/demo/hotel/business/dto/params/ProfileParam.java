@@ -14,6 +14,8 @@ import java.io.Serializable;
 @Data
 public class ProfileParam implements Serializable {
 
+
+    private static final long serialVersionUID = -2838794815539952785L;
     /**
      * 管理员Id
      */

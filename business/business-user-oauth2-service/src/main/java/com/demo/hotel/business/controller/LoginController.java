@@ -4,12 +4,15 @@ import com.demo.hotel.business.BusinessException;
 import com.demo.hotel.business.BusinessStatus;
 import com.demo.hotel.business.dto.LoginInfo;
 import com.demo.hotel.business.dto.LoginParam;
+import com.demo.hotel.business.dto.UserDTO;
+import com.demo.hotel.business.feign.UserFeign;
 import com.demo.hotel.commons.dto.CodeStatus;
 import com.demo.hotel.commons.dto.ResponseResult;
 import com.demo.hotel.commons.utils.MapperUtils;
 import com.demo.hotel.commons.utils.OkHttpClientUtil;
 import com.demo.hotel.commons.utils.UserAgentUtils;
 import com.demo.hotel.provider.api.UsersService;
+import com.demo.hotel.provider.domain.Users;
 import com.google.common.collect.Maps;
 import eu.bitwalker.useragentutils.Browser;
 import okhttp3.Response;
@@ -63,8 +66,8 @@ public class LoginController {
     @Resource
     public TokenStore tokenStore;
 
-//    @Resource
-//    private ProfileFeign profileFeign;
+    @Resource
+    private UserFeign userFeign;
 
     @Reference(version = "1.0.0")
     private UsersService usersService;
@@ -105,7 +108,6 @@ public class LoginController {
         params.put("grant_type", oauth2_grant_type);
         params.put("client_id", oauth2_client_id);
         params.put("client_secret", oauth2_client_secret);
-
         try (Response response = OkHttpClientUtil.getInstance().postData(URL_OAUTH_TOKEN, params)) {
             //防止空指针异常
             String jsonString = Objects.requireNonNull(response.body()).string();
@@ -114,6 +116,7 @@ public class LoginController {
             result.put("token", token);
         } catch (Exception e) {
             e.printStackTrace();
+
         }
         return new ResponseResult<Map<String, Object>>(CodeStatus.OK, "登录成功！", result);
     }
@@ -126,26 +129,27 @@ public class LoginController {
      * @Date: 2020/3/29
      */
     //以下注解设置访问权限
-//    @PreAuthorize("hasAuthority('USER')")
-//    @GetMapping(value = "/user/info")
-//    public ResponseResult<LoginInfo> info() throws Exception {
-//        //获取认证信息上下文的信息
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        // 获取个人信息,使用feign
-//        String jsonString = profileFeign.info(authentication.getName());
-//        Admin admin = MapperUtils.json2pojoByTree(jsonString, "data", Admin.class);
-//        //熔断
-//        if (admin == null) {
-//            return MapperUtils.json2pojo(jsonString, ResponseResult.class);
-//        }
-//        // 封装并返回结果
-//        LoginInfo loginInfo = new LoginInfo();
-//        loginInfo.setName(admin.getUsername());
-//        loginInfo.setAvatar(admin.getIcon());
-//        loginInfo.setNickname(admin.getNickname());
-//        loginInfo.setRoles( authentication.getAuthorities().toArray());
-//        return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
-//    }
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping(value = "/user/info")
+    public ResponseResult<LoginInfo> info() throws Exception {
+        //获取认证信息上下文的信息
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // 获取个人信息,使用feign
+        String jsonString = userFeign.info();
+        Users user = MapperUtils.json2pojoByTree(jsonString, "data", Users.class);
+        //熔断
+        if (user == null) {
+            return MapperUtils.json2pojo(jsonString, ResponseResult.class);
+        }
+        // 封装并返回结果
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setName(user.getUsername());
+        loginInfo.setAvatar(user.getIcon());
+        loginInfo.setNickname(user.getNickname());
+        loginInfo.setRoles( authentication.getAuthorities().toArray());
+        return new ResponseResult<LoginInfo>(CodeStatus.OK, "获取用户信息", loginInfo);
+    }
 
     /**
      * @Description: 注销
