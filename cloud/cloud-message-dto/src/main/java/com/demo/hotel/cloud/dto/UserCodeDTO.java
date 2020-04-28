@@ -14,6 +14,6 @@ import java.io.Serializable;
 public class UserCodeDTO implements Serializable {
 
     private static final long serialVersionUID = -9024663422366240684L;
-    private String phoneNumber;
+    private String phone;
     private String code;
 }

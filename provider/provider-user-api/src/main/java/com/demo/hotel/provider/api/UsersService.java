@@ -24,6 +24,13 @@ public interface UsersService {
      */
     Users get(Long id);
 
+    /**
+     * 获取用户信息
+     * @param number
+     * @return
+     */
+    Users get(String number);
+
 
     /**
      * 更新信息

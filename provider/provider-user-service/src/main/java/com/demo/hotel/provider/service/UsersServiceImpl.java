@@ -7,6 +7,7 @@ import com.demo.hotel.provider.mapper.UsersMapper;
 import com.demo.hotel.provider.api.UsersService;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 
@@ -76,5 +77,13 @@ public class UsersServiceImpl implements UsersService{
 
         //密码加密
         users.setPassword(passwordEncoder.encode(users.getPassword()));
+    }
+
+    @Override
+    public Users get(String number) {
+
+        Example example = new Example(Users.class);
+        example.createCriteria().andEqualTo("phone", number);
+        return usersMapper.selectOneByExample(example);
     }
 }

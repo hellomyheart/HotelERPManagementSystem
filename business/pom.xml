@@ -67,6 +67,7 @@
 
         <!--前台业务-->
         <module>business-user-oauth2-service</module>
+        <module>business-user-reg-service</module>
 
         <module>business-user-profile-feign</module>
         <module>business-user-profile-service</module>

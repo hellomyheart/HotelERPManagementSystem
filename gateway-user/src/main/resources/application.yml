@@ -48,6 +48,17 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: USER-REG
+          uri: lb://business-user-reg
+          predicates:
+            - Path=/api/reg/**
+          filters:
+            - StripPrefix=1
+
+
+
+
+
 
 server:
   port: 9999

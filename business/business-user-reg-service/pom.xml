@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-admin-reg-service</artifactId>
+    <artifactId>business-user-reg-service</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -37,10 +37,22 @@
         <!-- Projects -->
         <dependency>
             <groupId>com.demo.hotel</groupId>
-            <artifactId>provider-admin-api</artifactId>
+            <artifactId>provider-user-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>provider-redis-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.hotel</groupId>
+            <artifactId>cloud-message-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -48,7 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.demo.hotel.business.BusinessAdminRegApplication</mainClass>
+                    <mainClass>com.demo.hotel.business.BusinessUserRegApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
