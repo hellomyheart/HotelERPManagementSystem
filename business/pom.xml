@@ -85,6 +85,9 @@
 
         <module>business-facility-feign</module>
         <module>business-facility-service</module>
+
+        <module>business-merchandise-inventory-feign</module>
+        <module>business-merchandise-inventory-service</module>
         <!--前台业务-->
 
         <module>business-user-oauth2-service</module>

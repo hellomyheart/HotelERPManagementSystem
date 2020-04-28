@@ -410,7 +410,27 @@ export const asyncRoutes = [
     ]
   },
 
-
+  {
+    path: '/merchandise/inventory',
+    component: Layout,
+    redirect: '/merchandise/inventory/info',
+    name: 'MerchandiseInventory',
+    meta: { title: '商品库存管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'MerchandiseInventoryInfo',
+        component: () => import('@/views/merchandise/inventory/info'),
+        meta: { title: '商品库存信息', icon: 'user' }
+      },
+      {
+        path: 'Edit',
+        name: 'MerchandiseInventoryEdit',
+        component: () => import('@/views/merchandise/inventory/edit'),
+        meta: { title: '修改商品库存', icon: 'user' }
+      }
+    ]
+  },
 
 
 

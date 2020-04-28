@@ -89,6 +89,15 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-MERCHANDISE-INVENTORY
+          uri: lb://business-merchandise-inventory
+          predicates:
+            - Path=/api/merchandise/inventory/**
+          filters:
+            - StripPrefix=1
+
+
+
 
 
 

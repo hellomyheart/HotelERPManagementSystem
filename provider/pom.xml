@@ -109,9 +109,14 @@
 <!--        <module>provider-performance-api</module>-->
 <!--        <module>provider-performance-service</module>-->
 
+        <!-- 商品库存管理-->
+        <module>provider-merchandise-inventory-api</module>
+        <module>provider-merchandise-inventory-service</module>
+
         <!-- 设备管理-->
         <module>provider-facility-api</module>
         <module>provider-facility-service</module>
+
 
         <!-- 前台业务-->
         <module>provider-user-api</module>
