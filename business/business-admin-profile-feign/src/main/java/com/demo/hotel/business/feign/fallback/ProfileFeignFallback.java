@@ -19,9 +19,10 @@ public class ProfileFeignFallback implements ProfileFeign {
 
     CommonsFeignFallback<AdminDTO> cf=new CommonsFeignFallback<>();
 
+
     @Override
-    public String info(String username) {
-     return cf.message();
+    public String info() {
+        return cf.message();
     }
 
     @Override

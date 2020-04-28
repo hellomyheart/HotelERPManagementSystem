@@ -64,8 +64,15 @@
     </dependencies>
 
     <modules>
+
+        <!--前台业务-->
+        <module>business-user-oauth2-service</module>
+
+        <module>business-user-profile-feign</module>
+        <module>business-user-profile-service</module>
+
+
         <!--        后台业务-->
-        <module>business-admin-reg-feign</module>
         <module>business-admin-reg-service</module>
         <module>business-admin-oauth2-service</module>
         <module>business-admin-profile-feign</module>
@@ -88,11 +95,8 @@
 
         <module>business-merchandise-inventory-feign</module>
         <module>business-merchandise-inventory-service</module>
-        <!--前台业务-->
+        <module>business-cleaning-inventory-feign</module>
+        <module>business-cleaning-inventory-service</module>
 
-        <module>business-user-oauth2-service</module>
-
-        <module>business-user-profile-feign</module>
-        <module>business-user-profile-service</module>
     </modules>
 </project>

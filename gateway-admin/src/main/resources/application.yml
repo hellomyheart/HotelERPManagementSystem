@@ -96,6 +96,12 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-CLEANING-INVENTORY
+          uri: lb://business-cleaning-inventory
+          predicates:
+            - Path=/api/cleaning/inventory/**
+          filters:
+            - StripPrefix=1
 
 
 

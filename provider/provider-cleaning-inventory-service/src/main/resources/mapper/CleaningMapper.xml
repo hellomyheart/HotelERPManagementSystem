@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.CleaningMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Cleaning">
+    <!--@mbg.generated generated on Tue Apr 28 17:52:55 CST 2020.-->
+    <!--@Table cleaning-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="cleaning_name" jdbcType="VARCHAR" property="cleaningName" />
+    <result column="cleaning_number" jdbcType="DOUBLE" property="cleaningNumber" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Apr 28 17:52:55 CST 2020.-->
+    id, type_id, cleaning_name, cleaning_number, note
+  </sql>
+</mapper>

@@ -432,6 +432,27 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/cleaning/inventory',
+    component: Layout,
+    redirect: '/cleaning/inventory/info',
+    name: 'CleaningInventory',
+    meta: { title: '保洁商品库存管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'CleaningInventoryInfo',
+        component: () => import('@/views/cleaning/inventory/info'),
+        meta: { title: '保洁商品库存信息', icon: 'user' }
+      },
+      {
+        path: 'Edit',
+        name: 'CleaningInventoryEdit',
+        component: () => import('@/views/cleaning/inventory/edit'),
+        meta: { title: '修改保洁商品库存', icon: 'user' }
+      }
+    ]
+  },
 
 
 

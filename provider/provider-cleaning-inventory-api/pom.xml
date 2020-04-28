@@ -5,11 +5,9 @@
 
     <parent>
         <groupId>com.demo.hotel</groupId>
-        <artifactId>business</artifactId>
+        <artifactId>provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>business-admin-feign</artifactId>
+    <artifactId>provider-cleaning-inventory-api</artifactId>
     <packaging>jar</packaging>
-
 </project>
