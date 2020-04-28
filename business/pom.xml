@@ -97,6 +97,8 @@
         <module>business-merchandise-inventory-service</module>
         <module>business-cleaning-inventory-feign</module>
         <module>business-cleaning-inventory-service</module>
+        <module>business-restaurant-inventory-feign</module>
+        <module>business-restaurant-inventory-service</module>
 
     </modules>
 </project>

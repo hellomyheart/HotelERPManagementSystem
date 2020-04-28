@@ -425,6 +425,7 @@ export const asyncRoutes = [
       },
       {
         path: 'Edit',
+        hidden: true,
         name: 'MerchandiseInventoryEdit',
         component: () => import('@/views/merchandise/inventory/edit'),
         meta: { title: '修改商品库存', icon: 'user' }
@@ -447,6 +448,7 @@ export const asyncRoutes = [
       },
       {
         path: 'Edit',
+        hidden: true,
         name: 'CleaningInventoryEdit',
         component: () => import('@/views/cleaning/inventory/edit'),
         meta: { title: '修改保洁商品库存', icon: 'user' }
@@ -454,8 +456,28 @@ export const asyncRoutes = [
     ]
   },
 
-
-
+  {
+    path: '/restaurant/inventory',
+    component: Layout,
+    redirect: '/restaurant/inventory/info',
+    name: 'RestaurantInventory',
+    meta: { title: '酒店食材库存管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RestaurantInventoryInfo',
+        component: () => import('@/views/restaurant/inventory/info'),
+        meta: { title: '酒店食材库存信息', icon: 'user' }
+      },
+      {
+        path: 'Edit',
+        hidden: true,
+        name: 'RestaurantInventoryEdit',
+        component: () => import('@/views/restaurant/inventory/edit'),
+        meta: { title: '修改酒店食材库存', icon: 'user' }
+      }
+    ]
+  },
 
 
   {

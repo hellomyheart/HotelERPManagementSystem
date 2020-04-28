@@ -117,6 +117,10 @@
         <module>provider-cleaning-inventory-api</module>
         <module>provider-cleaning-inventory-service</module>
 
+        <!-- 餐厅库存管理-->
+        <module>provider-restaurant-inventory-api</module>
+        <module>provider-restaurant-inventory-service</module>
+
         <!-- 设备管理-->
         <module>provider-facility-api</module>
         <module>provider-facility-service</module>

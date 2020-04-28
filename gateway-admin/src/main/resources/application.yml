@@ -103,7 +103,12 @@ spring:
           filters:
             - StripPrefix=1
 
-
+        - id: BUSINESS-CLEANING-INVENTORY
+          uri: lb://business-restaurant-inventory
+          predicates:
+            - Path=/api/restaurant/inventory/**
+          filters:
+            - StripPrefix=1
 
 
 
