@@ -1,6 +1,6 @@
 package com.demo.hotel.provider.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
 
 import com.demo.hotel.provider.doamin.ViewDomain;
@@ -48,7 +48,7 @@ public class GoodsProcurementBg implements ViewDomain {
      * 时间
      */
     @Column(name = "create_time")
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 备注

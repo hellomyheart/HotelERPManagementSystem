@@ -39,6 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         //查询用户
         Admin admin = adminService.get(s);
+
         List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
         // 用户存在
         if (admin != null) {

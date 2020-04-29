@@ -12,11 +12,8 @@
       <el-form-item label="ID">
         <el-input v-model="form.id" :disabled="true"/>
       </el-form-item>
-      <el-form-item label="部门名称">
-        <el-input v-model="form.departmentName"/>
-      </el-form-item>
-      <el-form-item label="部门介绍">
-        <el-input v-model="form.note"/>
+      <el-form-item label="分类名">
+        <el-input v-model="form.typeName" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -25,7 +22,7 @@
   </div>
 </template>
 <script>
-import { update } from '@/api/organization/department'
+import { update } from '@/api/merchandiseProcurement/type'
 
     export default {
         name: 'DepartmentEdit',
@@ -34,8 +31,7 @@ import { update } from '@/api/organization/department'
                 formLoading: true,
                 form: {
                     id: '',
-                    departmentName: '',
-                    note: ''
+                    typeName: ''
                 }
             }
         },

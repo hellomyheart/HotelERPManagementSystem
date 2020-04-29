@@ -1,17 +1,16 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.positionName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.buyerName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       border
       stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" sortable prop="id"></el-table-column>
-      <el-table-column label="职位名称" sortable prop="positionName"></el-table-column>
-      <el-table-column label="部门名称" sortable prop="departmentName"></el-table-column>
-      <el-table-column label="基础工资" prop="basesalary"></el-table-column>
-      <el-table-column label="基础工时" prop="baseTime"></el-table-column>
+      <el-table-column label="采购商名" sortable prop="buyerName"></el-table-column>
+      <el-table-column label="公司名" sortable prop="company"></el-table-column>
+      <el-table-column label="公司地址" prop="companyAdd"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -37,12 +36,12 @@
 </template>
 
 <script>
-import { info, deleteD } from '@/api/organization/position'
+import { info, deleteD } from '@/api/merchandiseProcurement/buyer'
 export default {
   data() {
     return {
-      tableData: "",
-      search: "",
+      tableData: '',
+      search: '',
       // 默认显示第几页
       currentPage: 1,
       // 总条数，根据接口获取数据长度(注意：这里不能为空)
@@ -54,19 +53,19 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData() {
       info().then(response => {
-        this.tableData = response.data;
+        this.tableData = response.data
         // 将数据的长度赋值给totalCount
         this.totalCount = this.tableData.length;
       });
     },
     handleEdit(index, row) {
       this.$router.push({
-        name: 'PositionEdit',
+        name: 'MerchandiseProcurementBuyerEdit',
         params: {
           data: row
         }
@@ -94,7 +93,7 @@ export default {
     // 显示第几页
     handleCurrentChange(val) {
       // 改变默认的页数
-      this.currentPage = val;
+      this.currentPage = val
     }
   }
 }

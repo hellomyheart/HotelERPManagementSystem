@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class GoodsProcurementController {
     public ResponseResult<Void> add(@RequestBody GoodsProcurementParam goodsProcurementParam) {
         GoodsProcurement goodsProcurement=new GoodsProcurement();
         BeanUtils.copyProperties(goodsProcurementParam,goodsProcurement);
-        goodsProcurement.setCreateTime(new Date());
+        goodsProcurement.setCreateTime(LocalDate.now());
         return bt.add(goodsProcurementService, goodsProcurement);
     }
 

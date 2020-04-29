@@ -8,11 +8,8 @@
       :model="form"
       label-width="120px"
     >
-      <el-form-item label="部门名称">
-        <el-input v-model="form.departmentName"/>
-      </el-form-item>
-      <el-form-item label="部门介绍">
-        <el-input v-model="form.note"/>
+      <el-form-item label="分类名称">
+        <el-input v-model="form.typeName"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -21,7 +18,7 @@
   </div>
 </template>
 <script>
-import { add } from '@/api/organization/department'
+import { add } from '@/api/merchandiseProcurement/type'
 
     export default {
         name: 'DepartmentAdd',
@@ -29,8 +26,7 @@ import { add } from '@/api/organization/department'
             return {
                 formLoading: true,
                 form: {
-                    departmentName: '',
-                    note: ''
+                    typeName: ''
                 }
             }
         },

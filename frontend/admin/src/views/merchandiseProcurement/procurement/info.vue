@@ -1,14 +1,20 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.typeName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.goodsName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       border
       stripe
       style="width: 100%"
-      height= 500
+      :height="500"
     >
-      <el-table-column label="ID" sortable prop="id"></el-table-column>
-      <el-table-column label="分类名" sortable prop="typeName"></el-table-column>
+      <el-table-column label="ID" sortable prop="id" />
+      <el-table-column label="采购商名" sortable prop="buyerName" />
+      <el-table-column label="商品名" sortable prop="goodsName" />
+      <el-table-column label="单价价格" prop="price" />
+      <el-table-column label="采购数目" sortable prop="procurementSum" />
+      <el-table-column label="时间" prop="createTime" />
+      <el-table-column label="备注" prop="note" />
+
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -34,7 +40,7 @@
 </template>
 
 <script>
-import { info, deleteD } from '@/api/merchandiseProcurement/type'
+import { info, deleteD } from '@/api/merchandiseProcurement/procurement'
 export default {
   data() {
     return {
@@ -63,7 +69,7 @@ export default {
     },
     handleEdit(index, row) {
       this.$router.push({
-        name: 'MerchandiseProcurementTypeEdit',
+        name: 'MerchandiseProcurementEdit',
         params: {
           data: row
         }
@@ -79,7 +85,6 @@ export default {
         })
         .catch(() => {});
       this.$delete(this.tableData, index);
-      // this.$router.go(0);
     },
     // 分页
     // 每页显示的条数

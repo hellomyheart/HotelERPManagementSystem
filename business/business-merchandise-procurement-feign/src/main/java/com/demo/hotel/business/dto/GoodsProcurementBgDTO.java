@@ -2,7 +2,7 @@ package com.demo.hotel.business.dto;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @program: HotelERPManagementSystem
@@ -42,7 +42,7 @@ public class GoodsProcurementBgDTO implements ViewDTO{
     /**
      * 时间
      */
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 备注

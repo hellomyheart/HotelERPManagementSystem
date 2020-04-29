@@ -507,7 +507,90 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  {
+    path: '/merchandiseProcurement/goods',
+    component: Layout,
+    redirect: '/merchandiseProcurement/goods/info',
+    name: 'MerchandiseProcurementGoods',
+    meta: { title: '商品管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'MerchandiseProcurementGoodsInfo',
+        component: () => import('@/views/merchandiseProcurement/goods/info'),
+        meta: { title: '商品详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'MerchandiseProcurementGoodsEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/goods/edit'),
+        meta: { title: '修改商品', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'MerchandiseProcurementGoodsAdd',
+        component: () => import('@/views/merchandiseProcurement/goods/add'),
+        meta: { title: '添加商品', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/merchandiseProcurement/buyer',
+    component: Layout,
+    redirect: '/merchandiseProcurement/buyer/info',
+    name: 'MerchandiseProcurementBuyer',
+    meta: { title: '商品采购商管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'MerchandiseProcurementBuyerInfo',
+        component: () => import('@/views/merchandiseProcurement/buyer/info'),
+        meta: { title: '商品采购商详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'MerchandiseProcurementBuyerEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/buyer/edit'),
+        meta: { title: '修改商品采购商', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'MerchandiseProcurementBuyerAdd',
+        component: () => import('@/views/merchandiseProcurement/buyer/add'),
+        meta: { title: '添加商品采购商', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/merchandiseProcurement/procurement',
+    component: Layout,
+    redirect: '/merchandiseProcurement/procurement/info',
+    name: 'MerchandiseProcurement',
+    meta: { title: '商品采购管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'MerchandiseProcurementInfo',
+        component: () => import('@/views/merchandiseProcurement/procurement/info'),
+        meta: { title: '商品采购详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'MerchandiseProcurementEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/procurement/edit'),
+        meta: { title: '修改商品采购', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'MerchandiseProcurementAdd',
+        component: () => import('@/views/merchandiseProcurement/procurement/add'),
+        meta: { title: '添加商品采购', icon: 'user' }
+      }
+    ]
+  },
 
 
 
