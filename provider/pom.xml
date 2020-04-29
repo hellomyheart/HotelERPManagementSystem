@@ -113,6 +113,10 @@
         <module>provider-merchandise-inventory-api</module>
         <module>provider-merchandise-inventory-service</module>
 
+        <!-- 商品库存管理-->
+        <module>provider-merchandise-procurement-api</module>
+        <module>provider-merchandise-procurement-service</module>
+
         <!-- 保洁库存管理-->
         <module>provider-cleaning-inventory-api</module>
         <module>provider-cleaning-inventory-service</module>

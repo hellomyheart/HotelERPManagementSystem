@@ -90,12 +90,6 @@ public class LoginController {
         Map<String, Object> result = Maps.newHashMap();
 
 
-//        //TODO 短信验证
-//        UserCodeDTO userCodeDTO = new UserCodeDTO();
-//        userCodeDTO.setPhoneNumber("1");
-//        userCodeDTO.setCode("95566");
-//        messageService.sendUserCode(userCodeDTO);
-
 
         //验证账号密码
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
@@ -124,6 +118,7 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(result);
         return new ResponseResult<Map<String, Object>>(CodeStatus.OK, "登录成功！", result);
     }
 

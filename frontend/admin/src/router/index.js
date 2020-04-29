@@ -479,6 +479,43 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/merchandiseProcurement/type',
+    component: Layout,
+    redirect: '/merchandiseProcurement/type/info',
+    name: 'MerchandiseProcurementType',
+    meta: { title: '商品类型管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'MerchandiseProcurementTypeInfo',
+        component: () => import('@/views/merchandiseProcurement/type/info'),
+        meta: { title: '商品类型详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'MerchandiseProcurementTypeEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/type/edit'),
+        meta: { title: '修改商品类型', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'MerchandiseProcurementTypeAdd',
+        component: () => import('@/views/merchandiseProcurement/type/add'),
+        meta: { title: '添加商品类型', icon: 'user' }
+      }
+    ]
+  },
+
+
+
+
+
+
+
+
+
 
   {
     path: '/example',

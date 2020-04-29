@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.GoodsProcurementMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.GoodsProcurement">
+    <!--@mbg.generated generated on Wed Apr 29 14:16:26 CST 2020.-->
+    <!--@Table goods_procurement-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="procurement_sum" jdbcType="DOUBLE" property="procurementSum" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Wed Apr 29 14:16:26 CST 2020.-->
+    id, buyer_id, goods_id, price, procurement_sum, create_time, note
+  </sql>
+</mapper>

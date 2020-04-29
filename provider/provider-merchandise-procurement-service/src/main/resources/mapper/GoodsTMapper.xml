@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.GoodsTMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.GoodsT">
+    <!--@mbg.generated generated on Wed Apr 29 14:16:26 CST 2020.-->
+    <!--@Table goods_t-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_code" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="goods_sum" jdbcType="DOUBLE" property="goodsSum" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+</mapper>

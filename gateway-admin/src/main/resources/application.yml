@@ -110,6 +110,15 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-MERCHANDISE
+          uri: lb://business-merchandise-procurement
+          predicates:
+            - Path=/api/merchandiseProcurement/**
+          filters:
+            - StripPrefix=1
+
+
+
 
 
 server:
