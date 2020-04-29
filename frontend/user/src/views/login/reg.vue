@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+    <el-form ref="regForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
         <h3 class="title">欢迎注册</h3>
@@ -20,9 +20,7 @@
           auto-complete="on"
         />
       </el-form-item>
-
-
-
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleSend">发送验证码</el-button>
       <el-form-item prop="code">
         <span class="svg-container">
           <svg-icon icon-class="user" />
@@ -38,6 +36,35 @@
         />
       </el-form-item>
 
+      <el-form-item prop="username">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input
+          ref="username"
+          v-model="regForm.username"
+          placeholder="姓名"
+          name="username"
+          type="text"
+          tabindex="1"
+          auto-complete="on"
+        />
+      </el-form-item>
+
+      <el-form-item prop="identify">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input
+          ref="identify"
+          v-model="regForm.identify"
+          placeholder="身份证号"
+          name="identify"
+          type="text"
+          tabindex="1"
+          auto-complete="on"
+        />
+      </el-form-item>
 
 
       <el-form-item prop="password">
@@ -49,7 +76,7 @@
           ref="password"
           v-model="regForm.password"
           :type="passwordType"
-          placeholder="Password"
+          placeholder="密码"
           name="password"
           tabindex="2"
           auto-complete="on"
@@ -59,7 +86,6 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleSend">发送</el-button>
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleReg">注册</el-button>
 
       <!--<div class="tips">
@@ -73,13 +99,14 @@
 
 <script>
 import { send, getuser } from '@/api/user/reg'
+// eslint-disable-next-line no-unused-vars
 import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
-       return  callback()
+      return callback()
       // if (!validUsername(value)) {
       //
       //   callback(new Error('Please enter the correct user name'))
@@ -96,9 +123,11 @@ export default {
     }
     return {
       regForm: {
+        username: '',
+        identify: '',
         phone: '',
         code: '',
-        password: '123456'
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -129,18 +158,21 @@ export default {
       })
     },
     handleReg() {
-    this.loading = true;
+      this.loading = true
       getuser(this.regForm)
         .then(response => {
-          this.formLoading = false;
+          this.formLoading = false
           this.$message({
             message: response.message,
-            type: "success"
-          });
+            type: 'success'
+          })
+          this.$router.push({
+            path: '/' })
         })
         .catch(() => {
-          this.loading = false;
+          this.loading = false
         });
+
     },
     handleSend() {
       send(this.regForm)
@@ -148,11 +180,11 @@ export default {
           this.formLoading = false;
           this.$message({
             message: response.message,
-            type: "success"
+            type: 'success'
           });
         })
         .catch(() => {
-          this.loading = false;
+          this.loading = false
         });
     }
   }

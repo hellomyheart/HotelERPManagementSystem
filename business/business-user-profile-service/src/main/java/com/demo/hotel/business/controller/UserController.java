@@ -49,7 +49,7 @@ public class UserController {
     public ResponseResult<UserDTO> info() {
         //获取认证信息上下文的信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Users users = usersService.get(Long.valueOf(authentication.getName()));
+        Users users = usersService.get(authentication.getName());
         UserDTO dto = new UserDTO();
         BeanUtils.copyProperties(users, dto);
         return new ResponseResult<UserDTO>(CodeStatus.OK, "获取个人信息", dto);
@@ -114,7 +114,9 @@ public class UserController {
      */
     @PostMapping(value = "modify/icon")
     public ResponseResult<Void> modifyIcon(@RequestBody IconParam iconParam) {
-        int result = usersService.modifyIcon(Long.valueOf(SecurityContextHolder.getContext().getAuthentication().getName()), iconParam.getPath());
+
+        Users users = usersService.get(SecurityContextHolder.getContext().getAuthentication().getName());
+        int result = usersService.modifyIcon(users.getId(), iconParam.getPath());
 
         // 成功
         if (result > 0) {

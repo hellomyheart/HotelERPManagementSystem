@@ -85,14 +85,6 @@ public class LoginController {
         // 封装返回的结果集
         Map<String, Object> result = Maps.newHashMap();
 
-
-//        //TODO 短信验证
-//        UserCodeDTO userCodeDTO = new UserCodeDTO();
-//        userCodeDTO.setPhoneNumber("1");
-//        userCodeDTO.setCode("95566");
-//        messageService.sendUserCode(userCodeDTO);
-
-
         //验证账号密码
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginParam.getUsername());
 

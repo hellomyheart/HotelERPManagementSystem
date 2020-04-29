@@ -5,9 +5,9 @@ var BaseURL = '/profile/'
 //  * @param username
 //  * @returns {AxiosPromise}
 //  */
-export function info(username) {
+export function info() {
   return request({
-    url: BaseURL + 'info/' + username,
+    url: BaseURL + 'info/',
     method: 'get'
   })
 }

@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 public class UserCode {
 
-    private String phoneNumber;
+    private String phone;
     private String code;
 }

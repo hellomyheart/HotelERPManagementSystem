@@ -41,8 +41,8 @@ spring:
             - Path=/api/profile/**
           filters:
             - StripPrefix=1
-        - id: CLOUD-UPLOAD
-          uri: lb://cloud-upload
+        - id: CLOUD-USER-UPLOAD
+          uri: lb://cloud-user-upload
           predicates:
             - Path=/api/upload/**
           filters:

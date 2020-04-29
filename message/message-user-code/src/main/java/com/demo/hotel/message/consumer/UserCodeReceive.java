@@ -19,7 +19,7 @@ public class UserCodeReceive {
     @StreamListener("user-code-topic")
     public void receiveUserCode(String userCodeJson) throws Exception {
         UserCode userCode = MapperUtils.json2pojo(userCodeJson, UserCode.class);
-       sendSmsService.sendCode(userCode.getPhoneNumber(),userCode.getCode());
+       sendSmsService.sendCode(userCode.getPhone(),userCode.getCode());
     }
 
 }

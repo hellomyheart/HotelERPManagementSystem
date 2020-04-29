@@ -19,13 +19,13 @@
         <el-input v-model="form.email"/>
       </el-form-item>
       <el-form-item label="手机号">
-        <el-input v-model="form.phone"/>
+        <el-input :disabled="true" v-model="form.phone"/>
       </el-form-item>
       <el-form-item label="昵称">
         <el-input v-model="form.nickname"/>
       </el-form-item>
       <el-form-item label="创建时间">
-        <el-input v-model="form.createTime" :disabled="true"/>
+        <el-input v-model="form.creatTime" :disabled="true"/>
       </el-form-item>
       <el-form-item label="更新时间">
         <el-input v-model="form.updateTime" :disabled="true"/>
@@ -70,7 +70,7 @@
         },
         methods: {
             fetchData() {
-                info(this.$store.getters.name).then(response => {
+                info().then(response => {
                     this.form = response.data
                     this.formLoading = false
                 })

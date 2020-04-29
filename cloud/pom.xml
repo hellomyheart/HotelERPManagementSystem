@@ -65,6 +65,8 @@
     <modules>
         <module>cloud-upload-feign</module>
         <module>cloud-upload-service</module>
+        <module>cloud-user-upload-feign</module>
+        <module>cloud-user-upload-service</module>
         <module>cloud-message-dto</module>
         <module>cloud-message-api</module>
         <module>cloud-message-feign</module>

@@ -31,12 +31,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
 
 
 
         //查询用户
-        Users user = usersService.get(Long.valueOf(id));
+        Users user = usersService.get(phone);
 
         // 默认所有用户拥有 USER 权限
         List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
@@ -45,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // 用户存在
         if (user != null) {
-            return new User(user.getId().toString(), user.getPassword(), grantedAuthorities);
+            return new User(user.getPhone().toString(), user.getPassword(), grantedAuthorities);
         }
 
         // 用户不存在

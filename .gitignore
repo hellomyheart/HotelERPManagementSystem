@@ -37,3 +37,5 @@ vpproject/
 
 provider/provider-sms-service/src/main/java/com/demo/hotel/provider/service/SendSmsServiceImpl.java
 
+
+cloud/cloud-user-upload-service/src/main/java/com/demo/hotel/cloud/controller/UploadController.java

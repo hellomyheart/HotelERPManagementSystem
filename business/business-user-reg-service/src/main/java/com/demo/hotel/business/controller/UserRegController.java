@@ -83,19 +83,6 @@ public class UserRegController {
 
 
             BeanUtils.copyProperties(user,users);
-
-            users.setUsername("5566");
-            users.setIdentify("7788");
-            users.setNickname("26");
-            users.setPhone("5692");
-            users.setPassword("622233");
-            users.setCreatTime(new Date());
-            users.setUpdateTime(new Date());
-            users.setIcon("2233");
-            users.setGender(0);
-            users.setName2("62");
-            users.setPhone2("5");
-
             int insert = usersService.insert(users);
             if (insert>0){
                 return new ResponseResult<>(CodeStatus.OK, "注册成功，请登录");
@@ -111,10 +98,12 @@ public class UserRegController {
     /**
      * 手机号验证
      *
-     * @param users
      * @return
      */
     private String validateReg(String phone) {
+        if (phone.length() != 11) {
+            return "手机号输入错误！";
+        }
         Users users1 = usersService.get(phone);
         if (users1 != null) {
             return "此手机号已注册，请直接登录";

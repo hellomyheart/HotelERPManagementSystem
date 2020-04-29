@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 var BaserURL = '/reg/'
+
 export function send(data) {
   return request({
     url: BaserURL + 'send',

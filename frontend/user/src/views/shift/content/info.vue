@@ -72,7 +72,7 @@ export default {
         params: {
           data: row
         }
-      });
+      })
     },
     handleDelete(index, row) {
       deleteD(row)

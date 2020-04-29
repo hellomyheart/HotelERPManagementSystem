@@ -43,10 +43,10 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
-      <!--<div class="tips">
-        <span style="margin-right:20px;">username: admins</span>
-        <span> password: any</span>
-      </div>-->
+      <div class="tips">
+        <span style="margin-right:20px;">没有账号？</span>
+          <el-button type="primary" size="mini" @click="handleReg()">点击注册</el-button>
+      </div>
 
     </el-form>
   </div>
@@ -76,7 +76,7 @@ export default {
     }
     return {
       loginForm: {
-        username: '1',
+        username: '15038405422',
         password: '123456'
       },
       loginRules: {
@@ -106,6 +106,9 @@ export default {
       this.$nextTick(() => {
         this.$refs.password.focus()
       })
+    },
+    handleReg() {
+      this.$router.push({ name: 'reg' })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
