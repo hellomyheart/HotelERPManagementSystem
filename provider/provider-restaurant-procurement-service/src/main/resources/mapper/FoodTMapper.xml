@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.FoodTMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.FoodT">
+    <!--@mbg.generated generated on Thu Apr 30 07:33:39 CST 2020.-->
+    <!--@Table food_t-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="food_name" jdbcType="VARCHAR" property="foodName" />
+    <result column="food_number" jdbcType="INTEGER" property="foodNumber" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+</mapper>

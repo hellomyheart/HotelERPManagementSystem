@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.CleaningTMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.CleaningT">
+    <!--@mbg.generated generated on Thu Apr 30 07:07:43 CST 2020.-->
+    <!--@Table cleaning_t-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="cleaning_name" jdbcType="VARCHAR" property="cleaningName" />
+    <result column="cleaning_number" jdbcType="DOUBLE" property="cleaningNumber" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+</mapper>

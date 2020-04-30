@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.CleaningProcurementBcMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.CleaningProcurementBc">
+    <!--@mbg.generated generated on Thu Apr 30 07:07:43 CST 2020.-->
+    <!--@Table cleaning_procurement_bc-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
+    <result column="cleaning_id" jdbcType="BIGINT" property="cleaningId" />
+    <result column="cleaning_price" jdbcType="DOUBLE" property="cleaningPrice" />
+    <result column="cleaning_nubmer" jdbcType="DOUBLE" property="cleaningNubmer" />
+    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+    <result column="cleaning_name" jdbcType="VARCHAR" property="cleaningName" />
+  </resultMap>
+</mapper>

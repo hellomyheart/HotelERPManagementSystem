@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Goods">
     <!--@mbg.generated generated on Wed Apr 29 14:16:26 CST 2020.-->
     <!--@Table goods-->
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="goods_code" jdbcType="VARCHAR" property="goodsCode" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="picture" jdbcType="VARCHAR" property="picture" />

@@ -113,7 +113,7 @@
         <module>provider-merchandise-inventory-api</module>
         <module>provider-merchandise-inventory-service</module>
 
-        <!-- 商品库存管理-->
+        <!-- 商品采购管理-->
         <module>provider-merchandise-procurement-api</module>
         <module>provider-merchandise-procurement-service</module>
 
@@ -121,9 +121,17 @@
         <module>provider-cleaning-inventory-api</module>
         <module>provider-cleaning-inventory-service</module>
 
+        <!-- 保洁采购管理-->
+        <module>provider-cleaning-procurement-api</module>
+        <module>provider-cleaning-procurement-service</module>
+
         <!-- 餐厅库存管理-->
         <module>provider-restaurant-inventory-api</module>
         <module>provider-restaurant-inventory-service</module>
+
+        <!-- 餐厅采购管理-->
+        <module>provider-restaurant-procurement-api</module>
+        <module>provider-restaurant-procurement-service</module>
 
         <!-- 设备管理-->
         <module>provider-facility-api</module>

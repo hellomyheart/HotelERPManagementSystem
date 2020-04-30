@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.FoodProcurementBfMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.FoodProcurementBf">
+    <!--@mbg.generated generated on Thu Apr 30 07:33:39 CST 2020.-->
+    <!--@Table food_procurement_bf-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="buyer_id" jdbcType="BIGINT" property="buyerId" />
+    <result column="food_id" jdbcType="BIGINT" property="foodId" />
+    <result column="food_price" jdbcType="DOUBLE" property="foodPrice" />
+    <result column="food_count" jdbcType="DOUBLE" property="foodCount" />
+    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+    <result column="food_name" jdbcType="VARCHAR" property="foodName" />
+  </resultMap>
+</mapper>

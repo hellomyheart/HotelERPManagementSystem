@@ -592,113 +592,229 @@ export const asyncRoutes = [
     ]
   },
 
-
-
-
-
-
-
-
-
   {
-    path: '/example',
+    path: '/cleaningProcurement/type',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/cleaningProcurement/type/info',
+    name: 'CleaningProcurementType',
+    meta: { title: '保洁用品类型管理', icon: 'user' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'info',
+        name: 'CleaningProcurementTypeInfo',
+        component: () => import('@/views/cleaningProcurement/type/info'),
+        meta: { title: '保洁用品类型详情', icon: 'user' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'edit',
+        name: 'CleaningProcurementTypeEdit',
+        hidden: true,
+        component: () => import('@/views/cleaningProcurement/type/edit'),
+        meta: { title: '修改保洁用品类型', icon: 'user' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'add',
+        name: 'CleaningProcurementTypeAdd',
+        component: () => import('@/views/cleaningProcurement/type/add'),
+        meta: { title: '添加保洁用品类型', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/cleaningProcurement/goods',
+    component: Layout,
+    redirect: '/cleaningProcurement/goods/info',
+    name: 'CleaningProcurementGoods',
+    meta: { title: '保洁用品管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'CleaningProcurementGoodsInfo',
+        component: () => import('@/views/cleaningProcurement/goods/info'),
+        meta: { title: '保洁用品详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'CleaningProcurementGoodsEdit',
+        hidden: true,
+        component: () => import('@/views/cleaningProcurement/goods/edit'),
+        meta: { title: '修改保洁用品', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'CleaningProcurementGoodsAdd',
+        component: () => import('@/views/cleaningProcurement/goods/add'),
+        meta: { title: '添加保洁用品', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/cleaningProcurement/buyer',
+    component: Layout,
+    redirect: '/cleaningProcurement/buyer/info',
+    name: 'CleaningProcurementBuyer',
+    meta: { title: '保洁商品采购商管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'CleaningProcurementBuyerInfo',
+        component: () => import('@/views/cleaningProcurement/buyer/info'),
+        meta: { title: '保洁商品采购商详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'CleaningProcurementBuyerEdit',
+        hidden: true,
+        component: () => import('@/views/cleaningProcurement/buyer/edit'),
+        meta: { title: '保洁商品采购商', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'CleaningProcurementBuyerAdd',
+        component: () => import('@/views/cleaningProcurement/buyer/add'),
+        meta: { title: '添加保洁商品采购商', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/cleaningProcurement/procurement',
+    component: Layout,
+    redirect: '/cleaningProcurement/procurement/info',
+    name: 'CleaningProcurement',
+    meta: { title: '保洁采购管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'CleaningProcurementInfo',
+        component: () => import('@/views/cleaningProcurement/procurement/info'),
+        meta: { title: '保洁采购详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'CleaningProcurementEdit',
+        hidden: true,
+        component: () => import('@/views/cleaningProcurement/procurement/edit'),
+        meta: { title: '修改保洁采购', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'CleaningProcurementAdd',
+        component: () => import('@/views/cleaningProcurement/procurement/add'),
+        meta: { title: '添加商品采购', icon: 'user' }
       }
     ]
   },
 
+
   {
-    path: 'external-link',
+    path: '/restaurantProcurement/type',
     component: Layout,
+    redirect: '/restaurantProcurement/type/info',
+    name: 'RestaurantProcurementType',
+    meta: { title: '食材类型管理', icon: 'user' },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'info',
+        name: 'RestaurantProcurementTypeInfo',
+        component: () => import('@/views/merchandiseProcurement/type/info'),
+        meta: { title: '食材类型详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RestaurantProcurementTypeEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/type/edit'),
+        meta: { title: '修改食材类型', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RestaurantProcurementTypeAdd',
+        component: () => import('@/views/merchandiseProcurement/type/add'),
+        meta: { title: '添加食材类型', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/RestaurantProcurement/goods',
+    component: Layout,
+    redirect: '/restaurantProcurement/goods/info',
+    name: 'RestaurantProcurementGoods',
+    meta: { title: '食材管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RestaurantProcurementGoodsInfo',
+        component: () => import('@/views/merchandiseProcurement/goods/info'),
+        meta: { title: '食材详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RestaurantProcurementGoodsEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/goods/edit'),
+        meta: { title: '修改食材', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RestaurantProcurementGoodsAdd',
+        component: () => import('@/views/merchandiseProcurement/goods/add'),
+        meta: { title: '添加食材', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/restaurantProcurement/buyer',
+    component: Layout,
+    redirect: '/restaurantProcurement/buyer/info',
+    name: 'RestaurantProcurementBuyer',
+    meta: { title: '食材采购商管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RestaurantProcurementBuyerInfo',
+        component: () => import('@/views/merchandiseProcurement/buyer/info'),
+        meta: { title: '食材采购商详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RestaurantProcurementBuyerEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/buyer/edit'),
+        meta: { title: '修改食材采购商', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RestaurantProcurementBuyerAdd',
+        component: () => import('@/views/merchandiseProcurement/buyer/add'),
+        meta: { title: '添加食材采购商', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/RestaurantProcurement/procurement',
+    component: Layout,
+    redirect: '/RestaurantProcurement/procurement/info',
+    name: 'RestaurantProcurement',
+    meta: { title: '食材采购管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RestaurantProcurementInfo',
+        component: () => import('@/views/merchandiseProcurement/procurement/info'),
+        meta: { title: '食材采购详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RestaurantProcurementEdit',
+        hidden: true,
+        component: () => import('@/views/merchandiseProcurement/procurement/edit'),
+        meta: { title: '修改食材采购', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RestaurantProcurementAdd',
+        component: () => import('@/views/merchandiseProcurement/procurement/add'),
+        meta: { title: '添加食材采购', icon: 'user' }
       }
     ]
   },

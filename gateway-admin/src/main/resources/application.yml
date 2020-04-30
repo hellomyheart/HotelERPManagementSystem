@@ -117,8 +117,19 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-CLEANING
+          uri: lb://business-cleaning-procurement
+          predicates:
+            - Path=/api/cleaningProcurement/**
+          filters:
+            - StripPrefix=1
 
-
+        - id: BUSINESS-RESTAURANT
+          uri: lb://business-restaurant-procurement
+          predicates:
+            - Path=/api/restaurantProcurement/**
+          filters:
+            - StripPrefix=1
 
 
 server:
