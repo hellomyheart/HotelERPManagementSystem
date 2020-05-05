@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.RoomOrderMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.RoomOrder">
+    <!--@mbg.generated generated on Thu Apr 30 12:39:19 CST 2020.-->
+    <!--@Table room_order-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="deposit_status" jdbcType="INTEGER" property="depositStatus" />
+    <result column="deposit_price" jdbcType="DOUBLE" property="depositPrice" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="check_in" jdbcType="TIMESTAMP" property="checkIn" />
+    <result column="days" jdbcType="INTEGER" property="days" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Apr 30 12:39:19 CST 2020.-->
+    id, user_id, room_id, deposit_status, deposit_price, order_status, creat_time, price, 
+    check_in, `days`
+  </sql>
+</mapper>

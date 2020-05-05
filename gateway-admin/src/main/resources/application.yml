@@ -131,6 +131,16 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-INSPECTION
+          uri: lb://business-inspection
+          predicates:
+            - Path=/api/inspection/**
+          filters:
+            - StripPrefix=1
+
+
+
+
 
 server:
   port: 8888

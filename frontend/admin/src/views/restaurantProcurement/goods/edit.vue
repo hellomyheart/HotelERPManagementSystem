@@ -11,26 +11,21 @@
       <el-form-item label="ID">
         <el-input v-model="form.id" :disabled="true" />
       </el-form-item>
-      <el-form-item label="选择采购商">
-        <el-select v-model="form.buyerId" filterable clearable placeholder="请选择">
-          <el-option v-for="item in buyerInfo" :key="item.id" :label="item.buyerName" :value="item.id" />
+      <el-form-item label="食材名">
+        <el-input v-model="form.foodName" />
+      </el-form-item>
+      <el-form-item label="选择类型">
+        <el-select v-model="form.typeId" filterable clearable placeholder="请选择">
+          <el-option v-for="item in typeInfo" :key="item.id" :label="item.typeName" :value="item.id" />
         </el-select>
       </el-form-item>
-      <el-form-item label="选择商品">
-        <el-select v-model="form.goodsId" filterable clearable placeholder="请选择">
-          <el-option v-for="item in goodsInfo" :key="item.id" :label="item.goodsName" :value="item.id" />
-        </el-select>
+      <el-form-item label="库存数量">
+        <el-input v-model="form.foodNumber" />
       </el-form-item>
-
-      <el-form-item label="单价">
-        <el-input v-model="form.price" />
-      </el-form-item>
-      <el-form-item label="采购数目">
-        <el-input v-model="form.procurementSum" />
-      </el-form-item>
-      <el-form-item label="备注">
+      <el-form-item label="说明">
         <el-input v-model="form.note" />
       </el-form-item>
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保存</el-button>
       </el-form-item>
@@ -38,9 +33,8 @@
   </div>
 </template>
 <script>
-import { update } from '@/api/merchandiseProcurement/procurement'
-import { info as gInfo } from '@/api/merchandiseProcurement/goods'
-import { info as bInfo } from '@/api/merchandiseProcurement/buyer'
+import { update } from '@/api/restaurantProcurement/goods'
+import { info } from '@/api/restaurantProcurement/type'
 
 export default {
   data() {
@@ -48,14 +42,12 @@ export default {
       formLoading: true,
       form: {
         id: '',
-        buyerId: '',
-        goodsId: '',
-        price: '',
-        procurementSum: '',
+        foodName: '',
+        typeId: '',
+        foodNumber: '',
         note: ''
       },
-      buyerInfo: '',
-      goodsInfo: ''
+      typeInfo: ''
     }
   },
   created() {
@@ -64,13 +56,11 @@ export default {
   methods: {
     fetchData() {
       this.form = this.$route.params.data
-      bInfo().then(response => {
-        this.buyerInfo = response.data
-      })
-      gInfo().then(response => {
-        this.goodsInfo = response.data
-      })
+      this.image = this.$route.params.data.picture
       this.formLoading = false
+      info().then(response => {
+        this.typeInfo = response.data
+      })
     },
     onSubmit() {
       this.formLoading = true

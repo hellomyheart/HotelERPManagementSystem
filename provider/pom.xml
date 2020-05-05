@@ -82,14 +82,19 @@
 
     <modules>
         <!--后台业务-->
+        <!--        admin-->
         <module>provider-admin-api</module>
         <module>provider-admin-service</module>
+        <!--        登录日志-->
         <module>provider-admin-login-log-api</module>
         <module>provider-admin-login-log-service</module>
+        <!--        OAuth2-->
         <module>provider-oauth2rbac-api</module>
         <module>provider-oauth2rbac-service</module>
+        <!--        组织管理-->
         <module>provider-organization-api</module>
         <module>provider-organization-service</module>
+        <!--        培训管理-->
         <module>provider-training-api</module>
         <module>provider-training-service</module>
 
@@ -101,13 +106,17 @@
         <module>provider-cash-api</module>
         <module>provider-cash-service</module>
 
+        <!--定检报修-->
+        <module>provider-inspection-api</module>
+        <module>provider-inspection-service</module>
+
         <!-- 预算管理-->
         <module>provider-budget-api</module>
         <module>provider-budget-service</module>
+        <!--房间管理-->
+        <module>provider-room-api</module>
+        <module>provider-room-service</module>
 
-        <!-- 绩效管理-->
-<!--        <module>provider-performance-api</module>-->
-<!--        <module>provider-performance-service</module>-->
 
         <!-- 商品库存管理-->
         <module>provider-merchandise-inventory-api</module>
@@ -138,7 +147,7 @@
         <module>provider-facility-service</module>
 
 
-        <!-- 前台业务-->
+        <!-- 前台用户-->
         <module>provider-user-api</module>
         <module>provider-user-service</module>
 

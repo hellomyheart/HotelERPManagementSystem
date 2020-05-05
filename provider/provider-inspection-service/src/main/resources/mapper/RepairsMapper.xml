@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.RepairsMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.Repairs">
+    <!--@mbg.generated generated on Mon May 04 13:41:25 CST 2020.-->
+    <!--@Table repairs-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="repairs_time" jdbcType="TIMESTAMP" property="repairsTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Mon May 04 13:41:25 CST 2020.-->
+    id, room_id, repairs_time, `status`, note
+  </sql>
+</mapper>

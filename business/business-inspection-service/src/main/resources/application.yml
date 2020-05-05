@@ -12,7 +12,7 @@ base:
 
 spring:
   application:
-    name: business-merchandise-procurement
+    name: business-inspection
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -48,7 +48,7 @@ dubbo:
     port: ${base.config.nacos.port}
 
 server:
-  port: 9020
+  port: 9029
 
 feign:
   sentinel:

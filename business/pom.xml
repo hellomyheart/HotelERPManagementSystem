@@ -96,6 +96,10 @@
         <module>business-merchandise-procurement-feign</module>
         <module>business-merchandise-procurement-service</module>
 
+        <module>business-inspection-feign</module>
+        <module>business-inspection-service</module>
+
+
         <module>business-cleaning-procurement-feign</module>
         <module>business-cleaning-procurement-service</module>
 

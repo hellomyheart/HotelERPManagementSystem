@@ -28,7 +28,7 @@ import java.util.List;
  **/
 @RequestMapping(value = "restaurantProcurement/procurement")
 @RestController
-public class CleaningProcurementController {
+public class FoodProcurementController {
 
     @Reference(version = "1.0.0")
     FoodProcurementService service;
@@ -50,30 +50,33 @@ public class CleaningProcurementController {
 
     /**
      * 添加
+     *
      * @param param
      * @return
      */
     @PostMapping(value = "add")
     public ResponseResult<Void> add(@RequestBody FoodProcurementParam param) {
-       FoodProcurement foodProcurement=new FoodProcurement();
-        BeanUtils.copyProperties(param,foodProcurement);
+        FoodProcurement foodProcurement = new FoodProcurement();
+        BeanUtils.copyProperties(param, foodProcurement);
         foodProcurement.setCreatTime(LocalDate.now());
         return bt.add(service, foodProcurement);
     }
 
     /**
      * 更新
+     *
      * @param dTO
      * @return
      */
     @PostMapping(value = "update")
     public ResponseResult<Void> update(@RequestBody FoodProcurementDTO dTO) {
 
-        return bt.update(service,new FoodProcurement(),dTO);
+        return bt.update(service, new FoodProcurement(), dTO);
     }
 
     /**
      * 删除
+     *
      * @param dTO
      * @return
      */

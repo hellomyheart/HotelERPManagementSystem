@@ -53,28 +53,6 @@ export const constantRoutes = [
       component: () => import('@/views/dashboard/index'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
-  },
-
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
   }
 ]
 
@@ -716,20 +694,20 @@ export const asyncRoutes = [
       {
         path: 'info',
         name: 'RestaurantProcurementTypeInfo',
-        component: () => import('@/views/merchandiseProcurement/type/info'),
+        component: () => import('@/views/restaurantProcurement/type/info'),
         meta: { title: '食材类型详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'RestaurantProcurementTypeEdit',
         hidden: true,
-        component: () => import('@/views/merchandiseProcurement/type/edit'),
+        component: () => import('@/views/restaurantProcurement/type/edit'),
         meta: { title: '修改食材类型', icon: 'user' }
       },
       {
         path: 'add',
         name: 'RestaurantProcurementTypeAdd',
-        component: () => import('@/views/merchandiseProcurement/type/add'),
+        component: () => import('@/views/restaurantProcurement/type/add'),
         meta: { title: '添加食材类型', icon: 'user' }
       }
     ]
@@ -744,20 +722,20 @@ export const asyncRoutes = [
       {
         path: 'info',
         name: 'RestaurantProcurementGoodsInfo',
-        component: () => import('@/views/merchandiseProcurement/goods/info'),
+        component: () => import('@/views/restaurantProcurement/goods/info'),
         meta: { title: '食材详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'RestaurantProcurementGoodsEdit',
         hidden: true,
-        component: () => import('@/views/merchandiseProcurement/goods/edit'),
+        component: () => import('@/views/restaurantProcurement/goods/edit'),
         meta: { title: '修改食材', icon: 'user' }
       },
       {
         path: 'add',
         name: 'RestaurantProcurementGoodsAdd',
-        component: () => import('@/views/merchandiseProcurement/goods/add'),
+        component: () => import('@/views/restaurantProcurement/goods/add'),
         meta: { title: '添加食材', icon: 'user' }
       }
     ]
@@ -772,20 +750,20 @@ export const asyncRoutes = [
       {
         path: 'info',
         name: 'RestaurantProcurementBuyerInfo',
-        component: () => import('@/views/merchandiseProcurement/buyer/info'),
+        component: () => import('@/views/restaurantProcurement/buyer/info'),
         meta: { title: '食材采购商详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'RestaurantProcurementBuyerEdit',
         hidden: true,
-        component: () => import('@/views/merchandiseProcurement/buyer/edit'),
+        component: () => import('@/views/restaurantProcurement/buyer/edit'),
         meta: { title: '修改食材采购商', icon: 'user' }
       },
       {
         path: 'add',
         name: 'RestaurantProcurementBuyerAdd',
-        component: () => import('@/views/merchandiseProcurement/buyer/add'),
+        component: () => import('@/views/restaurantProcurement/buyer/add'),
         meta: { title: '添加食材采购商', icon: 'user' }
       }
     ]
@@ -800,24 +778,92 @@ export const asyncRoutes = [
       {
         path: 'info',
         name: 'RestaurantProcurementInfo',
-        component: () => import('@/views/merchandiseProcurement/procurement/info'),
+        component: () => import('@/views/restaurantProcurement/procurement/info'),
         meta: { title: '食材采购详情', icon: 'user' }
       },
       {
         path: 'edit',
         name: 'RestaurantProcurementEdit',
         hidden: true,
-        component: () => import('@/views/merchandiseProcurement/procurement/edit'),
+        component: () => import('@/views/restaurantProcurement/procurement/edit'),
         meta: { title: '修改食材采购', icon: 'user' }
       },
       {
         path: 'add',
         name: 'RestaurantProcurementAdd',
-        component: () => import('@/views/merchandiseProcurement/procurement/add'),
+        component: () => import('@/views/restaurantProcurement/procurement/add'),
         meta: { title: '添加食材采购', icon: 'user' }
       }
     ]
   },
+
+
+
+
+
+
+
+
+
+  {
+    path: '/Inspection/scheduled',
+    component: Layout,
+    redirect: '/Inspection/scheduled/info',
+    name: 'InspectionScheduled',
+    meta: { title: '定期检查管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'InspectionScheduledInfo',
+        component: () => import('@/views/inspection/scheduled/info'),
+        meta: { title: '定期检查详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'InspectionScheduledEdit',
+        hidden: true,
+        component: () => import('@/views/inspection/scheduled/edit'),
+        meta: { title: '修改定期检查', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'InspectionScheduledAdd',
+        component: () => import('@/views/inspection/scheduled/add'),
+        meta: { title: '添加定期检查', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/Inspection/repairs',
+    component: Layout,
+    redirect: '/Inspection/repairs/info',
+    name: 'InspectionRepairs',
+    meta: { title: '报修管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'InspectionRepairsInfo',
+        component: () => import('@/views/inspection/repairs/info'),
+        meta: { title: '报修详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'InspectionRepairsEdit',
+        hidden: true,
+        component: () => import('@/views/inspection/repairs/edit'),
+        meta: { title: '修改报修', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'InspectionRepairsAdd',
+        component: () => import('@/views/inspection/repairs/add'),
+        meta: { title: '添加报修', icon: 'user' }
+      }
+    ]
+  },
+
+
+
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

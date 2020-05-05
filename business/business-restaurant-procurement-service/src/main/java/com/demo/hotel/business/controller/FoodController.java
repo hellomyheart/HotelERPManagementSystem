@@ -20,13 +20,13 @@ import java.util.List;
 
 /**
  * @program: HotelERPManagementSystem
- * @description: 职工控制器
+ * @description: 控制器
  * @author: syj
  * @create: 2020-04-03 16:52
  **/
 @RequestMapping(value = "restaurantProcurement/goods")
 @RestController
-public class CleaningController {
+public class FoodController {
 
     @Reference(version = "1.0.0")
     FoodPService service;

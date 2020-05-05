@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @RequestMapping(value = "restaurantProcurement/type")
 @RestController
-public class CleaningTypeController {
+public class FoodTypeController {
 
     @Reference(version = "1.0.0")
     FoodTypeService service;

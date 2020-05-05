@@ -16,17 +16,17 @@
           <el-option v-for="item in buyerInfo" :key="item.id" :label="item.buyerName" :value="item.id" />
         </el-select>
       </el-form-item>
-      <el-form-item label="选择商品">
-        <el-select v-model="form.goodsId" filterable clearable placeholder="请选择">
-          <el-option v-for="item in goodsInfo" :key="item.id" :label="item.goodsName" :value="item.id" />
+      <el-form-item label="选择食材">
+        <el-select v-model="form.foodId" filterable clearable placeholder="请选择">
+          <el-option v-for="item in foodInfo" :key="item.id" :label="item.foodName" :value="item.id" />
         </el-select>
       </el-form-item>
 
       <el-form-item label="单价">
-        <el-input v-model="form.price" />
+        <el-input v-model="form.foodPrice" />
       </el-form-item>
       <el-form-item label="采购数目">
-        <el-input v-model="form.procurementSum" />
+        <el-input v-model="form.foodCount" />
       </el-form-item>
       <el-form-item label="备注">
         <el-input v-model="form.note" />
@@ -38,9 +38,9 @@
   </div>
 </template>
 <script>
-import { update } from '@/api/merchandiseProcurement/procurement'
-import { info as gInfo } from '@/api/merchandiseProcurement/goods'
-import { info as bInfo } from '@/api/merchandiseProcurement/buyer'
+import { update } from '@/api/restaurantProcurement/procurement'
+import { info as gInfo } from '@/api/restaurantProcurement/goods'
+import { info as bInfo } from '@/api/restaurantProcurement/buyer'
 
 export default {
   data() {
@@ -49,13 +49,13 @@ export default {
       form: {
         id: '',
         buyerId: '',
-        goodsId: '',
-        price: '',
-        procurementSum: '',
+        foodId: '',
+        foodPrice: '',
+        foodCount: '',
         note: ''
       },
       buyerInfo: '',
-      goodsInfo: ''
+      foodInfo: ''
     }
   },
   created() {
@@ -68,7 +68,7 @@ export default {
         this.buyerInfo = response.data
       })
       gInfo().then(response => {
-        this.goodsInfo = response.data
+        this.foodInfo = response.data
       })
       this.formLoading = false
     },
