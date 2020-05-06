@@ -28,6 +28,7 @@ public class RoomTypeController {
     @Reference(version = "1.0.0")
     RoomTypeService service;
 
+
     BaseSingleTableController<RoomTypeService, RoomTypeDTO, RoomType, RoomTypeParam> bs = new BaseSingleTableController<>();
 
     /**

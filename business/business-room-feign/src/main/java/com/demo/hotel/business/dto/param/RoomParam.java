@@ -13,6 +13,10 @@ public class RoomParam implements BaseParam {
 
     private static final long serialVersionUID = -2176338879406257018L;
 
+    /**
+     * 房间号
+     */
+    private Long id;
 
     /**
      * 位置

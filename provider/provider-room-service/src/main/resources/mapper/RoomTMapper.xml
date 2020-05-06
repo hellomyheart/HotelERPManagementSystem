@@ -14,6 +14,5 @@
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="deposit" jdbcType="DOUBLE" property="deposit" />
     <result column="bed_count" jdbcType="INTEGER" property="bedCount" />
-    <result column="roomid" jdbcType="BIGINT" property="roomid" />
   </resultMap>
 </mapper>

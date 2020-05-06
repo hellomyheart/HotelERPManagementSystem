@@ -30,7 +30,7 @@ public class RoomOrderServiceImpl implements RoomOrderService{
 
     @Override
     public int delete(Long id) {
-        return 0;
+        return roomOrderMapper.deleteByPrimaryKey(id);
     }
 
     @Override

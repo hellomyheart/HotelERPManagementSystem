@@ -1,5 +1,5 @@
 import BaseRequest from '@/api/Base'
-
+import request from '@/utils/request'
 var BaseURL = 'room/content/'
 var br = new BaseRequest(BaseURL)
 
@@ -9,6 +9,17 @@ var br = new BaseRequest(BaseURL)
 //  */
 export function info() {
   return br.info()
+}
+
+// /**
+//  * 获取信息
+//  * @returns {AxiosPromise}
+//  */
+export function infoRoom() {
+  return request({
+    url: BaseURL + 'infoRoom',
+    method: 'get'
+  })
 }
 
 // /**

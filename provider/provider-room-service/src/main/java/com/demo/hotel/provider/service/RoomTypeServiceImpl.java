@@ -38,4 +38,9 @@ public class RoomTypeServiceImpl implements RoomTypeService{
     public List<RoomType> selectAll() {
         return roomTypeMapper.selectAll();
     }
+
+    @Override
+    public RoomType getById(Long id) {
+        return roomTypeMapper.selectByPrimaryKey(id);
+    }
 }

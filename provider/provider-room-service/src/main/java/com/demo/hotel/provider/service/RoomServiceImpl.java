@@ -20,7 +20,7 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public int insert(Room domain) {
-        return 0;
+        return roomMapper.insert(domain);
     }
 
     @Override
@@ -30,6 +30,16 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public int delete(Long id) {
-        return 0;
+        return roomMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Room> selectAllRoom() {
+        return roomMapper.selectAll();
+    }
+
+    @Override
+    public Room getById(Long id) {
+        return roomMapper.selectByPrimaryKey(id);
     }
 }

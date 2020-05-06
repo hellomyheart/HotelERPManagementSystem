@@ -1,19 +1,14 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.goodsName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.location.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       border
       stripe
       style="width: 100%"
       :height="500"
     >
       <el-table-column label="ID" sortable prop="id" />
-      <el-table-column label="采购商名" sortable prop="buyerName" />
-      <el-table-column label="商品名" sortable prop="goodsName" />
-      <el-table-column label="单价价格" prop="price" />
-      <el-table-column label="采购数目" sortable prop="procurementSum" />
-      <el-table-column label="时间" prop="createTime" />
-      <el-table-column label="备注" prop="note" />
+      <el-table-column label="位置" sortable prop="location" />
 
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
@@ -40,12 +35,12 @@
 </template>
 
 <script>
-import { info, deleteD } from '@/api/merchandiseProcurement/procurement'
+import { infoRoom, deleteD } from '@/api/room/content'
 export default {
   data() {
     return {
-      tableData: "",
-      search: "",
+      tableData: '',
+      search: '',
       // 默认显示第几页
       currentPage: 1,
       // 总条数，根据接口获取数据长度(注意：这里不能为空)
@@ -54,51 +49,51 @@ export default {
       pageSizes: [5, 10, 20, 30],
       // 默认每页显示的条数（可修改）
       PageSize: 10
-    };
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData() {
-      info().then(response => {
-        this.tableData = response.data;
+      infoRoom().then(response => {
+        this.tableData = response.data
         // 将数据的长度赋值给totalCount
-        this.totalCount = this.tableData.length;
-      });
+        this.totalCount = this.tableData.length
+      })
     },
     handleEdit(index, row) {
       this.$router.push({
-        name: 'MerchandiseProcurementEdit',
+        name: 'RoomContentEdit',
         params: {
           data: row
         }
-      });
+      })
     },
     handleDelete(index, row) {
       deleteD(row)
         .then(response => {
           this.$message({
             message: response.message,
-            type: "success"
-          });
+            type: 'success'
+          })
         })
-        .catch(() => {});
-      this.$delete(this.tableData, index);
+        .catch(() => {})
+      this.$delete(this.tableData, index)
     },
     // 分页
     // 每页显示的条数
     handleSizeChange(val) {
       // 改变每页显示的条数
-      this.PageSize = val;
+      this.PageSize = val
       // 注意：在改变每页显示的条数时，要将页码显示到第一页
-      this.currentPage = 1;
+      this.currentPage = 1
     },
     // 显示第几页
     handleCurrentChange(val) {
       // 改变默认的页数
-      this.currentPage = val;
+      this.currentPage = val
     }
   }
-};
+}
 </script>

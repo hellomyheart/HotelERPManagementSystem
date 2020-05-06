@@ -74,6 +74,4 @@ public class RoomT implements ViewDomain {
     @Column(name = "bed_count")
     private Integer bedCount;
 
-    @Column(name = "roomid")
-    private Long roomid;
 }

@@ -62,6 +62,4 @@ public class RoomTDTO implements ViewDTO {
      * 床位数
      */
     private Integer bedCount;
-
-    private Long roomid;
 }

@@ -861,7 +861,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/room/type',
     component: Layout,
@@ -890,8 +889,69 @@ export const asyncRoutes = [
       }
     ]
   },
-
-
+  {
+    path: '/room/booking',
+    component: Layout,
+    redirect: '/room/booking/info',
+    name: 'RoomBooking',
+    meta: { title: '订房', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RoomBookingInfo',
+        component: () => import('@/views/room/booking/info'),
+        meta: { title: '订房详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RoomBookingEdit',
+        hidden: true,
+        component: () => import('@/views/room/booking/edit'),
+        meta: { title: '订房', icon: 'user' }
+      },
+      {
+        path: 'orderInfo',
+        name: 'RoomOrderInfo',
+        component: () => import('@/views/room/order/info'),
+        meta: { title: '订单详情', icon: 'user' }
+      },
+      {
+        path: 'orderEdit',
+        name: 'RoomOrderEdit',
+        hidden: true,
+        component: () => import('@/views/room/order/edit'),
+        meta: { title: '修改订单', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/room/content',
+    component: Layout,
+    redirect: '/room/content/info',
+    name: 'RoomContent',
+    meta: { title: '房间管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RoomContentInfo',
+        component: () => import('@/views/room/content/info'),
+        meta: { title: '房间详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RoomContentEdit',
+        hidden: true,
+        component: () => import('@/views/room/content/edit'),
+        meta: { title: '修改房间', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RoomContentAdd',
+        component: () => import('@/views/room/content/add'),
+        meta: { title: '添加房间', icon: 'user' }
+      }
+    ]
+  },
 
 
 
