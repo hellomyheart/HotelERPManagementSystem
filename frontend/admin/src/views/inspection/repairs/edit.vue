@@ -9,44 +9,24 @@
       label-width="120px"
     >
       <el-form-item label="ID">
-        <el-input v-model="form.id" :disabled="true"/>
+        <el-input v-model="form.id" :disabled="true" />
       </el-form-item>
-      <el-form-item label="职工姓名">
-        <el-input v-model="form.employeeName" />
-      </el-form-item>
-      <el-form-item label="身份证号">
-        <el-input v-model="form.identify" />
-      </el-form-item>
-      <el-form-item label="手机号">
-        <el-input v-model="form.phone" />
-      </el-form-item>
-      <el-form-item label="选择性别">
-        <el-select v-model="form.gender" filterable clearable placeholder="请选择">
-          <el-option v-for="item in GenderInfo" :key="item.id" :label="item.name" :value="item.id"></el-option>
+      <el-form-item label="选择客房">
+        <el-select v-model="form.roomId" filterable clearable placeholder="请选择" :disabled="true">
+          <el-option v-for="item in roomInfo" :key="item.id" :label="item.id" :value="item.id" />
         </el-select>
       </el-form-item>
-      <el-form-item label="选择职位">
-        <el-select v-model="form.positionId" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in positionInfo"
-            :key="item.id"
-            :label="item.positionName"
-            :value="item.id"
-          ></el-option>
-        </el-select>
+
+      <el-form-item label="备注">
+        <el-input v-model="form.note" />
       </el-form-item>
-      <el-form-item label="出生日期">
-        <el-date-picker
-          v-model="form.birthday"
-          align="right"
-          type="date"
-          placeholder="选择日期"
-          value-format="yyyy-MM-dd"
-        ></el-date-picker>
+      <el-form-item label="报修时间">
+        <el-input v-model="form.repairsTime" :disabled="true" />
       </el-form-item>
-      <el-form-item label="选择状态">
+
+      <el-form-item label="状态">
         <el-select v-model="form.status" filterable clearable placeholder="请选择">
-          <el-option v-for="item in SInfo" :key="item.id" :label="item.name" :value="item.id"></el-option>
+          <el-option v-for="item in sInfo" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
 
@@ -57,8 +37,8 @@
   </div>
 </template>
 <script>
-import { update } from '@/api/organization/employee'
-import { info } from '@/api/organization/position'
+import { update } from '@/api/inspection/repairs'
+import { info } from '@/api/room/content'
 
 export default {
   name: 'EmployeeEdit',
@@ -66,42 +46,18 @@ export default {
     return {
       formLoading: true,
       form: {
-        id: '',
-        positionId: '',
-        employeeName: '',
-        identify: '',
-        phone: '',
-        gender: '',
-        status: '',
-        birthday: ''
+        roomId: '',
+        note: '',
       },
-      positionInfo: '',
-      GenderInfo: [
+      roomInfo: '',
+      sInfo: [
         {
           id: 0,
-          name: '未知'
+          name: '等待维修'
         },
         {
           id: 1,
-          name: '男'
-        },
-        {
-          id: 2,
-          name: '女'
-        }
-      ],
-      SInfo: [
-        {
-          id: 0,
-          name: '正常'
-        },
-        {
-          id: 1,
-          name: '休假'
-        },
-        {
-          id: 2,
-          name: '离职'
+          name: '维修完成'
         }
       ]
     }
@@ -114,7 +70,7 @@ export default {
       this.form = this.$route.params.data
       this.formLoading = false
       info().then(response => {
-        this.positionInfo = response.data;
+        this.roomInfo = response.data
       })
       console.log(this.$route.params.data)
     },

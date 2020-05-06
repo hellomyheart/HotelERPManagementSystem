@@ -1,23 +1,21 @@
 <template>
   <div>
     <el-table
-      :data="tableData.filter(data => !search || data.departmentName.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
+      :data="tableData.filter(data => !search || data.note.toLowerCase().includes(search.toLowerCase())).slice((currentPage-1)*PageSize,currentPage*PageSize)"
       border
       stripe
       style="width: 100%"
-      height= 500
+      height="500"
     >
       <el-table-column label="ID" sortable prop="id"></el-table-column>
-      <el-table-column label="客房ID" sortable prop="roomId"></el-table-column>
-      <el-table-column label="报修时间" prop="repairsTime"></el-table-column>
-      <el-table-column label="状态" prop="status"></el-table-column>
+      <el-table-column label="客房号" sortable prop="roomId"></el-table-column>
+      <el-table-column label="检修时间" prop="inspectionTime"></el-table-column>
       <el-table-column label="备注" prop="note"></el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
         </template>
       </el-table-column>
@@ -37,7 +35,7 @@
 </template>
 
 <script>
-import { info, deleteD } from '@/api/organization/department'
+import { info, deleteD } from '@/api/inspection/scheduled'
 export default {
   data() {
     return {
@@ -62,15 +60,7 @@ export default {
         this.tableData = response.data;
         // 将数据的长度赋值给totalCount
         this.totalCount = this.tableData.length;
-      });
-    },
-    handleEdit(index, row) {
-      this.$router.push({
-        name: "DepartmentEdit",
-        params: {
-          data: row
-        }
-      });
+      })
     },
     handleDelete(index, row) {
       deleteD(row)

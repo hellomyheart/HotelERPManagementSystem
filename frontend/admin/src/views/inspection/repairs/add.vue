@@ -9,50 +9,14 @@
       label-width="120px"
     >
       <el-form-item label="选择客房">
-        <el-select v-model="selectRoom" filterable clearable placeholder="请选择">
-          <el-option v-for="item in RoomInfo" :key="item.id" :label="item.name" :value="item.id"></el-option>
+        <el-select v-model="form.roomId" filterable clearable placeholder="请选择">
+          <el-option v-for="item in roomInfo" :key="item.id" :label="item.id" :value="item.id" />
         </el-select>
       </el-form-item>
-未完成
-
-    <el-table-column label="ID" sortable prop="id" />
-      <el-table-column label="客房ID" sortable prop="roomId" />
-      <el-table-column label="报修时间" prop="repairsTime" />
-      <el-table-column label="状态" :formatter="formatS" prop="status" />
-      <el-table-column label="备注" prop="note" /></el-table-column>
-
       
-      <el-form-item label="职工姓名">
-        <el-input v-model="form.employeeName" />
+      <el-form-item label="备注">
+        <el-input v-model="form.note" />
       </el-form-item>
-      <el-form-item label="身份证号">
-        <el-input v-model="form.identify" />
-      </el-form-item>
-      <el-form-item label="手机号">
-        <el-input v-model="form.phone" />
-      </el-form-item>
-      
-      <el-form-item label="选择职位">
-        <el-select v-model="selectPosition" filterable clearable placeholder="请选择">
-          <el-option
-            v-for="item in positionInfo"
-            :key="item.id"
-            :label="item.positionName"
-            :value="item.id"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="出生日期">
-        <el-date-picker
-          v-model="form.birthday"
-          align="right"
-          type="date"
-          placeholder="选择日期"
-          :picker-options="pickerOptions"
-          value-format="yyyy-MM-dd HH:mm:ss"
-        ></el-date-picker>
-      </el-form-item>
-
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保存</el-button>
       </el-form-item>
@@ -60,49 +24,28 @@
   </div>
 </template>
 <script>
-import { add } from '@/api/organization/employee'
-import { info } from '@/api/organization/position'
+import { add } from '@/api/inspection/repairs'
+import { info } from '@/api/room/content'
 
 export default {
-  name: "EmployeeAdd",
   data() {
     return {
       formLoading: true,
       form: {
-        positionId: '',
-        employeeName: '',
-        identify: '',
-        phone: '',
-        gender: '',
-        birthday: '',
+        roomId: '',
+        note: ''
       },
-      positionInfo: '',
-      selectPosition: '',
-      GenderInfo: [
-        {
-          id: 0,
-          name: '未知'
-        },
-        {
-          id: 1,
-          name: '男'
-        },
-        {
-          id: 2,
-          name: '女'
-        }
-      ],
-      selectGender: ''
-    };
+      roomInfo: ''
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData() {
-      this.formLoading = false;
+      this.formLoading = false
       info().then(response => {
-        this.positionInfo = response.data;
+        this.roomInfo = response.data
       });
     },
     onSubmit() {

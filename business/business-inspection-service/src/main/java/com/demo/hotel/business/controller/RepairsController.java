@@ -57,6 +57,7 @@ public class RepairsController {
         Repairs repairs = new Repairs();
         BeanUtils.copyProperties(param, repairs);
         repairs.setRepairsTime(new Date());
+        repairs.setStatus(0);
         return bs.add(service, repairs);
     }
 

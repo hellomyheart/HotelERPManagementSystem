@@ -819,13 +819,6 @@ export const asyncRoutes = [
         meta: { title: '定期检查详情', icon: 'user' }
       },
       {
-        path: 'edit',
-        name: 'InspectionScheduledEdit',
-        hidden: true,
-        component: () => import('@/views/inspection/scheduled/edit'),
-        meta: { title: '修改定期检查', icon: 'user' }
-      },
-      {
         path: 'add',
         name: 'InspectionScheduledAdd',
         component: () => import('@/views/inspection/scheduled/add'),

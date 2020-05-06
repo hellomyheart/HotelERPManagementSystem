@@ -29,7 +29,7 @@ public class InspectionResourceServerConfiguration extends ResourceServerConfigu
                 .and()
                 .authorizeRequests()
                 //定检、报修
-                .antMatchers("/inspection/**").hasAuthority("INSPECTION");
+                .antMatchers("/inspection/**").hasAuthority("Inspection");
     }
 
     @Override
