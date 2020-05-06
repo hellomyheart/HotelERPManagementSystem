@@ -2,41 +2,22 @@ package com.demo.hotel.provider.domain;
 
 import javax.persistence.*;
 
-import com.demo.hotel.provider.doamin.ViewDomain;
+import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
 /**
  * @author syj
  */
 @Data
-@Table(name = "room_t")
-public class RoomT implements ViewDomain {
-
-    private static final long serialVersionUID = -6408459443670708804L;
-
+@Table(name = "room_type")
+public class RoomType implements TableDomain {
     /**
-     * 客房id
+     * id
      */
+    @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "JDBC")
     private Long id;
-
-    /**
-     * 客房状态 0,未开放，1客满，2可以入住
-     */
-    @Column(name = "`status`")
-    private Integer status;
-
-    /**
-     * 位置
-     */
-    @Column(name = "`location`")
-    private String location;
-
-    /**
-     * 客房类型ID
-     */
-    @Column(name = "type_id")
-    private Long typeId;
 
     /**
      * 类型名
@@ -74,6 +55,9 @@ public class RoomT implements ViewDomain {
     @Column(name = "bed_count")
     private Integer bedCount;
 
-    @Column(name = "roomid")
-    private Long roomid;
+    /**
+     * 房间数
+     */
+    @Column(name = "room_count")
+    private Integer roomCount;
 }

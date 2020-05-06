@@ -113,6 +113,8 @@
         <!-- 预算管理-->
         <module>provider-budget-api</module>
         <module>provider-budget-service</module>
+
+
         <!--房间管理-->
         <module>provider-room-api</module>
         <module>provider-room-service</module>

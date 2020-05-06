@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.RoomTypeMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.RoomType">
+    <!--@mbg.generated generated on Wed May 06 09:05:43 CST 2020.-->
+    <!--@Table room_type-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="deposit" jdbcType="DOUBLE" property="deposit" />
+    <result column="bed_count" jdbcType="INTEGER" property="bedCount" />
+    <result column="room_count" jdbcType="INTEGER" property="roomCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Wed May 06 09:05:43 CST 2020.-->
+    id, type_name, picture, note, price, deposit, bed_count, room_count
+  </sql>
+</mapper>

@@ -139,7 +139,12 @@ spring:
             - StripPrefix=1
 
 
-
+        - id: BUSINESS-ROOM
+          uri: lb://business-room
+          predicates:
+            - Path=/api/room/**
+          filters:
+            - StripPrefix=1
 
 
 server:

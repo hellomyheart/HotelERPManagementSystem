@@ -6,6 +6,9 @@ import com.demo.hotel.provider.api.BaseSingleTableApi;
 import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
+/**
+ * @author syj
+ */
 @Data
 @Table(name = "room")
 public class Room  implements TableDomain {

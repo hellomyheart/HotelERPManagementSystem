@@ -1,17 +1,18 @@
 package com.demo.hotel.provider.service;
 
 import com.demo.hotel.provider.domain.RoomOrder;
-import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import com.demo.hotel.provider.mapper.RoomOrderMapper;
 import com.demo.hotel.provider.api.RoomOrderService;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.List;
 
 /**
  * @author syj
  */
-@Service
+@Service(version = "1.0.0")
 public class RoomOrderServiceImpl implements RoomOrderService{
 
     @Resource

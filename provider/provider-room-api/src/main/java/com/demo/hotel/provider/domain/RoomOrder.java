@@ -6,6 +6,9 @@ import javax.persistence.*;
 import com.demo.hotel.provider.doamin.TableDomain;
 import lombok.Data;
 
+/**
+ * @author syj
+ */
 @Data
 @Table(name = "room_order")
 public class RoomOrder implements TableDomain {

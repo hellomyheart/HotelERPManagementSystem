@@ -862,6 +862,39 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/room/type',
+    component: Layout,
+    redirect: '/room/type/info',
+    name: 'RoomType',
+    meta: { title: '房间类型管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'RoomTypeInfo',
+        component: () => import('@/views/room/type/info'),
+        meta: { title: '房间类型详情', icon: 'user' }
+      },
+      {
+        path: 'edit',
+        name: 'RoomTypeEdit',
+        hidden: true,
+        component: () => import('@/views/room/type/edit'),
+        meta: { title: '修改房间类型', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'RoomTypeAdd',
+        component: () => import('@/views/room/type/add'),
+        meta: { title: '添加房间类型', icon: 'user' }
+      }
+    ]
+  },
+
+
+
+
+
 
 
 

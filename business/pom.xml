@@ -112,6 +112,8 @@
         <module>business-cleaning-inventory-service</module>
         <module>business-restaurant-inventory-feign</module>
         <module>business-restaurant-inventory-service</module>
+        <module>business-room-feign</module>
+        <module>business-room-service</module>
 
     </modules>
 </project>
