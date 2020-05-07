@@ -945,7 +945,27 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  {
+    path: '/performance',
+    component: Layout,
+    redirect: '/performance/info',
+    name: 'Performance',
+    meta: { title: '绩效管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'PerformanceInfo',
+        component: () => import('@/views/performance/info'),
+        meta: { title: '绩效详情', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'PerformanceAdd',
+        component: () => import('@/views/performance/add'),
+        meta: { title: '添加绩效', icon: 'user' }
+      }
+    ]
+  },
 
 
 

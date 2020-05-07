@@ -99,6 +99,8 @@
         <module>business-inspection-feign</module>
         <module>business-inspection-service</module>
 
+        <module>business-performance-feign</module>
+        <module>business-performance-service</module>
 
         <module>business-cleaning-procurement-feign</module>
         <module>business-cleaning-procurement-service</module>

@@ -118,7 +118,9 @@
         <!--房间管理-->
         <module>provider-room-api</module>
         <module>provider-room-service</module>
-
+        <!--绩效管理-->
+        <module>provider-performance-api</module>
+        <module>provider-performance-service</module>
 
         <!-- 商品库存管理-->
         <module>provider-merchandise-inventory-api</module>

@@ -146,6 +146,14 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: BUSINESS-PERFORMANCE
+          uri: lb://business-performance
+          predicates:
+            - Path=/api/performance/**
+          filters:
+            - StripPrefix=1
+
+
 
 server:
   port: 8888
