@@ -13,8 +13,8 @@
           <el-option v-for="item in employeeInfo" :key="item.id" :label="item.employeeName" :value="item.id" />
         </el-select>
       </el-form-item>
-      <el-form-item label="绩效打分">
-        <el-input v-model="form.score" type="Number" />
+      <el-form-item label="实际工资">
+        <el-input v-model="form.reale" type="Number" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">保存</el-button>
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import { add } from '@/api/performance/index'
+import { add } from '@/api/salary/index'
 import { info } from '@/api/organization/employee'
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
       formLoading: true,
       form: {
         employeeId: '',
-        score: ''
+        reale: ''
       },
       employeeInfo: ''
     }

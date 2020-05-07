@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.hotel.provider.mapper.SalaryEMapper">
+  <resultMap id="BaseResultMap" type="com.demo.hotel.provider.domain.SalaryE">
+    <!--@mbg.generated generated on Thu May 07 14:39:58 CST 2020.-->
+    <!--@Table salary_e-->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="creat_date" jdbcType="DATE" property="creatDate" />
+    <result column="employee_id" jdbcType="BIGINT" property="employeeId" />
+    <result column="reale" jdbcType="DOUBLE" property="reale" />
+    <result column="employee_name" jdbcType="VARCHAR" property="employeeName" />
+  </resultMap>
+</mapper>

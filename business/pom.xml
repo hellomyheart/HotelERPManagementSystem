@@ -117,5 +117,8 @@
         <module>business-room-feign</module>
         <module>business-room-service</module>
 
+        <module>business-salary-feign</module>
+        <module>business-salary-service</module>
+
     </modules>
 </project>

@@ -966,7 +966,27 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  {
+    path: '/salary',
+    component: Layout,
+    redirect: '/salary/info',
+    name: 'Salary',
+    meta: { title: '薪酬管理', icon: 'user' },
+    children: [
+      {
+        path: 'info',
+        name: 'SalaryInfo',
+        component: () => import('@/views/salary/info'),
+        meta: { title: '薪酬详情', icon: 'user' }
+      },
+      {
+        path: 'add',
+        name: 'SalaryAdd',
+        component: () => import('@/views/salary/add'),
+        meta: { title: '添加薪酬', icon: 'user' }
+      }
+    ]
+  },
 
 
 

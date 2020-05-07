@@ -150,6 +150,9 @@
         <module>provider-facility-api</module>
         <module>provider-facility-service</module>
 
+        <!-- 薪酬管理用户-->
+        <module>provider-salary-api</module>
+        <module>provider-salary-service</module>
 
         <!-- 前台用户-->
         <module>provider-user-api</module>

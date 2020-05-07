@@ -153,7 +153,12 @@ spring:
           filters:
             - StripPrefix=1
 
-
+        - id: BUSINESS-SALARY
+          uri: lb://business-salary
+          predicates:
+            - Path=/api/salary/**
+          filters:
+            - StripPrefix=1
 
 server:
   port: 8888
