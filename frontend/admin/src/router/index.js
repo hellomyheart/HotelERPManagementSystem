@@ -900,7 +900,7 @@ export const asyncRoutes = [
         name: 'RoomBookingEdit',
         hidden: true,
         component: () => import('@/views/room/booking/edit'),
-        meta: { title: '订房', icon: 'user' }
+        meta: { title: '订单', icon: 'user' }
       },
       {
         path: 'orderInfo',
